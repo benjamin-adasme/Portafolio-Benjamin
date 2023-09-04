@@ -1,0 +1,29 @@
+---
+title: "Acerca de mí"
+image: images/foto Benjamín Adasme.jpg
+about:
+  template: jolla
+  image-width: 20em
+  image-shape: round
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/AdasmeBenja
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com/in/benjamín-adasme-b6b63513b/
+    - icon: github
+      text: Github
+      href: https://github.com/benjamin-adasme
+    - icon: envelope
+      text: Escríbeme
+      href: mailto:benja.adasme.j@gmail.com
+---
+
+Soy sociólogo, egresado en 2019 de la Universidad Católica del Maule. Me dedico al análisis de datos en territorio y educación.
+
+Trabajo desde hace dos años al lenguaje de programación R, lo que me ha permitido iniciarme en la ciencia de datos de forma autónoma.
+
+Tengo experiencia en investigación y docencia académica, cargos de gestión profesional, en proyectos de consultoría y organizaciones sin fines de lucro.
+
+Soy parte de Consultora Nueva Estrategia, empresa maulina dedicada a la asesoría en el análisis de datos cuantitativos, con enfoque en el territorio.

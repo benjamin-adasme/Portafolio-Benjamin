@@ -1,0 +1,10 @@
+---
+title: "Currículum Vitae"
+---
+
+
+<iframe 
+  width="800" 
+  height="800" 
+  src="images/CV Benjamín Adasme (septiembre 2023).pdf">
+</iframe>

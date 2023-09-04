@@ -1,0 +1,28 @@
+project:
+  type: website
+
+website:
+  title: "Benjamín Adasme Jara"
+  navbar:
+    left: 
+      - href: index.qmd
+        text: Inicio
+      - href: cv.qmd
+        text: CV
+      - href: proyects.qmd
+        text: Proyectos
+      - href: tidytuesday.qmd
+        text: Tidy Tuesday
+    right:
+      - about.qmd
+      - icon: github
+        href: https://github.com/benjamin-adasme
+      - icon: twitter
+        href: https://twitter.com/AdasmeBenja
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+
+editor: visual
+
