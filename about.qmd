@@ -22,8 +22,10 @@ about:
 
 Soy sociólogo, egresado en 2019 de la Universidad Católica del Maule. Me dedico al análisis de datos en territorio y educación.
 
-Trabajo desde hace tres años al lenguaje de programación R, lo que me ha permitido iniciarme en la ciencia de datos de forma autónoma. Actualmente estoy desarrollando proyectos iniciales en Python. 
+Trabajo desde hace tres años al lenguaje de programación R, lo que me ha permitido iniciarme en la ciencia de datos de forma autónoma. Actualmente estoy desarrollando proyectos iniciales en Python.
 
 Tengo experiencia en investigación y docencia académica, cargos de gestión profesional, en proyectos de consultoría y organizaciones sin fines de lucro.
 
 Soy parte de Consultora Nueva Estrategia, empresa maulina dedicada a la asesoría en el análisis de datos cuantitativos, con enfoque en el territorio.
+
+Probando para hacer push desde Rstudio
