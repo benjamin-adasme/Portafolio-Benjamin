@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "Acerca de mí",
     "section": "",
-    "text": "Soy sociólogo, egresado en 2019 de la Universidad Católica del Maule. Me dedico al análisis de datos en territorio y educación.\nTrabajo desde hace tres años al lenguaje de programación R, lo que me ha permitido iniciarme en la ciencia de datos de forma autónoma. Actualmente estoy desarrollando proyectos iniciales en Python.\nTengo experiencia en investigación y docencia académica, cargos de gestión profesional, en proyectos de consultoría y organizaciones sin fines de lucro.\nSoy parte de Consultora Nueva Estrategia, empresa maulina dedicada a la asesoría en el análisis de datos cuantitativos, con enfoque en el territorio.\nProbando para hacer push desde Rstudio"
+    "text": "Soy sociólogo, egresado en 2019 de la Universidad Católica del Maule. Me dedico al análisis de datos en territorio y educación.\nTrabajo desde hace tres años al lenguaje de programación R, lo que me ha permitido iniciarme en la ciencia de datos de forma autónoma. Actualmente estoy desarrollando proyectos iniciales en Python.\nTengo experiencia en investigación y docencia académica, cargos de gestión profesional, en proyectos de consultoría y organizaciones sin fines de lucro.\nSoy parte de Consultora Nueva Estrategia, empresa maulina dedicada a la asesoría en el análisis de datos cuantitativos, con enfoque en el territorio.\nAficionado y entusiasta de Linux y el software libre/open source."
   },
   {
     "objectID": "posts/post-with-code/index.html",
@@ -16,15 +16,78 @@
   {
     "objectID": "posts/welcome/index.html",
     "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
+    "title": "Bienvenidos a mi blog",
     "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+    "text": "Bienvenidos/as a esta primera entrada de mi blog/portafolio profesional. Antes de comenzar, me presento. Soy Benjamín Adasme Jara, sociólogo de profesión, y actualmente estoy desarrollando mi carrera como analista estadístico y científico de datos. Puedes leer algo más sobre mi en la sección Acerca de mí o ver mi Curriculum Vitae\nEn esta primera entrada quisiera compartir las razones que me llevan a crear este sitio. ¿Por qué hacer un blog en pleno 2025? ¿Por qué este formato? ¿Por qué mostrarse en internet?"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Benjamín Adasme Jara",
+    "title": "¡Hola! Bienvenidos a mi sitio, soy Benjamín Adasme Jara",
     "section": "",
-    "text": "Post With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nSep 3, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nAug 31, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Pirámides de población con R: el caso de Chile (1970-2017)\n\n\n\n\n\n\ncódigo\n\n\nanálisis\n\n\nR\n\n\ndataviz\n\n\n\nDiscutimos brevemente sobre el envejecimiento de la población y transición demográfica, y cómo las pirámides de población visualizan estos procesos. Comentamos el caso chileno, y utilizamos los datos de los últimos 5 Censos para crear un tutorial de cómo graficar las pirámides de población en R.\n\n\n\n\n\n17 feb 2025\n\n\nBenjamín Adasme Jara\n\n\n\n\n\n\n\n\n\n\n\n\nBienvenidos a mi blog\n\n\n\n\n\n\nnoticias\n\n\n\n\n\n\n\n\n\n11 feb 2025\n\n\nBenjamín Adasme Jara\n\n\n\n\n\n\nNo hay resultados"
+  },
+  {
+    "objectID": "posts/bienvenidos/index.html",
+    "href": "posts/bienvenidos/index.html",
+    "title": "Bienvenidos a mi blog",
+    "section": "",
+    "text": "Bienvenidos/as a esta primera entrada de mi blog/portafolio profesional. Antes de comenzar, me presento. Soy Benjamín Adasme Jara, sociólogo de profesión, y actualmente estoy desarrollando mi carrera como analista estadístico y científico de datos.\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/welcome/index.html#abrirse-al-mundo",
+    "href": "posts/welcome/index.html#abrirse-al-mundo",
+    "title": "Bienvenidos a mi blog",
+    "section": "Abrirse al mundo",
+    "text": "Abrirse al mundo\nEscribir es una forma de exteriorizar aquello que uno piensa y siente, y en este caso, tengo la necesidad de comunicar muchas ideas que he venido desarrollando en los últimos años. Tanto mi carrera profesional como mis intereses personales se han centrado en los siguientes tópicos: estadística, ciencia de datos, informática, software libre, política, territorio, fútbol y sociedad. Quiero un espacio donde poner estos temas, mezclarlos, enredarlos y desenredarlos."
+  },
+  {
+    "objectID": "posts/welcome/index.html#el-formato-un-portafolio-y-blog",
+    "href": "posts/welcome/index.html#el-formato-un-portafolio-y-blog",
+    "title": "Bienvenidos a mi blog",
+    "section": "El formato: un portafolio y blog",
+    "text": "El formato: un portafolio y blog\nComunicar es algo muy amplio, sobre todo en estos tiempos de tantos medios. Pero entre tanta fugacidad, la palabra escrita es necesaria también, aquella que perdura en el tiempo y permite pensar durante más de un minuto. Las redes sociales son herramientas muy valiosas, se crean comunidades, se expresan opiniones y difunden información. Sin embargo, por si solas, no dan el ancho para expresar contenido de mayor complejidad (o simplemente el algoritmo te castiga si no estás bailando 30 segundos).\nEn ese sentido, este sitio tendrá un doble formato. Por un lado, pretende ser un portafolio de proyectos, donde pueda exponer algunos trabajos desarrollados en ámbitos profesionales y personales (estos últimos son la mayoría). Por otro, quiero utilizarlo como un blog, donde ir subiendo contenido de forma más o menos regular, con ideas, reflexiones o mini proyectos de código, etc. El blog permite un formato más laxo y abierto, pero sin perder la seriedad."
+  },
+  {
+    "objectID": "posts/welcome/index.html#qué-esperar-de-este-sitio",
+    "href": "posts/welcome/index.html#qué-esperar-de-este-sitio",
+    "title": "Bienvenidos a mi blog",
+    "section": "¿Qué esperar de este sitio?",
+    "text": "¿Qué esperar de este sitio?\nPor ahora espero actualizar el sitio de proyectos, con algunos de los trabajos públicos en los que he trabajado. Además, subiré algunos posts durante las próximas semanas. Un adelanto: en Chile se está discutiendo sobre el envejecimiento de la población, y algo podemos decir sobre eso.\nGracias por pasar por aquí, nos leemos pronto."
+  },
+  {
+    "objectID": "posts/piramide-r/index.html",
+    "href": "posts/piramide-r/index.html",
+    "title": "Pirámides de población con R: el caso de Chile (1970-2017)",
+    "section": "",
+    "text": "En los últimos años, se ha reactivado en Chile el debate sobre el envejecimiento de la población y los cambios en la tasa de natalidad. En particular, con la última Reforma de Pensiones apareció nuevamente la preocupación por la vejez y cómo la sociedad y el Estado se deben hacer cargo de este proceso vital (al menos eso se discutió, que se logre es otro tema). Se habla que cada vez habrá más población adulta y adulta mayor, que población infantil y juvenil. Estas transformaciones son características de diferentes sociedades, y las primeras en enfrentarlo fueron las potencias económicas europeas. A día de hoy, países como Chile, en el Sur Global, han homologado esas tendencias, con sus particularidades.\nSi bien no es el propósito definir las causas y consecuencias, es importante mencionar que estas son de carácter económico, social y cultural, y entre los factores que inciden podemos mencionar (sin un orden particular) las migraciones urbano-rurales, el acceso a educación, mejoras en la salud y medicina, la integración femenina en el mercado laboral, cambios en los roles de género, la educación sexual y la planificación familiar, entre otros."
+  },
+  {
+    "objectID": "posts/piramide-r/index.html#pirámides-de-población",
+    "href": "posts/piramide-r/index.html#pirámides-de-población",
+    "title": "Pirámides de población con R: el caso de Chile (1970-2017)",
+    "section": "Pirámides de población",
+    "text": "Pirámides de población\nUno de los dispositivos visuales más efectivos para mostrar estos fenómenos son las pirámides de población. En esencia, son histogramas que segmentan la población por edad (usualmente en quinquenios) y sexo, mostrando a hombres a la izquierda y mujeres a la derecha.\nLas barras pueden representar la cantidad absoluta de la población, o su frecuencia relativa. Los datos absolutos son útiles para representar el aumento neto de los habitantes, pero son menos útiles para comparar con otros casos, siendo esto una ventaja que ofrecen las pirámides que usan porcentajes.\nLa demografía, ciencia que estudia las poblaciones humanas, su composición y cambio, ha teorizado en torno a las formas que toman las pirámides de población en las diferentes sociedades. Los cambios vividos durante el siglo XX han generado una transición demográfica, pasando de altas tasas de natalidad y mortalidad, a bajas tasas en ambos indicadores. Esta teoría, que considera en 5 fases, explica cómo ocurre este cambio, y su impacto en la población total.\n\n\n\nEsquema explicativo de las etapas de la transición demográfica. Fuente: Our World in Data\n\n\nVisualmente esto se refleja en la forma de las pirámides de población. Aquellas sociedades con altas tasas de natalidad y mortalidad (fase 1) tienen pirámides con una forma de campana muy marcada con gran cantidad de niños y jóvenes. En el otro extremo tenemos a países de bajas tasas de natalidad y mortalidad, cuyas pirámides tienen una forma más homogénea o pareja, casi como una campana invertida, con muy poca población jóven y una gran mayoría adulta y adulta mayor.\n\n\n\n\n\n\n\n\nAngola, 2005\n\n\n\n\n\n\n\nPortugal, 2023\n\n\n\n\n\n\nFigura 1: Comparación de dos países con estructuras demográficas diferentes. Fuente: Wikimedia Commons.\n\n\n\nPara profundizar en torno a esto recomiendo leer los artículos de Wikipedia sobre Pirámides de Población y Transición demográfica, además de este artículo escrito por Max Roser en Our World in Data."
+  },
+  {
+    "objectID": "posts/piramide-r/index.html#el-caso-de-chile",
+    "href": "posts/piramide-r/index.html#el-caso-de-chile",
+    "title": "Pirámides de población con R: el caso de Chile (1970-2017)",
+    "section": "El caso de Chile",
+    "text": "El caso de Chile\nPara conocer el cambio demográfico de Chile debemos recurrir a la principal fuente de información: el Censo de Población y Vivienda. Este levantamiento de datos es ejecutado por el Instituto Nacional de Estadísticas desde el siglo XIX y sus últimas versiones fueron realizadas en los años 1970, 1982, 1992, 2002 y 20171. A fecha de hoy (febrero de 2025) el INE aún no publica los resultados del último censo de 20242. Para enfrentar mejor la espera he decidido que es un buen ejercicio evaluar el cambio demográfico del país en los últimos 50 años.\n\nObtención de los datos\nPara acceder a los datos censales el INE ha dispuesto en su página web diferentes alternativas para obtener la información. Para el Censo de 2017 están disponibles los micro datos y las bases en Redatam, mientras que para los censos de 1992 y 2002 solo están disponibles en Redatam. Los datos de 1970 y 1982 solo son accesibles a través de las memorias publicadas con los resultados, ambos en formato .pdf en el sitio del INE.\nPor ello, el proceso comenzó con la obtención de los datos desde la plataforma Redatam Web para los censos de 1992, 2002 y 2017, solicitando tablas cruzadas con el sexo y la edad en quinquenios. En el caso de 1970 y 1982 fue necesario revisar manualmente los documentos y copiarlos a una planilla de cálculo3. Dado que para el Censo de 1970 los datos agrupados disponen como máxima categoría de edad “85 años y más” fue necesario agrupar al resto de datos acorde a esta categoría máxima.\nTodos los datos quedaron registrados en diferentes archivos de planilla de calculo (.xlsx).\n\n\n\nReporte de resultados XIV Censo de Población y III de Vivienda, 1970"
+  },
+  {
+    "objectID": "posts/piramide-r/index.html#footnotes",
+    "href": "posts/piramide-r/index.html#footnotes",
+    "title": "Pirámides de población con R: el caso de Chile (1970-2017)",
+    "section": "Notas",
+    "text": "Notas\n\n\nEn 2012 se realizó un censo, sin embargo fue considerado inválido por falencias metodológicas↩︎\nEn el comunicado de prensa publicado en su sitio web se anuncia la primera publicación de los datos para el 27 de marzo de 2025. Ver noticia↩︎\nSi bien fue realizado manualmente, se pueden implementar otro métodos como el Reconocimiento de Caracteres (OCR) para automatizar el proceso↩︎"
+  },
+  {
+    "objectID": "posts/piramide-r/index.html#manos-a-la-obra-pirámides-de-población-en-r",
+    "href": "posts/piramide-r/index.html#manos-a-la-obra-pirámides-de-población-en-r",
+    "title": "Pirámides de población con R: el caso de Chile (1970-2017)",
+    "section": "Manos a la obra: pirámides de población en R",
+    "text": "Manos a la obra: pirámides de población en R\nPara comenzar, mi flujo de trabajo se basa en Rstudio Projects. Lo primero es cargar paquetes y los archivos.\n\npacman::p_load(tidyverse, # Paquetes de data science básicos\n               readxl, # Cargar archivos xlsx\n               scales, # Ajustar etiquetas de gráficos\n               paletteer, # Cargar paletas de colores\n               gganimate, # Animar gráficos\n               ggtext, # Funciones de texto\n               glue) # Paste con esteroides\n\n\n# El número indica el año del censo\nbase_70 &lt;- read_xlsx(\"data/composicion_poblacion.xlsx\", sheet = \"censo_70\")\nbase_82 &lt;- read_xlsx(\"data/composicion_poblacion.xlsx\", sheet = \"censo_82\")\nbase_92 &lt;- read_xlsx(\"data/1992_reporte.xlsx\", sheet = \"censo_92\")\nbase_02 &lt;- read_xlsx(\"data/2002_reporte.xlsx\", sheet = \"censo_02\")\nbase_17 &lt;- read_xlsx(\"data/2017_reporte.xlsx\", sheet = \"censo_17\")\n\nYa que los datos quedaron en 5 objetos diferentes, los unimos con el siguiente código:\n\n# unimos todo en una lista\nlista_total &lt;- list(base_70, base_82, base_92, base_02, base_17)\n# aplicamos rbind a cada elemento de la lista\nunion &lt;- do.call(rbind, lista_total)\n\nAl tenerlo unido, podemos aplicar algunas técnicas de limpieza. Por ejemplo, quitamos la etiqueta “años” de las categorías de edad, y los transformamos en factor. Luego pivoteamos al formato largo, pasando de dos columnas (Hombres-Mujeres) a otras dos (Sexo-Población).\n\nconsolidado &lt;- union |&gt; \n  # removemos la etiqueta \"años\"\n  mutate(Edades = str_remove(Edades, \" años\"),\n         Edades = str_remove(Edades, \"\\\\s\\\\s\"),\n  # Transformamos a factor en el orden en que aparecen\n         Edades = fct_inorder(Edades)) |&gt; \n  pivot_longer(cols = 3:4, \n               names_to = \"Sexo\",\n               values_to = \"Poblacion\")\n\nComo resultado obtenemos el siguiente tibble/data frame, con el año de censo, el tramo de edad, el sexo y la cantidad de población:\n\n#knitr::kable(head(consolidado, 10))\nDT::datatable(consolidado)"
   }
 ]

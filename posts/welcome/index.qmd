@@ -1,12 +1,28 @@
 ---
-title: "Welcome To My Blog"
-author: "Tristan O'Malley"
-date: "2023-08-31"
-categories: [news]
+title: "Bienvenidos a mi blog"
+author: "Benjamín Adasme Jara"
+date: "2025-02-11"
+categories: [noticias]
 ---
 
-This is the first post in a Quarto blog. Welcome!
+Bienvenidos/as a esta primera entrada de mi blog/portafolio profesional. Antes de comenzar, me presento. Soy Benjamín Adasme Jara, sociólogo de profesión, y actualmente estoy desarrollando mi carrera como analista estadístico y científico de datos. Puedes leer algo más sobre mi en la sección [Acerca de mí](../../about.qmd) o ver mi [Curriculum Vitae](../../cv.qmd)
 
 ![](thumbnail.jpg)
 
-Since this post doesn't specify an explicit `image`, the first image in the post will be used in the listing page of posts.
+En esta primera entrada quisiera compartir las razones que me llevan a crear este sitio. **¿Por qué hacer un blog en pleno 2025? ¿Por qué este formato? ¿Por qué mostrarse en internet?**
+
+## Abrirse al mundo
+
+Escribir es una forma de exteriorizar aquello que uno piensa y siente, y en este caso, tengo la necesidad de comunicar muchas ideas que he venido desarrollando en los últimos años. Tanto mi carrera profesional como mis intereses personales se han centrado en los siguientes tópicos: **estadística, ciencia de datos, informática, software libre, política, territorio, fútbol y sociedad**. Quiero un espacio donde poner estos temas, mezclarlos, enredarlos y desenredarlos.
+
+## El formato: un portafolio y blog
+
+Comunicar es algo muy amplio, sobre todo en estos tiempos de tantos medios. Pero entre tanta fugacidad, la palabra escrita es necesaria también, aquella que perdura en el tiempo y permite pensar durante más de un minuto. Las redes sociales son herramientas muy valiosas, se crean comunidades, se expresan opiniones y difunden información. Sin embargo, por si solas, no dan el ancho para expresar contenido de mayor complejidad (o simplemente el algoritmo te castiga si no estás bailando 30 segundos).
+
+En ese sentido, este sitio tendrá un doble formato. Por un lado, pretende ser un **portafolio de proyectos**, donde pueda exponer algunos trabajos desarrollados en ámbitos profesionales y personales (estos últimos son la mayoría). Por otro, quiero utilizarlo como **un blog**, donde ir subiendo contenido de forma más o menos regular, con ideas, reflexiones o mini proyectos de código, etc. El blog permite un formato más laxo y abierto, pero sin perder la seriedad.
+
+## ¿Qué esperar de este sitio?
+
+Por ahora espero actualizar el sitio de proyectos, con algunos de los trabajos públicos en los que he trabajado. Además, subiré algunos posts durante las próximas semanas. Un adelanto: en Chile se está discutiendo sobre el envejecimiento de la población, y algo podemos decir sobre eso.
+
+Gracias por pasar por aquí, nos leemos pronto.

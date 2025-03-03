@@ -1,5 +1,6 @@
 ---
-title: "Benjamín Adasme Jara"
+title: "¡Hola! Bienvenidos a mi sitio, soy Benjamín Adasme Jara"
+subtitle: "Ciencia de datos, estadística y ciencias sociales"
 listing:
   contents: posts
   sort: "date desc"
@@ -9,4 +10,5 @@ listing:
   filter-ui: false
 page-layout: full
 title-block-banner: true
+lang: es
 ---

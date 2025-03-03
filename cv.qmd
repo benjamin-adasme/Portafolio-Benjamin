@@ -2,6 +2,6 @@
 title: "Currículum Vitae"
 ---
 
-<iframe width="800" height="800" src="images/CV Benjamín Adasme (marzo 2024).pdf">
+<iframe width="800" height="800" src="images/CV Benjamín Adasme (diciembre 2024).pdf">
 
 </iframe>
