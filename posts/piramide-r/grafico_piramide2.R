@@ -3,21 +3,21 @@ pacman::p_load(tidyverse,
                scales,
                paletteer,
                gganimate, 
-               camcorder,
+               # camcorder,
                ggtext,
                glue)
 
 # Loading data ------------------------------------------------------------
 
-base_70 <- read_xlsx("data/composicion_poblacion.xlsx", sheet = "censo_70")
-base_82 <- read_xlsx("data/composicion_poblacion.xlsx", sheet = "censo_82")
-base_92 <- read_xlsx("data/1992_reporte.xlsx", sheet = "censo_92")
-base_02 <- read_xlsx("data/2002_reporte.xlsx", sheet = "censo_02")
-base_17 <- read_xlsx("data/2017_reporte.xlsx", sheet = "censo_17")
+base_70 <- read_xlsx("posts/piramide-r/data/composicion_poblacion.xlsx", sheet = "censo_70")
+base_82 <- read_xlsx("posts/piramide-r/data/composicion_poblacion.xlsx", sheet = "censo_82")
+base_92 <- read_xlsx("posts/piramide-r/data/1992_reporte.xlsx", sheet = "censo_92")
+base_02 <- read_xlsx("posts/piramide-r/data/2002_reporte.xlsx", sheet = "censo_02")
+base_17 <- read_xlsx("posts/piramide-r/data/2017_reporte.xlsx", sheet = "censo_17")
 
 lista_total <- list(base_70, base_82, base_92, base_02, base_17)
 
-writexl::write_xlsx(lista_total, "data/base_piramide_poblacion_chile.xlsx")
+# writexl::write_xlsx(lista_total, "data/base_piramide_poblacion_chile.xlsx")
 
 union <- do.call(rbind, lista_total)
 
@@ -66,3 +66,18 @@ consol_porc |>
         plot.title = element_text(hjust = 0.5))
 
 anim_save("piramide2.gif")
+
+
+consol_porc |> 
+  mutate(porc_año = if_else(Sexo == "Mujeres", porc_año , porc_año * -1)) |> 
+  filter(Año == 1970) |> 
+  ggplot(aes(x = porc_año, y = Edades, fill = Sexo)) +
+  geom_col() +
+  scale_fill_manual(values = c("#f9844a", "#4d908e"))+
+  guides(fill = guide_legend(title = NULL, 
+                             position = "bottom",
+                             reverse = F)) +
+  scale_x_continuous(breaks = seq(-0.06,0.06,by=0.02),
+                     labels = percent(abs(seq(-0.06,0.06,by=0.02))),
+                     name = "Porcentaje respecto a la población total")+
+  theme_minimal() 

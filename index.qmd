@@ -1,5 +1,5 @@
 ---
-title: "¡Hola! Bienvenidos a mi sitio, soy Benjamín Adasme Jara"
+title: "Benjamín Adasme Jara - Blog & Portafolio"
 subtitle: "Ciencia de datos, estadística y ciencias sociales"
 listing:
   contents: posts
