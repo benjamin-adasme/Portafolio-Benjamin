@@ -1,13 +1,15 @@
 ---
 title: "Pirámides de población con R: el caso de Chile (1970-2017)"
 author: "Benjamín Adasme Jara"
-date: "2025-02-17"
+date: "2025-03-10"
 lang: es
 categories: [código, análisis, R, dataviz, ggplot2]
 abstract: "Discutiremos brevemente sobre el envejecimiento de la población y transición demográfica, y cómo las pirámides de población visualizan estos procesos. Comentaremos el caso chileno, y utilizaremos los datos de los últimos 5 Censos para crear un tutorial de cómo graficar las pirámides de población en R, con los paquetes ggplot2 y gganimate."
 format: 
   html: 
     toc: true
+    code-fold: false
+    code-tools: true
 image: "thumbnail.png"
 open-graph: true
 editor: source
@@ -17,7 +19,7 @@ En los últimos años, se ha reactivado en Chile el debate sobre el envejecimien
 
 Si bien no es el propósito definir las causas y consecuencias, es importante mencionar que estas son de carácter económico, social y cultural, y entre los factores que inciden podemos mencionar (sin un orden particular) las migraciones urbano-rurales, el acceso a educación, mejoras en la salud y medicina, la integración femenina en el mercado laboral, cambios en los roles de género, la educación sexual y la planificación familiar, entre otros.
 
-## Pirámides de población
+## Pirámides de población y transición demográfica
 
 Uno de los dispositivos visuales más efectivos para mostrar estos fenómenos son las pirámides de población. En esencia, son histogramas que segmentan la población por edad (usualmente en quinquenios) y sexo, mostrando a hombres a la izquierda y mujeres a la derecha.
 

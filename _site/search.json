@@ -25,7 +25,7 @@
     "href": "index.html",
     "title": "Benjamín Adasme Jara - Blog & Portafolio",
     "section": "",
-    "text": "Pirámides de población con R: el caso de Chile (1970-2017)\n\n\n\n\n\n\ncódigo\n\n\nanálisis\n\n\nR\n\n\ndataviz\n\n\nggplot2\n\n\n\nDiscutiremos brevemente sobre el envejecimiento de la población y transición demográfica, y cómo las pirámides de población visualizan estos procesos. Comentaremos el caso chileno, y utilizaremos los datos de los últimos 5 Censos para crear un tutorial de cómo graficar las pirámides de población en R, con los paquetes ggplot2 y gganimate.\n\n\n\n\n\n17 feb 2025\n\n\nBenjamín Adasme Jara\n\n\n\n\n\n\n\n\n\n\n\n\nBienvenidos a mi blog\n\n\n\n\n\n\nnoticias\n\n\n\n\n\n\n\n\n\n11 feb 2025\n\n\nBenjamín Adasme Jara\n\n\n\n\n\n\nNo hay resultados"
+    "text": "Pirámides de población con R: el caso de Chile (1970-2017)\n\n\n\n\n\n\ncódigo\n\n\nanálisis\n\n\nR\n\n\ndataviz\n\n\nggplot2\n\n\n\nDiscutiremos brevemente sobre el envejecimiento de la población y transición demográfica, y cómo las pirámides de población visualizan estos procesos. Comentaremos el caso chileno, y utilizaremos los datos de los últimos 5 Censos para crear un tutorial de cómo graficar las pirámides de población en R, con los paquetes ggplot2 y gganimate.\n\n\n\n\n\n10 mar 2025\n\n\nBenjamín Adasme Jara\n\n\n\n\n\n\n\n\n\n\n\n\nBienvenidos a mi blog\n\n\n\n\n\n\nnoticias\n\n\n\n\n\n\n\n\n\n11 feb 2025\n\n\nBenjamín Adasme Jara\n\n\n\n\n\n\nNo hay resultados"
   },
   {
     "objectID": "posts/bienvenidos/index.html",
@@ -117,5 +117,12 @@
     "title": "Participación en Tidy Tuesday",
     "section": "",
     "text": "En construcción."
+  },
+  {
+    "objectID": "posts/piramide-r/index.html#pirámides-de-población-y-transición-demográfica",
+    "href": "posts/piramide-r/index.html#pirámides-de-población-y-transición-demográfica",
+    "title": "Pirámides de población con R: el caso de Chile (1970-2017)",
+    "section": "Pirámides de población y transición demográfica",
+    "text": "Pirámides de población y transición demográfica\nUno de los dispositivos visuales más efectivos para mostrar estos fenómenos son las pirámides de población. En esencia, son histogramas que segmentan la población por edad (usualmente en quinquenios) y sexo, mostrando a hombres a la izquierda y mujeres a la derecha.\nLas barras pueden representar la cantidad absoluta de la población, o su frecuencia relativa. Los datos absolutos son útiles para representar el aumento neto de los habitantes, pero son menos útiles para comparar con otros casos, siendo esto una ventaja que ofrecen las pirámides que usan porcentajes.\nLa demografía, ciencia que estudia las poblaciones humanas, su composición y cambio, ha teorizado en torno a las formas que toman las pirámides de población en las diferentes sociedades. Los cambios vividos durante el siglo XX han generado una transición demográfica, pasando de altas tasas de natalidad y mortalidad, a bajas tasas en ambos indicadores. Esta teoría, que considera en 5 fases, explica cómo ocurre este cambio, y su impacto en la población total.\n\n\n\nEsquema explicativo de las etapas de la transición demográfica. Fuente: Our World in Data\n\n\nVisualmente esto se refleja en la forma de las pirámides de población. Aquellas sociedades con altas tasas de natalidad y mortalidad (fase 1) tienen pirámides con una forma de campana muy marcada con gran cantidad de niños y jóvenes. En el otro extremo tenemos a países de bajas tasas de natalidad y mortalidad, cuyas pirámides tienen una forma más homogénea o pareja, casi como una campana invertida, con muy poca población jóven y una gran mayoría adulta y adulta mayor.\n\n\n\n\n\n\n\n\nAngola, 2005\n\n\n\n\n\n\n\nPortugal, 2023\n\n\n\n\n\n\nFigura 1: Comparación de dos países con estructuras demográficas diferentes. Fuente: Wikimedia Commons.\n\n\n\nPara profundizar en torno a esto recomiendo leer los artículos de Wikipedia sobre Pirámides de Población y Transición demográfica, además de este artículo escrito por Max Roser en Our World in Data."
   }
 ]
