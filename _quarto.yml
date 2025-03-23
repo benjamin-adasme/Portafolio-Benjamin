@@ -3,6 +3,7 @@ project:
 
 website:
   title: "Benjamín Adasme Jara"
+  favicon: "images/foto Benjamín Adasme.jpg"
   navbar:
     left: 
       - href: index.qmd
@@ -19,6 +20,14 @@ website:
         href: https://github.com/benjamin-adasme
       - icon: twitter
         href: https://twitter.com/AdasmeBenja
+  page-footer: 
+    center: |
+      Benjamín Adasme Jara - 2025
+    left: |
+      Hecho con [Quarto](https://quarto.org/)
+    right: |
+      [Github Repo](https://github.com/benjamin-adasme)
+    #background: "#2780e3"
 format:
   html:
     theme: 

@@ -1,0 +1,15 @@
+---
+title: "Post 1"
+date: "2025-03-14"
+categories: [tidytuesday]
+author: "Benjamín Adasme Jara"
+format: html
+---
+
+Este es un post de prueba. Sin publicar aun. Generaremos un plot para probar
+
+```{r}
+plot(mtcars$mpg, mtcars$disp)
+
+```
+

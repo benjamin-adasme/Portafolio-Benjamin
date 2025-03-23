@@ -4,7 +4,7 @@
     "href": "tidytuesday.html",
     "title": "Participación en Tidy Tuesday",
     "section": "",
-    "text": "En construcción."
+    "text": "En construcción.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPost 1\n\n\n \n\n\ntidytuesday\n\n\n \n\n\n\n\n\n14 mar 2025\nBenjamín Adasme Jara\n\n\n\n\n\n\n\nNo hay resultados"
   },
   {
     "objectID": "about.html",
@@ -88,7 +88,7 @@
     "href": "index.html",
     "title": "Benjamín Adasme Jara - Blog & Portafolio",
     "section": "",
-    "text": "Pirámides de población con R: el caso de Chile (1970-2017)\n\n\n\n\n\n\ncódigo\n\n\nanálisis\n\n\nR\n\n\ndataviz\n\n\nggplot2\n\n\n\nDiscutiremos brevemente sobre el envejecimiento de la población y transición demográfica, y cómo las pirámides de población visualizan estos procesos. Comentaremos el caso chileno, y utilizaremos los datos de los últimos 5 Censos para crear un tutorial de cómo graficar las pirámides de población en R, con los paquetes ggplot2 y gganimate.\n\n\n\n\n\n10 mar 2025\n\n\nBenjamín Adasme Jara\n\n\n\n\n\n\n\n\n\n\n\n\nBienvenidos a mi blog\n\n\n\n\n\n\nnoticias\n\n\n\n\n\n\n\n\n\n11 feb 2025\n\n\nBenjamín Adasme Jara\n\n\n\n\n\n\nNo hay resultados"
+    "text": "Pirámides de población con R: el caso de Chile (1970-2017)\n\n\n \n\n\ncódigo\n\nanálisis\n\nR\n\ndataviz\n\nggplot2\n\n\n \n\nDiscutiremos brevemente sobre el envejecimiento de la población y transición demográfica, y cómo las pirámides de población visualizan estos procesos. Comentaremos el caso chileno, y utilizaremos los datos de los últimos 5 Censos para crear un tutorial de cómo graficar las pirámides de población en R, con los paquetes ggplot2 y gganimate.\n\n\n\n10 mar 2025\nBenjamín Adasme Jara\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBienvenidos a mi blog\n\n\n \n\n\nnoticias\n\n\n \n\n\n\n\n\n11 feb 2025\nBenjamín Adasme Jara\n\n\n\n\n\n\n\nNo hay resultados"
   },
   {
     "objectID": "projects.html",
@@ -96,5 +96,12 @@
     "title": "Proyectos",
     "section": "",
     "text": "Página en construcción."
+  },
+  {
+    "objectID": "tidytuesday/post1/index.html",
+    "href": "tidytuesday/post1/index.html",
+    "title": "Post 1",
+    "section": "",
+    "text": "Este es un post de prueba. Sin publicar aun. Generaremos un plot para probar\n\nplot(mtcars$mpg, mtcars$disp)"
   }
 ]
