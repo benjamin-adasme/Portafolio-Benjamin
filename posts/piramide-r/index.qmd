@@ -1,16 +1,16 @@
 ---
-title: "Pirámides de población con R: el caso de Chile (1970-2017)"
+title: "Pirámides de población con R: el caso de Chile (1970-2024)"
 author: "Benjamín Adasme Jara"
-date: "2025-03-10"
+date: "2025-03-27"
 lang: es
 categories: [código, análisis, R, dataviz, ggplot2]
-abstract: "Discutiremos brevemente sobre el envejecimiento de la población y transición demográfica, y cómo las pirámides de población visualizan estos procesos. Comentaremos el caso chileno, y utilizaremos los datos de los últimos 5 Censos para crear un tutorial de cómo graficar las pirámides de población en R, con los paquetes ggplot2 y gganimate."
+abstract: "Discutiremos brevemente sobre el envejecimiento de la población y transición demográfica, y cómo las pirámides de población visualizan estos procesos. Comentaremos el caso chileno, y utilizaremos los datos de los últimos 6 Censos para crear un tutorial de cómo graficar las pirámides de población en R, con los paquetes ggplot2 y gganimate."
 format: 
   html: 
     toc: true
     code-fold: false
     code-tools: true
-image: "thumbnail.png"
+image: "thumbnail_2.png"
 open-graph: true
 editor: source
 ---
@@ -43,11 +43,11 @@ Para profundizar en torno a esto recomiendo leer los artículos de Wikipedia sob
 
 ## El caso de Chile
 
-Para conocer el cambio demográfico de Chile debemos recurrir a la principal fuente de información: el Censo de Población y Vivienda. Este levantamiento de datos es ejecutado por el Instituto Nacional de Estadísticas desde el siglo XIX y sus últimas versiones fueron realizadas en los años 1970, 1982, 1992, 2002 y 2017[^1]. A fecha de hoy (febrero de 2025) el INE aún no publica los resultados del último censo de 2024[^2]. Para enfrentar mejor la espera he decidido que es un buen ejercicio evaluar el cambio demográfico del país en los últimos 50 años.
+Para conocer el cambio demográfico de Chile debemos recurrir a la principal fuente de información: el Censo de Población y Vivienda. Este levantamiento de datos es ejecutado por el Instituto Nacional de Estadísticas desde el siglo XIX y sus últimas versiones fueron realizadas en los años 1970, 1982, 1992, 2002 y 2017[^1]. A fecha de hoy, marzo de 2025, el INE acaba de publicar los primeros resultados resultados del último censo de 2024[^2]. Con estos nuevos datos un buen ejercicio es evaluar el cambio demográfico del país en los últimos 60 años.
 
 [^1]: En 2012 se realizó un censo, sin embargo fue considerado inválido por falencias metodológicas
 
-[^2]: En el comunicado de prensa publicado en su sitio web se anuncia la primera publicación de los datos para el 27 de marzo de 2025. [Ver noticia](https://www.ine.gob.cl/sala-de-prensa/prensa/general/noticia/2025/02/14/el-27-de-marzo-el-ine-dar%C3%A1-a-conocer-el-n%C3%BAmero-de-personas-hogares-y-viviendas-censadas-en-chile)
+[^2]: Disponibles en el siguiente [enlace](https://censo2024.ine.gob.cl/estadisticas/)
 
 ### Obtención de los datos
 
@@ -78,6 +78,7 @@ pacman::p_load(tidyverse, # Paquetes de data science básicos
 
 ```
 
+
 ```{r raw_data}
 # El número indica el año del censo
 base_70 <- read_xlsx("data/composicion_poblacion.xlsx", sheet = "censo_70")
@@ -85,14 +86,15 @@ base_82 <- read_xlsx("data/composicion_poblacion.xlsx", sheet = "censo_82")
 base_92 <- read_xlsx("data/1992_reporte.xlsx", sheet = "censo_92")
 base_02 <- read_xlsx("data/2002_reporte.xlsx", sheet = "censo_02")
 base_17 <- read_xlsx("data/2017_reporte.xlsx", sheet = "censo_17")
+base_24 <- read_xlsx("data/2024_reporte.xlsx")
 
 ```
 
-Ya que los datos quedaron en 5 objetos diferentes, los unimos con el siguiente código:
+Ya que los datos quedaron en 6 objetos diferentes, los unimos con el siguiente código:
 
 ```{r union_data}
 # unimos todo en una lista
-lista_total <- list(base_70, base_82, base_92, base_02, base_17)
+lista_total <- list(base_70, base_82, base_92, base_02, base_17, base_24)
 # aplicamos rbind a cada elemento de la lista
 union <- do.call(rbind, lista_total)
 ```
@@ -250,7 +252,7 @@ p_base +
   scale_fill_manual(values = c("#f9844a", "#4d908e")) +
   scale_x_continuous(breaks = marcas,
                      labels = percent(abs(marcas))) + 
-  labs(title = "La transición demográfica de Chile (1970-2017)",
+  labs(title = "La transición demográfica de Chile (1970-2024)",
        subtitle = "Pirámides de población con datos censales",
        caption = "Fuente: Instituto Nacional de Estadísticas, Chile",
        x = "Porcentaje de la población total",
@@ -266,7 +268,7 @@ p_base +
   scale_fill_manual(values = c("#f9844a", "#4d908e")) +
   scale_x_continuous(breaks = marcas,
                      labels = percent(abs(marcas))) + 
-  labs(title = "La transición demográfica de Chile (1970-2017)",
+  labs(title = "La transición demográfica de Chile (1970-2024)",
        subtitle = "Pirámides de población con datos censales",
        caption = "Fuente: Instituto Nacional de Estadísticas, Chile",
        x = "Porcentaje de la población total",
@@ -276,6 +278,15 @@ p_base +
   theme_minimal() +
   theme(plot.title.position = 'plot')
 ```
+
+
+```{r}
+#| eval: false
+#| echo: false
+#| include: false
+ggsave("thumbnail_2.png", plot = last_plot(),bg = "white")
+```
+
 
 El resultado es muy interesante. Postergando brevemente los comentarios demográficos que retomaremos al final, este gráfico cumple perfectamente con el objetivo que nos propusimos, mostrar la composición demográfica de Chile a través del tiempo con las pirámides de población, de forma clara y visualmente atractiva.
 
@@ -326,9 +337,9 @@ Funciona perfectamente. Pero no sabemos qué año se está mostrando en cada mom
 ```{r}
 
 anim1 +
-  labs(title = "¿Cómo cambia nuestra demografía en los últimos 50 años?",
+  labs(title = "¿Cómo cambia nuestra demografía en los últimos 60 años?",
        subtitle = "Censo de {closest_state}, Chile",
-       caption = "Fuente: Censos de Población y Vivienda de 1970, 1982, 1992, 2002 y 2017, INE Chile")
+       caption = "Fuente: Censos de Población y Vivienda de 1970, 1982, 1992, 2002, 2017 y 2024, INE Chile")
 ```
 
 Bien, ya podemos ver claramente a qué año corresponde cada pirámide. Fantástico funcionamiento de gganimate. Con un par de líneas de código tenemos una animación lista y coherente.
@@ -346,9 +357,9 @@ labs_pir <- tibble(label = c("<span style='color:#f9844a'>**Hombres**</span>",
                    colores = c("#4d908e","#f9844a"))
 
 anim_final <- anim1 +
-  labs(title = "¿Cómo cambia nuestra demografía en los últimos 50 años?",
+  labs(title = "¿Cómo cambia nuestra demografía en los últimos 60 años?",
        subtitle = "Censo de {closest_state}, Chile",
-       caption = "Fuente: Censos de Población y Vivienda de 1970, 1982, 1992, 2002 y 2017, INE Chile") +
+       caption = "Fuente: Censos de Población y Vivienda de 1970, 1982, 1992, 2002, 2017 y 2024, INE Chile") +
   geom_richtext(data = labs_pir, #Usamos el tibble creado
                 aes(x = x, # las coordenadas x e y
                     y = y,
@@ -398,7 +409,7 @@ Cerramos esta entrega comentando los resultados que hemos obtenido. Primero, nue
 
 Junto con ello, pudimos ver la flexiblidad y variedad de opciones que ofrece el paquete. Por un lado, nuestro primer gráfico en formato grilla nos permite ver en una pasada todas las pirámides y comparar claramente las transformaciones demográficas. Con un estilo sobrio y serio, es un gráfico que podríamos incluir sin problemas en una publicación, artículo académico, u otro similar. Por otro, la pirámide de población animada tiene un estilo llamativo y muy ilustrativo, ya que poner en movimiento una imagen ayuda a mostrar cambios. Especialmente cuando se trata del paso del tiempo, mostrar las transiciones con gganimate es muy potente. De esta forma, un gráfico animado es perfecto para publicar en redes sociales, blogs o sitios de internet (como este).
 
-En términos demográficos, la forma de las pirámides de población muestra claramente el cambio en la composición de la población chilena. Pasamos de una "pirámide" con una base muy marcada, con una forma triangular, a una "campana", que se achica en su base y se expande en el medio. En 1970 aproximadamente un tercio de la población tenía 15 años o menos. En 2017 el grupo etario más numeroso fue el de 25-29 años. Es decir, estamos evidenciando un desplazamiento del grueso de la población mayoritaria desde la infancia a la adultez. Junto con ello, observamos como los tramos asociados a adultos mayores (+60 años) han aumentado porcentualmente, producto de una mayor esperanza de vida.
+En términos demográficos, la forma de las pirámides de población muestra claramente el cambio en la composición de la población chilena. Pasamos de una "pirámide" con una base muy marcada, con una forma triangular, a una "campana", que se achica en su base y se expande en el medio. En 1970 aproximadamente un tercio de la población tenía 15 años o menos. En 2017 el grupo etario más numeroso fue el de 25-29 años, y en 2024 fue el de 30-34. Es decir, estamos evidenciando un desplazamiento del grueso de la población mayoritaria desde la infancia a la adultez. Junto con ello, observamos como los tramos asociados a adultos mayores (+60 años) han aumentado porcentualmente, producto de una mayor esperanza de vida.
 
 Esto es coherente con lo planteado por la teoría de la transición demográfica. Comparando el esquema con lo observado en la realidad chilena, vemos que nuestro país está en un escenario intermedio entre la fase 3 y 4. El aumento de la población que vimos durante la segunda mitad del siglo XX se está frenando, la natalidad y mortalidad vienen disminuyendo, aunque a un ritmo menor que en otros años.
 

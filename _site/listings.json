@@ -1,15 +1,15 @@
 [
   {
+    "listing": "/tidytuesday.html",
+    "items": [
+      "/tidytuesday/post1/index.html"
+    ]
+  },
+  {
     "listing": "/index.html",
     "items": [
       "/posts/piramide-r/index.html",
       "/posts/welcome/index.html"
-    ]
-  },
-  {
-    "listing": "/tidytuesday.html",
-    "items": [
-      "/tidytuesday/post1/index.html"
     ]
   }
 ]
