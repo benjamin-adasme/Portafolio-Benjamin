@@ -1485,343 +1485,344 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb20-78"><a href="#cb20-78" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-79"><a href="#cb20-79" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb20-80"><a href="#cb20-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-81"><a href="#cb20-81" aria-hidden="true" tabindex="-1"></a><span class="in">```{r raw_data}</span></span>
-<span id="cb20-82"><a href="#cb20-82" aria-hidden="true" tabindex="-1"></a><span class="co"># El número indica el año del censo</span></span>
-<span id="cb20-83"><a href="#cb20-83" aria-hidden="true" tabindex="-1"></a>base_70 <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/composicion_poblacion.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"censo_70"</span>)</span>
-<span id="cb20-84"><a href="#cb20-84" aria-hidden="true" tabindex="-1"></a>base_82 <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/composicion_poblacion.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"censo_82"</span>)</span>
-<span id="cb20-85"><a href="#cb20-85" aria-hidden="true" tabindex="-1"></a>base_92 <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/1992_reporte.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"censo_92"</span>)</span>
-<span id="cb20-86"><a href="#cb20-86" aria-hidden="true" tabindex="-1"></a>base_02 <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/2002_reporte.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"censo_02"</span>)</span>
-<span id="cb20-87"><a href="#cb20-87" aria-hidden="true" tabindex="-1"></a>base_17 <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/2017_reporte.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"censo_17"</span>)</span>
-<span id="cb20-88"><a href="#cb20-88" aria-hidden="true" tabindex="-1"></a>base_24 <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/2024_reporte.xlsx"</span>)</span>
-<span id="cb20-89"><a href="#cb20-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-90"><a href="#cb20-90" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-91"><a href="#cb20-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-92"><a href="#cb20-92" aria-hidden="true" tabindex="-1"></a>Ya que los datos quedaron en 6 objetos diferentes, los unimos con el siguiente código:</span>
-<span id="cb20-93"><a href="#cb20-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-94"><a href="#cb20-94" aria-hidden="true" tabindex="-1"></a><span class="in">```{r union_data}</span></span>
-<span id="cb20-95"><a href="#cb20-95" aria-hidden="true" tabindex="-1"></a><span class="co"># unimos todo en una lista</span></span>
-<span id="cb20-96"><a href="#cb20-96" aria-hidden="true" tabindex="-1"></a>lista_total <span class="ot">&lt;-</span> <span class="fu">list</span>(base_70, base_82, base_92, base_02, base_17, base_24)</span>
-<span id="cb20-97"><a href="#cb20-97" aria-hidden="true" tabindex="-1"></a><span class="co"># aplicamos rbind a cada elemento de la lista</span></span>
-<span id="cb20-98"><a href="#cb20-98" aria-hidden="true" tabindex="-1"></a>union <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, lista_total)</span>
-<span id="cb20-99"><a href="#cb20-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-100"><a href="#cb20-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-101"><a href="#cb20-101" aria-hidden="true" tabindex="-1"></a>Al tenerlo unido, podemos aplicar algunas técnicas de limpieza. Por ejemplo, quitamos la etiqueta "años" de las categorías de edad, y los transformamos en factor. Luego pivoteamos al formato largo, pasando de dos columnas (Hombres-Mujeres) a otras dos (Sexo-Población).</span>
-<span id="cb20-102"><a href="#cb20-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-103"><a href="#cb20-103" aria-hidden="true" tabindex="-1"></a><span class="in">```{r clean_data}</span></span>
-<span id="cb20-104"><a href="#cb20-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-105"><a href="#cb20-105" aria-hidden="true" tabindex="-1"></a>consolidado <span class="ot">&lt;-</span> union <span class="sc">|&gt;</span> </span>
-<span id="cb20-106"><a href="#cb20-106" aria-hidden="true" tabindex="-1"></a>  <span class="co"># removemos la etiqueta "años"</span></span>
-<span id="cb20-107"><a href="#cb20-107" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Edades =</span> <span class="fu">str_remove</span>(Edades, <span class="st">" años"</span>),</span>
-<span id="cb20-108"><a href="#cb20-108" aria-hidden="true" tabindex="-1"></a>         <span class="at">Edades =</span> <span class="fu">str_remove</span>(Edades, <span class="st">"</span><span class="sc">\\</span><span class="st">s</span><span class="sc">\\</span><span class="st">s"</span>),</span>
-<span id="cb20-109"><a href="#cb20-109" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Transformamos a factor en el orden en que aparecen</span></span>
-<span id="cb20-110"><a href="#cb20-110" aria-hidden="true" tabindex="-1"></a>         <span class="at">Edades =</span> <span class="fu">fct_inorder</span>(Edades)) <span class="sc">|&gt;</span> </span>
-<span id="cb20-111"><a href="#cb20-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, </span>
-<span id="cb20-112"><a href="#cb20-112" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"Sexo"</span>,</span>
-<span id="cb20-113"><a href="#cb20-113" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"Poblacion"</span>)</span>
-<span id="cb20-114"><a href="#cb20-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-115"><a href="#cb20-115" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-116"><a href="#cb20-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-117"><a href="#cb20-117" aria-hidden="true" tabindex="-1"></a>Como resultado obtenemos el siguiente tibble/data frame, con el año de censo, el tramo de edad, el sexo y la cantidad de población:</span>
-<span id="cb20-118"><a href="#cb20-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-121"><a href="#cb20-121" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-122"><a href="#cb20-122" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb20-123"><a href="#cb20-123" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(consolidado, <span class="dv">10</span>))</span>
-<span id="cb20-124"><a href="#cb20-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-125"><a href="#cb20-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-126"><a href="#cb20-126" aria-hidden="true" tabindex="-1"></a>Con este data frame ya podemos crear una pirámide de población. Sin embargo, es recomendable trabajar las magnitudes en términos relativos o porcentuales, ya que nos permiten entender mejor la composición interna de las sociedades, dejando fuera el factor del tamaño total de la población. Además nos permite comparar temporalmente el mismo país y con otros países.</span>
-<span id="cb20-127"><a href="#cb20-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-130"><a href="#cb20-130" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-131"><a href="#cb20-131" aria-hidden="true" tabindex="-1"></a>consol_porc <span class="ot">&lt;-</span> consolidado <span class="sc">|&gt;</span> </span>
-<span id="cb20-132"><a href="#cb20-132" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Agrupamos por la variable año, que representa el total de población en cada censo</span></span>
-<span id="cb20-133"><a href="#cb20-133" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Año) <span class="sc">|&gt;</span> </span>
-<span id="cb20-134"><a href="#cb20-134" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Dividimos cada valor por el total poblacional de ese año</span></span>
-<span id="cb20-135"><a href="#cb20-135" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(porc_año <span class="ot">=</span> Poblacion<span class="sc">/</span><span class="fu">sum</span>(Poblacion))</span>
-<span id="cb20-136"><a href="#cb20-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-137"><a href="#cb20-137" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-138"><a href="#cb20-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-139"><a href="#cb20-139" aria-hidden="true" tabindex="-1"></a>Con esto, nuestro data frame final queda tal como se ve a continuación. Para descargar este dataset, puede presionar los botones disponibles según el formato deseado.</span>
-<span id="cb20-140"><a href="#cb20-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-143"><a href="#cb20-143" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-144"><a href="#cb20-144" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb20-145"><a href="#cb20-145" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(consol_porc,</span>
-<span id="cb20-146"><a href="#cb20-146" aria-hidden="true" tabindex="-1"></a>              <span class="at">extensions =</span> <span class="st">'Buttons'</span>,</span>
-<span id="cb20-147"><a href="#cb20-147" aria-hidden="true" tabindex="-1"></a>              <span class="at">options =</span> <span class="fu">list</span>(</span>
-<span id="cb20-148"><a href="#cb20-148" aria-hidden="true" tabindex="-1"></a>                <span class="at">dom =</span> <span class="st">'Bfrtip'</span>,</span>
-<span id="cb20-149"><a href="#cb20-149" aria-hidden="true" tabindex="-1"></a>                <span class="at">buttons =</span> <span class="fu">c</span>(<span class="st">'copy'</span>, <span class="st">'csv'</span>, <span class="st">'excel'</span>, <span class="st">'pdf'</span>, <span class="st">'print'</span>)</span>
-<span id="cb20-150"><a href="#cb20-150" aria-hidden="true" tabindex="-1"></a>              ), </span>
-<span id="cb20-151"><a href="#cb20-151" aria-hidden="true" tabindex="-1"></a>              <span class="at">caption =</span> <span class="st">"Población (absoluta y porcentual) por rango de edad, sexo y año del Censo de Población y Vivienda, Chile"</span>)</span>
-<span id="cb20-152"><a href="#cb20-152" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-153"><a href="#cb20-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-154"><a href="#cb20-154" aria-hidden="true" tabindex="-1"></a><span class="fu">### Visualización de la pirámide de población</span></span>
-<span id="cb20-155"><a href="#cb20-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-156"><a href="#cb20-156" aria-hidden="true" tabindex="-1"></a>Con nuestro data frame listo podemos entrar directamente a lo que nos importa: visualizar nuestras pirámides de población.</span>
-<span id="cb20-157"><a href="#cb20-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-158"><a href="#cb20-158" aria-hidden="true" tabindex="-1"></a>Lo primero que debemos entender, tal como lo mencionamos antes, es que la pirámide de población es un histograma o gráfico de barras. Como ya tenemos categorizada y segmentada la información, optaremos directamente por un gráfico de barras horizontales, siguiendo el modelo típico. Pero además tiene otra característica: las barras de hombres y mujeres van en dirección opuesta, es decir, la barra que representa a las mujeres apunta a la derecha, y la que representa a los hombres apunta a la izquierda del eje X.</span>
-<span id="cb20-159"><a href="#cb20-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-160"><a href="#cb20-160" aria-hidden="true" tabindex="-1"></a>Vamos a ggplot2 con una primera versión básica de este gráfico.</span>
-<span id="cb20-161"><a href="#cb20-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-164"><a href="#cb20-164" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-165"><a href="#cb20-165" aria-hidden="true" tabindex="-1"></a>consol_porc <span class="sc">|&gt;</span>  <span class="co"># Usamos el tibble</span></span>
-<span id="cb20-166"><a href="#cb20-166" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> porc_año, <span class="at">y =</span> Edades)) <span class="sc">+</span> <span class="co"># definimos variables x e y</span></span>
-<span id="cb20-167"><a href="#cb20-167" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="co"># Barras con el valor ya calculado</span></span>
-<span id="cb20-168"><a href="#cb20-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-81"><a href="#cb20-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-82"><a href="#cb20-82" aria-hidden="true" tabindex="-1"></a><span class="in">```{r raw_data}</span></span>
+<span id="cb20-83"><a href="#cb20-83" aria-hidden="true" tabindex="-1"></a><span class="co"># El número indica el año del censo</span></span>
+<span id="cb20-84"><a href="#cb20-84" aria-hidden="true" tabindex="-1"></a>base_70 <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/composicion_poblacion.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"censo_70"</span>)</span>
+<span id="cb20-85"><a href="#cb20-85" aria-hidden="true" tabindex="-1"></a>base_82 <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/composicion_poblacion.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"censo_82"</span>)</span>
+<span id="cb20-86"><a href="#cb20-86" aria-hidden="true" tabindex="-1"></a>base_92 <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/1992_reporte.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"censo_92"</span>)</span>
+<span id="cb20-87"><a href="#cb20-87" aria-hidden="true" tabindex="-1"></a>base_02 <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/2002_reporte.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"censo_02"</span>)</span>
+<span id="cb20-88"><a href="#cb20-88" aria-hidden="true" tabindex="-1"></a>base_17 <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/2017_reporte.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"censo_17"</span>)</span>
+<span id="cb20-89"><a href="#cb20-89" aria-hidden="true" tabindex="-1"></a>base_24 <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/2024_reporte.xlsx"</span>)</span>
+<span id="cb20-90"><a href="#cb20-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-91"><a href="#cb20-91" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-92"><a href="#cb20-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-93"><a href="#cb20-93" aria-hidden="true" tabindex="-1"></a>Ya que los datos quedaron en 6 objetos diferentes, los unimos con el siguiente código:</span>
+<span id="cb20-94"><a href="#cb20-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-95"><a href="#cb20-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{r union_data}</span></span>
+<span id="cb20-96"><a href="#cb20-96" aria-hidden="true" tabindex="-1"></a><span class="co"># unimos todo en una lista</span></span>
+<span id="cb20-97"><a href="#cb20-97" aria-hidden="true" tabindex="-1"></a>lista_total <span class="ot">&lt;-</span> <span class="fu">list</span>(base_70, base_82, base_92, base_02, base_17, base_24)</span>
+<span id="cb20-98"><a href="#cb20-98" aria-hidden="true" tabindex="-1"></a><span class="co"># aplicamos rbind a cada elemento de la lista</span></span>
+<span id="cb20-99"><a href="#cb20-99" aria-hidden="true" tabindex="-1"></a>union <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, lista_total)</span>
+<span id="cb20-100"><a href="#cb20-100" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-101"><a href="#cb20-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-102"><a href="#cb20-102" aria-hidden="true" tabindex="-1"></a>Al tenerlo unido, podemos aplicar algunas técnicas de limpieza. Por ejemplo, quitamos la etiqueta "años" de las categorías de edad, y los transformamos en factor. Luego pivoteamos al formato largo, pasando de dos columnas (Hombres-Mujeres) a otras dos (Sexo-Población).</span>
+<span id="cb20-103"><a href="#cb20-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-104"><a href="#cb20-104" aria-hidden="true" tabindex="-1"></a><span class="in">```{r clean_data}</span></span>
+<span id="cb20-105"><a href="#cb20-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-106"><a href="#cb20-106" aria-hidden="true" tabindex="-1"></a>consolidado <span class="ot">&lt;-</span> union <span class="sc">|&gt;</span> </span>
+<span id="cb20-107"><a href="#cb20-107" aria-hidden="true" tabindex="-1"></a>  <span class="co"># removemos la etiqueta "años"</span></span>
+<span id="cb20-108"><a href="#cb20-108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Edades =</span> <span class="fu">str_remove</span>(Edades, <span class="st">" años"</span>),</span>
+<span id="cb20-109"><a href="#cb20-109" aria-hidden="true" tabindex="-1"></a>         <span class="at">Edades =</span> <span class="fu">str_remove</span>(Edades, <span class="st">"</span><span class="sc">\\</span><span class="st">s</span><span class="sc">\\</span><span class="st">s"</span>),</span>
+<span id="cb20-110"><a href="#cb20-110" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Transformamos a factor en el orden en que aparecen</span></span>
+<span id="cb20-111"><a href="#cb20-111" aria-hidden="true" tabindex="-1"></a>         <span class="at">Edades =</span> <span class="fu">fct_inorder</span>(Edades)) <span class="sc">|&gt;</span> </span>
+<span id="cb20-112"><a href="#cb20-112" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, </span>
+<span id="cb20-113"><a href="#cb20-113" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"Sexo"</span>,</span>
+<span id="cb20-114"><a href="#cb20-114" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"Poblacion"</span>)</span>
+<span id="cb20-115"><a href="#cb20-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-116"><a href="#cb20-116" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-117"><a href="#cb20-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-118"><a href="#cb20-118" aria-hidden="true" tabindex="-1"></a>Como resultado obtenemos el siguiente tibble/data frame, con el año de censo, el tramo de edad, el sexo y la cantidad de población:</span>
+<span id="cb20-119"><a href="#cb20-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-122"><a href="#cb20-122" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-123"><a href="#cb20-123" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb20-124"><a href="#cb20-124" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(consolidado, <span class="dv">10</span>))</span>
+<span id="cb20-125"><a href="#cb20-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-126"><a href="#cb20-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-127"><a href="#cb20-127" aria-hidden="true" tabindex="-1"></a>Con este data frame ya podemos crear una pirámide de población. Sin embargo, es recomendable trabajar las magnitudes en términos relativos o porcentuales, ya que nos permiten entender mejor la composición interna de las sociedades, dejando fuera el factor del tamaño total de la población. Además nos permite comparar temporalmente el mismo país y con otros países.</span>
+<span id="cb20-128"><a href="#cb20-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-131"><a href="#cb20-131" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-132"><a href="#cb20-132" aria-hidden="true" tabindex="-1"></a>consol_porc <span class="ot">&lt;-</span> consolidado <span class="sc">|&gt;</span> </span>
+<span id="cb20-133"><a href="#cb20-133" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Agrupamos por la variable año, que representa el total de población en cada censo</span></span>
+<span id="cb20-134"><a href="#cb20-134" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Año) <span class="sc">|&gt;</span> </span>
+<span id="cb20-135"><a href="#cb20-135" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Dividimos cada valor por el total poblacional de ese año</span></span>
+<span id="cb20-136"><a href="#cb20-136" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(porc_año <span class="ot">=</span> Poblacion<span class="sc">/</span><span class="fu">sum</span>(Poblacion))</span>
+<span id="cb20-137"><a href="#cb20-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-138"><a href="#cb20-138" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-139"><a href="#cb20-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-140"><a href="#cb20-140" aria-hidden="true" tabindex="-1"></a>Con esto, nuestro data frame final queda tal como se ve a continuación. Para descargar este dataset, puede presionar los botones disponibles según el formato deseado.</span>
+<span id="cb20-141"><a href="#cb20-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-144"><a href="#cb20-144" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-145"><a href="#cb20-145" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb20-146"><a href="#cb20-146" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(consol_porc,</span>
+<span id="cb20-147"><a href="#cb20-147" aria-hidden="true" tabindex="-1"></a>              <span class="at">extensions =</span> <span class="st">'Buttons'</span>,</span>
+<span id="cb20-148"><a href="#cb20-148" aria-hidden="true" tabindex="-1"></a>              <span class="at">options =</span> <span class="fu">list</span>(</span>
+<span id="cb20-149"><a href="#cb20-149" aria-hidden="true" tabindex="-1"></a>                <span class="at">dom =</span> <span class="st">'Bfrtip'</span>,</span>
+<span id="cb20-150"><a href="#cb20-150" aria-hidden="true" tabindex="-1"></a>                <span class="at">buttons =</span> <span class="fu">c</span>(<span class="st">'copy'</span>, <span class="st">'csv'</span>, <span class="st">'excel'</span>, <span class="st">'pdf'</span>, <span class="st">'print'</span>)</span>
+<span id="cb20-151"><a href="#cb20-151" aria-hidden="true" tabindex="-1"></a>              ), </span>
+<span id="cb20-152"><a href="#cb20-152" aria-hidden="true" tabindex="-1"></a>              <span class="at">caption =</span> <span class="st">"Población (absoluta y porcentual) por rango de edad, sexo y año del Censo de Población y Vivienda, Chile"</span>)</span>
+<span id="cb20-153"><a href="#cb20-153" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-154"><a href="#cb20-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-155"><a href="#cb20-155" aria-hidden="true" tabindex="-1"></a><span class="fu">### Visualización de la pirámide de población</span></span>
+<span id="cb20-156"><a href="#cb20-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-157"><a href="#cb20-157" aria-hidden="true" tabindex="-1"></a>Con nuestro data frame listo podemos entrar directamente a lo que nos importa: visualizar nuestras pirámides de población.</span>
+<span id="cb20-158"><a href="#cb20-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-159"><a href="#cb20-159" aria-hidden="true" tabindex="-1"></a>Lo primero que debemos entender, tal como lo mencionamos antes, es que la pirámide de población es un histograma o gráfico de barras. Como ya tenemos categorizada y segmentada la información, optaremos directamente por un gráfico de barras horizontales, siguiendo el modelo típico. Pero además tiene otra característica: las barras de hombres y mujeres van en dirección opuesta, es decir, la barra que representa a las mujeres apunta a la derecha, y la que representa a los hombres apunta a la izquierda del eje X.</span>
+<span id="cb20-160"><a href="#cb20-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-161"><a href="#cb20-161" aria-hidden="true" tabindex="-1"></a>Vamos a ggplot2 con una primera versión básica de este gráfico.</span>
+<span id="cb20-162"><a href="#cb20-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-165"><a href="#cb20-165" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-166"><a href="#cb20-166" aria-hidden="true" tabindex="-1"></a>consol_porc <span class="sc">|&gt;</span>  <span class="co"># Usamos el tibble</span></span>
+<span id="cb20-167"><a href="#cb20-167" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> porc_año, <span class="at">y =</span> Edades)) <span class="sc">+</span> <span class="co"># definimos variables x e y</span></span>
+<span id="cb20-168"><a href="#cb20-168" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="co"># Barras con el valor ya calculado</span></span>
 <span id="cb20-169"><a href="#cb20-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-170"><a href="#cb20-170" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-171"><a href="#cb20-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-172"><a href="#cb20-172" aria-hidden="true" tabindex="-1"></a>Esta primera salida cumple con algunas cosas: tiene en el eje Y las edades ordenadas de menor a mayor, y en el eje X los porcentajes de cada grupo etario. Sin embargo, por defecto ggplot2 está sumando los porcentajes de hombres y mujeres, y de todos los censos. Para separarlos por sexo usaremos el argumento <span class="in">`fill`</span></span>
-<span id="cb20-173"><a href="#cb20-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-176"><a href="#cb20-176" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-177"><a href="#cb20-177" aria-hidden="true" tabindex="-1"></a>consol_porc <span class="sc">|&gt;</span>  </span>
-<span id="cb20-178"><a href="#cb20-178" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> porc_año, </span>
-<span id="cb20-179"><a href="#cb20-179" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> Edades, </span>
-<span id="cb20-180"><a href="#cb20-180" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> Sexo)) <span class="sc">+</span> <span class="co"># Relleno definido por la variable sexo</span></span>
-<span id="cb20-181"><a href="#cb20-181" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() </span>
-<span id="cb20-182"><a href="#cb20-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-183"><a href="#cb20-183" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-184"><a href="#cb20-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-185"><a href="#cb20-185" aria-hidden="true" tabindex="-1"></a>Tenemos diferenciado por sexo, pero ggplot2 sigue sumando los datos de todos los levantamientos de censo. Para separar por año utilizaremos la función <span class="in">`facet_wrap`</span> que nos permitirá recrear el mismo gráfico en diferentes cuadros o facetas.</span>
-<span id="cb20-186"><a href="#cb20-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-189"><a href="#cb20-189" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-190"><a href="#cb20-190" aria-hidden="true" tabindex="-1"></a>consol_porc <span class="sc">|&gt;</span> </span>
-<span id="cb20-191"><a href="#cb20-191" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> porc_año, <span class="at">y =</span> Edades, <span class="at">fill =</span> Sexo)) <span class="sc">+</span></span>
-<span id="cb20-192"><a href="#cb20-192" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb20-193"><a href="#cb20-193" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(.<span class="sc">~</span>Año)</span>
-<span id="cb20-194"><a href="#cb20-194" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-195"><a href="#cb20-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-196"><a href="#cb20-196" aria-hidden="true" tabindex="-1"></a>Ahora ya tenemos muy bien diferenciados los datos de hombres y mujeres en cada uno de los censos. Pero no tenemos una forma de pirámide ya que las barras se dibujan en la misma dirección, desde el Y hacia la derecha. Para ello, multiplicaremos los datos de hombres por -1 para moverlo hacia la izquierda.</span>
-<span id="cb20-197"><a href="#cb20-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-200"><a href="#cb20-200" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-201"><a href="#cb20-201" aria-hidden="true" tabindex="-1"></a>p_base <span class="ot">&lt;-</span> consol_porc <span class="sc">|&gt;</span> </span>
-<span id="cb20-202"><a href="#cb20-202" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(porc_año <span class="ot">=</span> <span class="co">#SObre escribimos la variable</span></span>
-<span id="cb20-203"><a href="#cb20-203" aria-hidden="true" tabindex="-1"></a>           <span class="fu">if_else</span>(Sexo <span class="sc">==</span> <span class="st">"Mujeres"</span>, <span class="co">#Evaluamos si el dato es de mujeres</span></span>
-<span id="cb20-204"><a href="#cb20-204" aria-hidden="true" tabindex="-1"></a>                   porc_año, <span class="co">#Caso verdadero: queda igual (derecha)</span></span>
-<span id="cb20-205"><a href="#cb20-205" aria-hidden="true" tabindex="-1"></a>                   porc_año <span class="sc">*</span> <span class="sc">-</span><span class="dv">1</span>)) <span class="sc">|&gt;</span> <span class="co">#Caso falso-hombres: va hacia la izquierda</span></span>
-<span id="cb20-206"><a href="#cb20-206" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> porc_año, <span class="at">y =</span> Edades, <span class="at">fill =</span> Sexo)) <span class="sc">+</span></span>
-<span id="cb20-207"><a href="#cb20-207" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb20-208"><a href="#cb20-208" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(.<span class="sc">~</span>Año)</span>
-<span id="cb20-209"><a href="#cb20-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-210"><a href="#cb20-210" aria-hidden="true" tabindex="-1"></a>p_base</span>
-<span id="cb20-211"><a href="#cb20-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-212"><a href="#cb20-212" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-213"><a href="#cb20-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-214"><a href="#cb20-214" aria-hidden="true" tabindex="-1"></a>Con esto ya tenemos la versión básica para poder comparar la composición etaria y de sexo de Chile desde 1970 a 2017.</span>
-<span id="cb20-215"><a href="#cb20-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-216"><a href="#cb20-216" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aplicando técnicas de data viz</span></span>
-<span id="cb20-217"><a href="#cb20-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-218"><a href="#cb20-218" aria-hidden="true" tabindex="-1"></a>Si bien el gráfico creado funciona y cumple con los criterios mínimos de nuestro objetivo, vamos a implementar algunas mejoras:</span>
-<span id="cb20-219"><a href="#cb20-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-220"><a href="#cb20-220" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Cambiar el color de las barras</span>
-<span id="cb20-221"><a href="#cb20-221" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Ajustar las etiquetas del eje X</span>
-<span id="cb20-222"><a href="#cb20-222" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Definir un tema para el gráfico, diferente del predeterminado.</span>
-<span id="cb20-223"><a href="#cb20-223" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Definir un título, subtítulo y un pie de gráfico.</span>
-<span id="cb20-224"><a href="#cb20-224" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Ajustar la leyenda.</span>
-<span id="cb20-225"><a href="#cb20-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-226"><a href="#cb20-226" aria-hidden="true" tabindex="-1"></a>Partimos ajustando el color de las barras. Para ello usamos las funciones <span class="in">`scale_`</span>. Los colores pueden venir dados manualmente o por una paleta de colores. Como solo tenemos dos valores categóricos, usaremos valores ingresados manualmente.</span>
-<span id="cb20-227"><a href="#cb20-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-230"><a href="#cb20-230" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-231"><a href="#cb20-231" aria-hidden="true" tabindex="-1"></a>p_base <span class="sc">+</span></span>
-<span id="cb20-232"><a href="#cb20-232" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Fijamos los colores hex dentro del vector</span></span>
-<span id="cb20-233"><a href="#cb20-233" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#f9844a"</span>, <span class="st">"#4d908e"</span>))  </span>
-<span id="cb20-234"><a href="#cb20-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-170"><a href="#cb20-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-171"><a href="#cb20-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-172"><a href="#cb20-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-173"><a href="#cb20-173" aria-hidden="true" tabindex="-1"></a>Esta primera salida cumple con algunas cosas: tiene en el eje Y las edades ordenadas de menor a mayor, y en el eje X los porcentajes de cada grupo etario. Sin embargo, por defecto ggplot2 está sumando los porcentajes de hombres y mujeres, y de todos los censos. Para separarlos por sexo usaremos el argumento <span class="in">`fill`</span></span>
+<span id="cb20-174"><a href="#cb20-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-177"><a href="#cb20-177" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-178"><a href="#cb20-178" aria-hidden="true" tabindex="-1"></a>consol_porc <span class="sc">|&gt;</span>  </span>
+<span id="cb20-179"><a href="#cb20-179" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> porc_año, </span>
+<span id="cb20-180"><a href="#cb20-180" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> Edades, </span>
+<span id="cb20-181"><a href="#cb20-181" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> Sexo)) <span class="sc">+</span> <span class="co"># Relleno definido por la variable sexo</span></span>
+<span id="cb20-182"><a href="#cb20-182" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() </span>
+<span id="cb20-183"><a href="#cb20-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-184"><a href="#cb20-184" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-185"><a href="#cb20-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-186"><a href="#cb20-186" aria-hidden="true" tabindex="-1"></a>Tenemos diferenciado por sexo, pero ggplot2 sigue sumando los datos de todos los levantamientos de censo. Para separar por año utilizaremos la función <span class="in">`facet_wrap`</span> que nos permitirá recrear el mismo gráfico en diferentes cuadros o facetas.</span>
+<span id="cb20-187"><a href="#cb20-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-190"><a href="#cb20-190" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-191"><a href="#cb20-191" aria-hidden="true" tabindex="-1"></a>consol_porc <span class="sc">|&gt;</span> </span>
+<span id="cb20-192"><a href="#cb20-192" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> porc_año, <span class="at">y =</span> Edades, <span class="at">fill =</span> Sexo)) <span class="sc">+</span></span>
+<span id="cb20-193"><a href="#cb20-193" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb20-194"><a href="#cb20-194" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(.<span class="sc">~</span>Año)</span>
+<span id="cb20-195"><a href="#cb20-195" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-196"><a href="#cb20-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-197"><a href="#cb20-197" aria-hidden="true" tabindex="-1"></a>Ahora ya tenemos muy bien diferenciados los datos de hombres y mujeres en cada uno de los censos. Pero no tenemos una forma de pirámide ya que las barras se dibujan en la misma dirección, desde el Y hacia la derecha. Para ello, multiplicaremos los datos de hombres por -1 para moverlo hacia la izquierda.</span>
+<span id="cb20-198"><a href="#cb20-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-201"><a href="#cb20-201" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-202"><a href="#cb20-202" aria-hidden="true" tabindex="-1"></a>p_base <span class="ot">&lt;-</span> consol_porc <span class="sc">|&gt;</span> </span>
+<span id="cb20-203"><a href="#cb20-203" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(porc_año <span class="ot">=</span> <span class="co">#SObre escribimos la variable</span></span>
+<span id="cb20-204"><a href="#cb20-204" aria-hidden="true" tabindex="-1"></a>           <span class="fu">if_else</span>(Sexo <span class="sc">==</span> <span class="st">"Mujeres"</span>, <span class="co">#Evaluamos si el dato es de mujeres</span></span>
+<span id="cb20-205"><a href="#cb20-205" aria-hidden="true" tabindex="-1"></a>                   porc_año, <span class="co">#Caso verdadero: queda igual (derecha)</span></span>
+<span id="cb20-206"><a href="#cb20-206" aria-hidden="true" tabindex="-1"></a>                   porc_año <span class="sc">*</span> <span class="sc">-</span><span class="dv">1</span>)) <span class="sc">|&gt;</span> <span class="co">#Caso falso-hombres: va hacia la izquierda</span></span>
+<span id="cb20-207"><a href="#cb20-207" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> porc_año, <span class="at">y =</span> Edades, <span class="at">fill =</span> Sexo)) <span class="sc">+</span></span>
+<span id="cb20-208"><a href="#cb20-208" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb20-209"><a href="#cb20-209" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(.<span class="sc">~</span>Año)</span>
+<span id="cb20-210"><a href="#cb20-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-211"><a href="#cb20-211" aria-hidden="true" tabindex="-1"></a>p_base</span>
+<span id="cb20-212"><a href="#cb20-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-213"><a href="#cb20-213" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-214"><a href="#cb20-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-215"><a href="#cb20-215" aria-hidden="true" tabindex="-1"></a>Con esto ya tenemos la versión básica para poder comparar la composición etaria y de sexo de Chile desde 1970 a 2017.</span>
+<span id="cb20-216"><a href="#cb20-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-217"><a href="#cb20-217" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aplicando técnicas de data viz</span></span>
+<span id="cb20-218"><a href="#cb20-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-219"><a href="#cb20-219" aria-hidden="true" tabindex="-1"></a>Si bien el gráfico creado funciona y cumple con los criterios mínimos de nuestro objetivo, vamos a implementar algunas mejoras:</span>
+<span id="cb20-220"><a href="#cb20-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-221"><a href="#cb20-221" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Cambiar el color de las barras</span>
+<span id="cb20-222"><a href="#cb20-222" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Ajustar las etiquetas del eje X</span>
+<span id="cb20-223"><a href="#cb20-223" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Definir un tema para el gráfico, diferente del predeterminado.</span>
+<span id="cb20-224"><a href="#cb20-224" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Definir un título, subtítulo y un pie de gráfico.</span>
+<span id="cb20-225"><a href="#cb20-225" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Ajustar la leyenda.</span>
+<span id="cb20-226"><a href="#cb20-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-227"><a href="#cb20-227" aria-hidden="true" tabindex="-1"></a>Partimos ajustando el color de las barras. Para ello usamos las funciones <span class="in">`scale_`</span>. Los colores pueden venir dados manualmente o por una paleta de colores. Como solo tenemos dos valores categóricos, usaremos valores ingresados manualmente.</span>
+<span id="cb20-228"><a href="#cb20-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-231"><a href="#cb20-231" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-232"><a href="#cb20-232" aria-hidden="true" tabindex="-1"></a>p_base <span class="sc">+</span></span>
+<span id="cb20-233"><a href="#cb20-233" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Fijamos los colores hex dentro del vector</span></span>
+<span id="cb20-234"><a href="#cb20-234" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#f9844a"</span>, <span class="st">"#4d908e"</span>))  </span>
 <span id="cb20-235"><a href="#cb20-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-236"><a href="#cb20-236" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-237"><a href="#cb20-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-238"><a href="#cb20-238" aria-hidden="true" tabindex="-1"></a>Segundo, arreglamos las etiquetas del eje X. Acá tenemos dos cosas que hacer: agregar la etiqueta de porcentaje "%" y dejar en términos absolutos los valores que aparecen en negativo. Para esto usamos la función <span class="in">`scale_x_continuous`</span> que permite definir las marcas (breaks) y las etiquetas (labels)</span>
-<span id="cb20-239"><a href="#cb20-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-242"><a href="#cb20-242" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-243"><a href="#cb20-243" aria-hidden="true" tabindex="-1"></a>p_base <span class="sc">+</span></span>
-<span id="cb20-244"><a href="#cb20-244" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#f9844a"</span>, <span class="st">"#4d908e"</span>)) <span class="sc">+</span></span>
-<span id="cb20-245"><a href="#cb20-245" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="fl">0.06</span>,<span class="fl">0.06</span>,<span class="at">by=</span><span class="fl">0.02</span>),</span>
-<span id="cb20-246"><a href="#cb20-246" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">label_percent</span>(<span class="at">big.mark =</span> <span class="st">"."</span>,</span>
-<span id="cb20-247"><a href="#cb20-247" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">decimal.mark =</span> <span class="st">","</span>)) </span>
-<span id="cb20-248"><a href="#cb20-248" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-249"><a href="#cb20-249" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-250"><a href="#cb20-250" aria-hidden="true" tabindex="-1"></a>En el último código usamos la función <span class="in">`label_percent()`</span> del paquete <span class="in">`scales`</span> que normalmente es muy útil para formatear porcentajes. Pero como necesitamos deshacernos del signo negativo, utilizaremos una alternativa manual.</span>
-<span id="cb20-251"><a href="#cb20-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-254"><a href="#cb20-254" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-255"><a href="#cb20-255" aria-hidden="true" tabindex="-1"></a>marcas <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="fl">0.06</span>,<span class="fl">0.06</span>,<span class="at">by=</span><span class="fl">0.02</span>)</span>
-<span id="cb20-256"><a href="#cb20-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-257"><a href="#cb20-257" aria-hidden="true" tabindex="-1"></a>p_base <span class="sc">+</span></span>
-<span id="cb20-258"><a href="#cb20-258" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#f9844a"</span>, <span class="st">"#4d908e"</span>)) <span class="sc">+</span></span>
-<span id="cb20-259"><a href="#cb20-259" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> marcas,</span>
-<span id="cb20-260"><a href="#cb20-260" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">percent</span>(<span class="fu">abs</span>(marcas))) </span>
-<span id="cb20-261"><a href="#cb20-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-262"><a href="#cb20-262" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-263"><a href="#cb20-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-264"><a href="#cb20-264" aria-hidden="true" tabindex="-1"></a>A continuación ajustaremos el tema global y agregaremos los títulos.</span>
-<span id="cb20-265"><a href="#cb20-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-268"><a href="#cb20-268" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-269"><a href="#cb20-269" aria-hidden="true" tabindex="-1"></a>p_base <span class="sc">+</span></span>
-<span id="cb20-270"><a href="#cb20-270" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#f9844a"</span>, <span class="st">"#4d908e"</span>)) <span class="sc">+</span></span>
-<span id="cb20-271"><a href="#cb20-271" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> marcas,</span>
-<span id="cb20-272"><a href="#cb20-272" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">percent</span>(<span class="fu">abs</span>(marcas))) <span class="sc">+</span> </span>
-<span id="cb20-273"><a href="#cb20-273" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"La transición demográfica de Chile (1970-2024)"</span>,</span>
-<span id="cb20-274"><a href="#cb20-274" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Pirámides de población con datos censales"</span>,</span>
-<span id="cb20-275"><a href="#cb20-275" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Instituto Nacional de Estadísticas, Chile"</span>,</span>
-<span id="cb20-276"><a href="#cb20-276" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Porcentaje de la población total"</span>,</span>
-<span id="cb20-277"><a href="#cb20-277" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Edades(quinquenios)"</span>) <span class="sc">+</span></span>
-<span id="cb20-278"><a href="#cb20-278" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb20-279"><a href="#cb20-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-280"><a href="#cb20-280" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-281"><a href="#cb20-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-282"><a href="#cb20-282" aria-hidden="true" tabindex="-1"></a>Finalmente, ajustamos la leyenda para que quede en posición horizontal abajo de las pirámides. Y fijamos el título al borde de la imagen.</span>
-<span id="cb20-283"><a href="#cb20-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-286"><a href="#cb20-286" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-287"><a href="#cb20-287" aria-hidden="true" tabindex="-1"></a>p_base <span class="sc">+</span></span>
-<span id="cb20-288"><a href="#cb20-288" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#f9844a"</span>, <span class="st">"#4d908e"</span>)) <span class="sc">+</span></span>
-<span id="cb20-289"><a href="#cb20-289" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> marcas,</span>
-<span id="cb20-290"><a href="#cb20-290" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">percent</span>(<span class="fu">abs</span>(marcas))) <span class="sc">+</span> </span>
-<span id="cb20-291"><a href="#cb20-291" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"La transición demográfica de Chile (1970-2024)"</span>,</span>
-<span id="cb20-292"><a href="#cb20-292" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Pirámides de población con datos censales"</span>,</span>
-<span id="cb20-293"><a href="#cb20-293" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Instituto Nacional de Estadísticas, Chile"</span>,</span>
-<span id="cb20-294"><a href="#cb20-294" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Porcentaje de la población total"</span>,</span>
-<span id="cb20-295"><a href="#cb20-295" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Edades(quinquenios)"</span>) <span class="sc">+</span></span>
-<span id="cb20-296"><a href="#cb20-296" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">position =</span> <span class="st">"bottom"</span>,</span>
-<span id="cb20-297"><a href="#cb20-297" aria-hidden="true" tabindex="-1"></a>                             <span class="at">title =</span> <span class="cn">NULL</span>)) <span class="sc">+</span> </span>
-<span id="cb20-298"><a href="#cb20-298" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb20-299"><a href="#cb20-299" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title.position =</span> <span class="st">'plot'</span>)</span>
-<span id="cb20-300"><a href="#cb20-300" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-301"><a href="#cb20-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-236"><a href="#cb20-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-237"><a href="#cb20-237" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-238"><a href="#cb20-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-239"><a href="#cb20-239" aria-hidden="true" tabindex="-1"></a>Segundo, arreglamos las etiquetas del eje X. Acá tenemos dos cosas que hacer: agregar la etiqueta de porcentaje "%" y dejar en términos absolutos los valores que aparecen en negativo. Para esto usamos la función <span class="in">`scale_x_continuous`</span> que permite definir las marcas (breaks) y las etiquetas (labels)</span>
+<span id="cb20-240"><a href="#cb20-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-243"><a href="#cb20-243" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-244"><a href="#cb20-244" aria-hidden="true" tabindex="-1"></a>p_base <span class="sc">+</span></span>
+<span id="cb20-245"><a href="#cb20-245" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#f9844a"</span>, <span class="st">"#4d908e"</span>)) <span class="sc">+</span></span>
+<span id="cb20-246"><a href="#cb20-246" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="fl">0.06</span>,<span class="fl">0.06</span>,<span class="at">by=</span><span class="fl">0.02</span>),</span>
+<span id="cb20-247"><a href="#cb20-247" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">label_percent</span>(<span class="at">big.mark =</span> <span class="st">"."</span>,</span>
+<span id="cb20-248"><a href="#cb20-248" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">decimal.mark =</span> <span class="st">","</span>)) </span>
+<span id="cb20-249"><a href="#cb20-249" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-250"><a href="#cb20-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-251"><a href="#cb20-251" aria-hidden="true" tabindex="-1"></a>En el último código usamos la función <span class="in">`label_percent()`</span> del paquete <span class="in">`scales`</span> que normalmente es muy útil para formatear porcentajes. Pero como necesitamos deshacernos del signo negativo, utilizaremos una alternativa manual.</span>
+<span id="cb20-252"><a href="#cb20-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-255"><a href="#cb20-255" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-256"><a href="#cb20-256" aria-hidden="true" tabindex="-1"></a>marcas <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="fl">0.06</span>,<span class="fl">0.06</span>,<span class="at">by=</span><span class="fl">0.02</span>)</span>
+<span id="cb20-257"><a href="#cb20-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-258"><a href="#cb20-258" aria-hidden="true" tabindex="-1"></a>p_base <span class="sc">+</span></span>
+<span id="cb20-259"><a href="#cb20-259" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#f9844a"</span>, <span class="st">"#4d908e"</span>)) <span class="sc">+</span></span>
+<span id="cb20-260"><a href="#cb20-260" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> marcas,</span>
+<span id="cb20-261"><a href="#cb20-261" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">percent</span>(<span class="fu">abs</span>(marcas))) </span>
+<span id="cb20-262"><a href="#cb20-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-263"><a href="#cb20-263" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-264"><a href="#cb20-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-265"><a href="#cb20-265" aria-hidden="true" tabindex="-1"></a>A continuación ajustaremos el tema global y agregaremos los títulos.</span>
+<span id="cb20-266"><a href="#cb20-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-269"><a href="#cb20-269" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-270"><a href="#cb20-270" aria-hidden="true" tabindex="-1"></a>p_base <span class="sc">+</span></span>
+<span id="cb20-271"><a href="#cb20-271" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#f9844a"</span>, <span class="st">"#4d908e"</span>)) <span class="sc">+</span></span>
+<span id="cb20-272"><a href="#cb20-272" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> marcas,</span>
+<span id="cb20-273"><a href="#cb20-273" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">percent</span>(<span class="fu">abs</span>(marcas))) <span class="sc">+</span> </span>
+<span id="cb20-274"><a href="#cb20-274" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"La transición demográfica de Chile (1970-2024)"</span>,</span>
+<span id="cb20-275"><a href="#cb20-275" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Pirámides de población con datos censales"</span>,</span>
+<span id="cb20-276"><a href="#cb20-276" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Instituto Nacional de Estadísticas, Chile"</span>,</span>
+<span id="cb20-277"><a href="#cb20-277" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Porcentaje de la población total"</span>,</span>
+<span id="cb20-278"><a href="#cb20-278" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Edades(quinquenios)"</span>) <span class="sc">+</span></span>
+<span id="cb20-279"><a href="#cb20-279" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb20-280"><a href="#cb20-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-281"><a href="#cb20-281" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-282"><a href="#cb20-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-283"><a href="#cb20-283" aria-hidden="true" tabindex="-1"></a>Finalmente, ajustamos la leyenda para que quede en posición horizontal abajo de las pirámides. Y fijamos el título al borde de la imagen.</span>
+<span id="cb20-284"><a href="#cb20-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-287"><a href="#cb20-287" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-288"><a href="#cb20-288" aria-hidden="true" tabindex="-1"></a>p_base <span class="sc">+</span></span>
+<span id="cb20-289"><a href="#cb20-289" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#f9844a"</span>, <span class="st">"#4d908e"</span>)) <span class="sc">+</span></span>
+<span id="cb20-290"><a href="#cb20-290" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> marcas,</span>
+<span id="cb20-291"><a href="#cb20-291" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">percent</span>(<span class="fu">abs</span>(marcas))) <span class="sc">+</span> </span>
+<span id="cb20-292"><a href="#cb20-292" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"La transición demográfica de Chile (1970-2024)"</span>,</span>
+<span id="cb20-293"><a href="#cb20-293" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Pirámides de población con datos censales"</span>,</span>
+<span id="cb20-294"><a href="#cb20-294" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Instituto Nacional de Estadísticas, Chile"</span>,</span>
+<span id="cb20-295"><a href="#cb20-295" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Porcentaje de la población total"</span>,</span>
+<span id="cb20-296"><a href="#cb20-296" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Edades(quinquenios)"</span>) <span class="sc">+</span></span>
+<span id="cb20-297"><a href="#cb20-297" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">position =</span> <span class="st">"bottom"</span>,</span>
+<span id="cb20-298"><a href="#cb20-298" aria-hidden="true" tabindex="-1"></a>                             <span class="at">title =</span> <span class="cn">NULL</span>)) <span class="sc">+</span> </span>
+<span id="cb20-299"><a href="#cb20-299" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb20-300"><a href="#cb20-300" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title.position =</span> <span class="st">'plot'</span>)</span>
+<span id="cb20-301"><a href="#cb20-301" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb20-302"><a href="#cb20-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-305"><a href="#cb20-305" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-306"><a href="#cb20-306" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb20-307"><a href="#cb20-307" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb20-308"><a href="#cb20-308" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb20-309"><a href="#cb20-309" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"thumbnail_2.png"</span>, <span class="at">plot =</span> <span class="fu">last_plot</span>(),<span class="at">bg =</span> <span class="st">"white"</span>)</span>
-<span id="cb20-310"><a href="#cb20-310" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-311"><a href="#cb20-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-303"><a href="#cb20-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-306"><a href="#cb20-306" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-307"><a href="#cb20-307" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb20-308"><a href="#cb20-308" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb20-309"><a href="#cb20-309" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb20-310"><a href="#cb20-310" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"thumbnail_2.png"</span>, <span class="at">plot =</span> <span class="fu">last_plot</span>(),<span class="at">bg =</span> <span class="st">"white"</span>)</span>
+<span id="cb20-311"><a href="#cb20-311" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb20-312"><a href="#cb20-312" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-313"><a href="#cb20-313" aria-hidden="true" tabindex="-1"></a>El resultado es muy interesante. Postergando brevemente los comentarios demográficos que retomaremos al final, este gráfico cumple perfectamente con el objetivo que nos propusimos, mostrar la composición demográfica de Chile a través del tiempo con las pirámides de población, de forma clara y visualmente atractiva.</span>
-<span id="cb20-314"><a href="#cb20-314" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-315"><a href="#cb20-315" aria-hidden="true" tabindex="-1"></a><span class="fu">### Animando la pirámide con gganimate</span></span>
-<span id="cb20-316"><a href="#cb20-316" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-317"><a href="#cb20-317" aria-hidden="true" tabindex="-1"></a>Habiendo logrado nuestro objetivo, podemos ir más allá aun y aprovechar el potencial de ggplot2 y gganimate para hacer un gráfico animado de las pirámides de población.</span>
-<span id="cb20-318"><a href="#cb20-318" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-319"><a href="#cb20-319" aria-hidden="true" tabindex="-1"></a>Para ello, vamos a crear un nuevo gráfico, esta vez sin grilla, donde la forma irá cambiando conforme pasamos de un censo a otro.</span>
-<span id="cb20-320"><a href="#cb20-320" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-321"><a href="#cb20-321" aria-hidden="true" tabindex="-1"></a>Partiremos creando el gráfico base, sin incluir el año.</span>
-<span id="cb20-322"><a href="#cb20-322" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-325"><a href="#cb20-325" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-326"><a href="#cb20-326" aria-hidden="true" tabindex="-1"></a>pre_animacion <span class="ot">&lt;-</span> consol_porc <span class="sc">|&gt;</span> </span>
-<span id="cb20-327"><a href="#cb20-327" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(porc_año <span class="ot">=</span> <span class="fu">if_else</span>(Sexo <span class="sc">==</span> <span class="st">"Mujeres"</span>, porc_año , porc_año <span class="sc">*</span> <span class="sc">-</span><span class="dv">1</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb20-328"><a href="#cb20-328" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> porc_año, <span class="at">y =</span> Edades, <span class="at">fill =</span> Sexo)) <span class="sc">+</span></span>
-<span id="cb20-329"><a href="#cb20-329" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb20-330"><a href="#cb20-330" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#f9844a"</span>, <span class="st">"#4d908e"</span>))<span class="sc">+</span></span>
-<span id="cb20-331"><a href="#cb20-331" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">title =</span> <span class="cn">NULL</span>, </span>
-<span id="cb20-332"><a href="#cb20-332" aria-hidden="true" tabindex="-1"></a>                             <span class="at">position =</span> <span class="st">"bottom"</span>,</span>
-<span id="cb20-333"><a href="#cb20-333" aria-hidden="true" tabindex="-1"></a>                             <span class="at">reverse =</span> F)) <span class="sc">+</span></span>
-<span id="cb20-334"><a href="#cb20-334" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> marcas,</span>
-<span id="cb20-335"><a href="#cb20-335" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">percent</span>(<span class="fu">abs</span>(marcas)),</span>
-<span id="cb20-336"><a href="#cb20-336" aria-hidden="true" tabindex="-1"></a>                     <span class="at">name =</span> <span class="st">"Porcentaje de la población total"</span>)<span class="sc">+</span></span>
-<span id="cb20-337"><a href="#cb20-337" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span>
-<span id="cb20-338"><a href="#cb20-338" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-339"><a href="#cb20-339" aria-hidden="true" tabindex="-1"></a>pre_animacion</span>
-<span id="cb20-340"><a href="#cb20-340" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-341"><a href="#cb20-341" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-342"><a href="#cb20-342" aria-hidden="true" tabindex="-1"></a>Ahora, la magia. Con el paquete **gganimate** que cargamos al inicio podemos crear transiciones a partir de una variable, en este caso utilizaremos el año. La función <span class="in">`transitions_states()`</span> genera fases del gráfico, con su respectiva duración y tiempo de transición.</span>
-<span id="cb20-343"><a href="#cb20-343" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-346"><a href="#cb20-346" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-347"><a href="#cb20-347" aria-hidden="true" tabindex="-1"></a>anim1 <span class="ot">&lt;-</span></span>
-<span id="cb20-348"><a href="#cb20-348" aria-hidden="true" tabindex="-1"></a>  pre_animacion <span class="sc">+</span></span>
-<span id="cb20-349"><a href="#cb20-349" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transition_states</span>(</span>
-<span id="cb20-350"><a href="#cb20-350" aria-hidden="true" tabindex="-1"></a>    <span class="at">states =</span> Año,</span>
-<span id="cb20-351"><a href="#cb20-351" aria-hidden="true" tabindex="-1"></a>    <span class="at">state_length =</span> <span class="dv">4</span>,</span>
-<span id="cb20-352"><a href="#cb20-352" aria-hidden="true" tabindex="-1"></a>    <span class="at">transition_length =</span> <span class="dv">2</span></span>
-<span id="cb20-353"><a href="#cb20-353" aria-hidden="true" tabindex="-1"></a>  ) </span>
-<span id="cb20-354"><a href="#cb20-354" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-355"><a href="#cb20-355" aria-hidden="true" tabindex="-1"></a>anim1</span>
-<span id="cb20-356"><a href="#cb20-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-313"><a href="#cb20-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-314"><a href="#cb20-314" aria-hidden="true" tabindex="-1"></a>El resultado es muy interesante. Postergando brevemente los comentarios demográficos que retomaremos al final, este gráfico cumple perfectamente con el objetivo que nos propusimos, mostrar la composición demográfica de Chile a través del tiempo con las pirámides de población, de forma clara y visualmente atractiva.</span>
+<span id="cb20-315"><a href="#cb20-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-316"><a href="#cb20-316" aria-hidden="true" tabindex="-1"></a><span class="fu">### Animando la pirámide con gganimate</span></span>
+<span id="cb20-317"><a href="#cb20-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-318"><a href="#cb20-318" aria-hidden="true" tabindex="-1"></a>Habiendo logrado nuestro objetivo, podemos ir más allá aun y aprovechar el potencial de ggplot2 y gganimate para hacer un gráfico animado de las pirámides de población.</span>
+<span id="cb20-319"><a href="#cb20-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-320"><a href="#cb20-320" aria-hidden="true" tabindex="-1"></a>Para ello, vamos a crear un nuevo gráfico, esta vez sin grilla, donde la forma irá cambiando conforme pasamos de un censo a otro.</span>
+<span id="cb20-321"><a href="#cb20-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-322"><a href="#cb20-322" aria-hidden="true" tabindex="-1"></a>Partiremos creando el gráfico base, sin incluir el año.</span>
+<span id="cb20-323"><a href="#cb20-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-326"><a href="#cb20-326" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-327"><a href="#cb20-327" aria-hidden="true" tabindex="-1"></a>pre_animacion <span class="ot">&lt;-</span> consol_porc <span class="sc">|&gt;</span> </span>
+<span id="cb20-328"><a href="#cb20-328" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(porc_año <span class="ot">=</span> <span class="fu">if_else</span>(Sexo <span class="sc">==</span> <span class="st">"Mujeres"</span>, porc_año , porc_año <span class="sc">*</span> <span class="sc">-</span><span class="dv">1</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb20-329"><a href="#cb20-329" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> porc_año, <span class="at">y =</span> Edades, <span class="at">fill =</span> Sexo)) <span class="sc">+</span></span>
+<span id="cb20-330"><a href="#cb20-330" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb20-331"><a href="#cb20-331" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#f9844a"</span>, <span class="st">"#4d908e"</span>))<span class="sc">+</span></span>
+<span id="cb20-332"><a href="#cb20-332" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">title =</span> <span class="cn">NULL</span>, </span>
+<span id="cb20-333"><a href="#cb20-333" aria-hidden="true" tabindex="-1"></a>                             <span class="at">position =</span> <span class="st">"bottom"</span>,</span>
+<span id="cb20-334"><a href="#cb20-334" aria-hidden="true" tabindex="-1"></a>                             <span class="at">reverse =</span> F)) <span class="sc">+</span></span>
+<span id="cb20-335"><a href="#cb20-335" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> marcas,</span>
+<span id="cb20-336"><a href="#cb20-336" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">percent</span>(<span class="fu">abs</span>(marcas)),</span>
+<span id="cb20-337"><a href="#cb20-337" aria-hidden="true" tabindex="-1"></a>                     <span class="at">name =</span> <span class="st">"Porcentaje de la población total"</span>)<span class="sc">+</span></span>
+<span id="cb20-338"><a href="#cb20-338" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span>
+<span id="cb20-339"><a href="#cb20-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-340"><a href="#cb20-340" aria-hidden="true" tabindex="-1"></a>pre_animacion</span>
+<span id="cb20-341"><a href="#cb20-341" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-342"><a href="#cb20-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-343"><a href="#cb20-343" aria-hidden="true" tabindex="-1"></a>Ahora, la magia. Con el paquete **gganimate** que cargamos al inicio podemos crear transiciones a partir de una variable, en este caso utilizaremos el año. La función <span class="in">`transitions_states()`</span> genera fases del gráfico, con su respectiva duración y tiempo de transición.</span>
+<span id="cb20-344"><a href="#cb20-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-347"><a href="#cb20-347" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-348"><a href="#cb20-348" aria-hidden="true" tabindex="-1"></a>anim1 <span class="ot">&lt;-</span></span>
+<span id="cb20-349"><a href="#cb20-349" aria-hidden="true" tabindex="-1"></a>  pre_animacion <span class="sc">+</span></span>
+<span id="cb20-350"><a href="#cb20-350" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transition_states</span>(</span>
+<span id="cb20-351"><a href="#cb20-351" aria-hidden="true" tabindex="-1"></a>    <span class="at">states =</span> Año,</span>
+<span id="cb20-352"><a href="#cb20-352" aria-hidden="true" tabindex="-1"></a>    <span class="at">state_length =</span> <span class="dv">4</span>,</span>
+<span id="cb20-353"><a href="#cb20-353" aria-hidden="true" tabindex="-1"></a>    <span class="at">transition_length =</span> <span class="dv">2</span></span>
+<span id="cb20-354"><a href="#cb20-354" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb20-355"><a href="#cb20-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-356"><a href="#cb20-356" aria-hidden="true" tabindex="-1"></a>anim1</span>
 <span id="cb20-357"><a href="#cb20-357" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-358"><a href="#cb20-358" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-359"><a href="#cb20-359" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-360"><a href="#cb20-360" aria-hidden="true" tabindex="-1"></a>Funciona perfectamente. Pero no sabemos qué año se está mostrando en cada momento. Para ello gganimate incorpora herramientas para mejorar los textos de acuerdo a la animación. Incluirmos en el subtítulo <span class="in">`{closest_state}`</span> que va cambiando junto con el gráfico.</span>
-<span id="cb20-361"><a href="#cb20-361" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-364"><a href="#cb20-364" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-365"><a href="#cb20-365" aria-hidden="true" tabindex="-1"></a>anim1 <span class="sc">+</span></span>
-<span id="cb20-366"><a href="#cb20-366" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"¿Cómo cambia nuestra demografía en los últimos 60 años?"</span>,</span>
-<span id="cb20-367"><a href="#cb20-367" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Censo de {closest_state}, Chile"</span>,</span>
-<span id="cb20-368"><a href="#cb20-368" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Censos de Población y Vivienda de 1970, 1982, 1992, 2002, 2017 y 2024, INE Chile"</span>)</span>
-<span id="cb20-369"><a href="#cb20-369" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-370"><a href="#cb20-370" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-371"><a href="#cb20-371" aria-hidden="true" tabindex="-1"></a>Bien, ya podemos ver claramente a qué año corresponde cada pirámide. Fantástico funcionamiento de gganimate. Con un par de líneas de código tenemos una animación lista y coherente.</span>
-<span id="cb20-372"><a href="#cb20-372" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-373"><a href="#cb20-373" aria-hidden="true" tabindex="-1"></a>Ya que siempre se puede hacer algo más, le daremos el toque estético final. Centraremos el título, y reemplazaremos la leyenda con un texto, aprovechando el paquete ggtext.</span>
-<span id="cb20-374"><a href="#cb20-374" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-377"><a href="#cb20-377" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-378"><a href="#cb20-378" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos un tibble con el texto en formato html, sus coordenadas de posición.</span></span>
-<span id="cb20-379"><a href="#cb20-379" aria-hidden="true" tabindex="-1"></a><span class="co"># Incluimos el color como texto enriquecido</span></span>
-<span id="cb20-380"><a href="#cb20-380" aria-hidden="true" tabindex="-1"></a>labs_pir <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">label =</span> <span class="fu">c</span>(<span class="st">"&lt;span style='color:#f9844a'&gt;**Hombres**&lt;/span&gt;"</span>,</span>
-<span id="cb20-381"><a href="#cb20-381" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"&lt;span style='color:#4d908e'&gt;**Mujeres**&lt;/span&gt;"</span>),</span>
-<span id="cb20-382"><a href="#cb20-382" aria-hidden="true" tabindex="-1"></a>                   <span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.04</span>, <span class="fl">0.04</span>),</span>
-<span id="cb20-383"><a href="#cb20-383" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"80-84"</span>, <span class="st">"80-84"</span>),</span>
-<span id="cb20-384"><a href="#cb20-384" aria-hidden="true" tabindex="-1"></a>                   <span class="at">colores =</span> <span class="fu">c</span>(<span class="st">"#4d908e"</span>,<span class="st">"#f9844a"</span>))</span>
-<span id="cb20-385"><a href="#cb20-385" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-386"><a href="#cb20-386" aria-hidden="true" tabindex="-1"></a>anim_final <span class="ot">&lt;-</span> anim1 <span class="sc">+</span></span>
-<span id="cb20-387"><a href="#cb20-387" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"¿Cómo cambia nuestra demografía en los últimos 60 años?"</span>,</span>
-<span id="cb20-388"><a href="#cb20-388" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Censo de {closest_state}, Chile"</span>,</span>
-<span id="cb20-389"><a href="#cb20-389" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Censos de Población y Vivienda de 1970, 1982, 1992, 2002, 2017 y 2024, INE Chile"</span>) <span class="sc">+</span></span>
-<span id="cb20-390"><a href="#cb20-390" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_richtext</span>(<span class="at">data =</span> labs_pir, <span class="co">#Usamos el tibble creado</span></span>
-<span id="cb20-391"><a href="#cb20-391" aria-hidden="true" tabindex="-1"></a>                <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="co"># las coordenadas x e y</span></span>
-<span id="cb20-392"><a href="#cb20-392" aria-hidden="true" tabindex="-1"></a>                    <span class="at">y =</span> y,</span>
-<span id="cb20-393"><a href="#cb20-393" aria-hidden="true" tabindex="-1"></a>                    <span class="at">label =</span> label,</span>
-<span id="cb20-394"><a href="#cb20-394" aria-hidden="true" tabindex="-1"></a>                    <span class="at">fill =</span> <span class="cn">NA</span>), <span class="co">#Evitamos el argumento fill de las barras</span></span>
-<span id="cb20-395"><a href="#cb20-395" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> <span class="cn">NA</span>, <span class="co">#Quitamos recuadro alrededor del texto</span></span>
-<span id="cb20-396"><a href="#cb20-396" aria-hidden="true" tabindex="-1"></a>                <span class="at">label.colour =</span> <span class="cn">NA</span>, </span>
-<span id="cb20-397"><a href="#cb20-397" aria-hidden="true" tabindex="-1"></a>                <span class="at">size =</span> <span class="dv">6</span>,</span>
-<span id="cb20-398"><a href="#cb20-398" aria-hidden="true" tabindex="-1"></a>                <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb20-399"><a href="#cb20-399" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb20-400"><a href="#cb20-400" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
-<span id="cb20-401"><a href="#cb20-401" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span>
-<span id="cb20-402"><a href="#cb20-402" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-358"><a href="#cb20-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-359"><a href="#cb20-359" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-360"><a href="#cb20-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-361"><a href="#cb20-361" aria-hidden="true" tabindex="-1"></a>Funciona perfectamente. Pero no sabemos qué año se está mostrando en cada momento. Para ello gganimate incorpora herramientas para mejorar los textos de acuerdo a la animación. Incluirmos en el subtítulo <span class="in">`{closest_state}`</span> que va cambiando junto con el gráfico.</span>
+<span id="cb20-362"><a href="#cb20-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-365"><a href="#cb20-365" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-366"><a href="#cb20-366" aria-hidden="true" tabindex="-1"></a>anim1 <span class="sc">+</span></span>
+<span id="cb20-367"><a href="#cb20-367" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"¿Cómo cambia nuestra demografía en los últimos 60 años?"</span>,</span>
+<span id="cb20-368"><a href="#cb20-368" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Censo de {closest_state}, Chile"</span>,</span>
+<span id="cb20-369"><a href="#cb20-369" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Censos de Población y Vivienda de 1970, 1982, 1992, 2002, 2017 y 2024, INE Chile"</span>)</span>
+<span id="cb20-370"><a href="#cb20-370" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-371"><a href="#cb20-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-372"><a href="#cb20-372" aria-hidden="true" tabindex="-1"></a>Bien, ya podemos ver claramente a qué año corresponde cada pirámide. Fantástico funcionamiento de gganimate. Con un par de líneas de código tenemos una animación lista y coherente.</span>
+<span id="cb20-373"><a href="#cb20-373" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-374"><a href="#cb20-374" aria-hidden="true" tabindex="-1"></a>Ya que siempre se puede hacer algo más, le daremos el toque estético final. Centraremos el título, y reemplazaremos la leyenda con un texto, aprovechando el paquete ggtext.</span>
+<span id="cb20-375"><a href="#cb20-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-378"><a href="#cb20-378" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-379"><a href="#cb20-379" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos un tibble con el texto en formato html, sus coordenadas de posición.</span></span>
+<span id="cb20-380"><a href="#cb20-380" aria-hidden="true" tabindex="-1"></a><span class="co"># Incluimos el color como texto enriquecido</span></span>
+<span id="cb20-381"><a href="#cb20-381" aria-hidden="true" tabindex="-1"></a>labs_pir <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">label =</span> <span class="fu">c</span>(<span class="st">"&lt;span style='color:#f9844a'&gt;**Hombres**&lt;/span&gt;"</span>,</span>
+<span id="cb20-382"><a href="#cb20-382" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"&lt;span style='color:#4d908e'&gt;**Mujeres**&lt;/span&gt;"</span>),</span>
+<span id="cb20-383"><a href="#cb20-383" aria-hidden="true" tabindex="-1"></a>                   <span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.04</span>, <span class="fl">0.04</span>),</span>
+<span id="cb20-384"><a href="#cb20-384" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"80-84"</span>, <span class="st">"80-84"</span>),</span>
+<span id="cb20-385"><a href="#cb20-385" aria-hidden="true" tabindex="-1"></a>                   <span class="at">colores =</span> <span class="fu">c</span>(<span class="st">"#4d908e"</span>,<span class="st">"#f9844a"</span>))</span>
+<span id="cb20-386"><a href="#cb20-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-387"><a href="#cb20-387" aria-hidden="true" tabindex="-1"></a>anim_final <span class="ot">&lt;-</span> anim1 <span class="sc">+</span></span>
+<span id="cb20-388"><a href="#cb20-388" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"¿Cómo cambia nuestra demografía en los últimos 60 años?"</span>,</span>
+<span id="cb20-389"><a href="#cb20-389" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Censo de {closest_state}, Chile"</span>,</span>
+<span id="cb20-390"><a href="#cb20-390" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Censos de Población y Vivienda de 1970, 1982, 1992, 2002, 2017 y 2024, INE Chile"</span>) <span class="sc">+</span></span>
+<span id="cb20-391"><a href="#cb20-391" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_richtext</span>(<span class="at">data =</span> labs_pir, <span class="co">#Usamos el tibble creado</span></span>
+<span id="cb20-392"><a href="#cb20-392" aria-hidden="true" tabindex="-1"></a>                <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="co"># las coordenadas x e y</span></span>
+<span id="cb20-393"><a href="#cb20-393" aria-hidden="true" tabindex="-1"></a>                    <span class="at">y =</span> y,</span>
+<span id="cb20-394"><a href="#cb20-394" aria-hidden="true" tabindex="-1"></a>                    <span class="at">label =</span> label,</span>
+<span id="cb20-395"><a href="#cb20-395" aria-hidden="true" tabindex="-1"></a>                    <span class="at">fill =</span> <span class="cn">NA</span>), <span class="co">#Evitamos el argumento fill de las barras</span></span>
+<span id="cb20-396"><a href="#cb20-396" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> <span class="cn">NA</span>, <span class="co">#Quitamos recuadro alrededor del texto</span></span>
+<span id="cb20-397"><a href="#cb20-397" aria-hidden="true" tabindex="-1"></a>                <span class="at">label.colour =</span> <span class="cn">NA</span>, </span>
+<span id="cb20-398"><a href="#cb20-398" aria-hidden="true" tabindex="-1"></a>                <span class="at">size =</span> <span class="dv">6</span>,</span>
+<span id="cb20-399"><a href="#cb20-399" aria-hidden="true" tabindex="-1"></a>                <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb20-400"><a href="#cb20-400" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb20-401"><a href="#cb20-401" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb20-402"><a href="#cb20-402" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span>
 <span id="cb20-403"><a href="#cb20-403" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-404"><a href="#cb20-404" aria-hidden="true" tabindex="-1"></a>anim_final</span>
-<span id="cb20-405"><a href="#cb20-405" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-406"><a href="#cb20-406" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-407"><a href="#cb20-407" aria-hidden="true" tabindex="-1"></a>*Y... ¡voilà!*, lista nuestro gráfico animado con las pirámides de población de los últimos censos de Chile. Siempre se puede hacer algo más, pero el resultado es más que aceptable y lo dejaremos hasta aquí. Y para poder compartirlo con el mundo podemos exportarlo en formato .gif como imagen animada, o como video.</span>
-<span id="cb20-408"><a href="#cb20-408" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-411"><a href="#cb20-411" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-412"><a href="#cb20-412" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb20-413"><a href="#cb20-413" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-414"><a href="#cb20-414" aria-hidden="true" tabindex="-1"></a><span class="co">#Agrego algunos argumentos extra para mejorar la calidad de la salida</span></span>
-<span id="cb20-415"><a href="#cb20-415" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-416"><a href="#cb20-416" aria-hidden="true" tabindex="-1"></a><span class="co">#GIF: predeterminado</span></span>
-<span id="cb20-417"><a href="#cb20-417" aria-hidden="true" tabindex="-1"></a><span class="fu">anim_save</span>(<span class="at">filename =</span> <span class="st">"piramide_poblacion_chile.gif"</span>,</span>
-<span id="cb20-418"><a href="#cb20-418" aria-hidden="true" tabindex="-1"></a>          <span class="at">animation =</span> anim_final,</span>
-<span id="cb20-419"><a href="#cb20-419" aria-hidden="true" tabindex="-1"></a>          <span class="at">height =</span> <span class="dv">1080</span>, <span class="co">#Extra</span></span>
-<span id="cb20-420"><a href="#cb20-420" aria-hidden="true" tabindex="-1"></a>          <span class="at">width =</span> <span class="dv">1080</span>,</span>
-<span id="cb20-421"><a href="#cb20-421" aria-hidden="true" tabindex="-1"></a>          <span class="at">units =</span> <span class="st">'px'</span>,</span>
-<span id="cb20-422"><a href="#cb20-422" aria-hidden="true" tabindex="-1"></a>          <span class="at">res =</span> <span class="dv">150</span>)</span>
-<span id="cb20-423"><a href="#cb20-423" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-424"><a href="#cb20-424" aria-hidden="true" tabindex="-1"></a><span class="co">#MP4: exportar como video</span></span>
-<span id="cb20-425"><a href="#cb20-425" aria-hidden="true" tabindex="-1"></a><span class="fu">anim_save</span>(<span class="at">filename =</span> <span class="st">"piramide_poblacion_chile.mp4"</span>,</span>
-<span id="cb20-426"><a href="#cb20-426" aria-hidden="true" tabindex="-1"></a>          <span class="at">animation =</span> anim_final,</span>
-<span id="cb20-427"><a href="#cb20-427" aria-hidden="true" tabindex="-1"></a>          <span class="at">renderer =</span> <span class="fu">av_renderer</span>(),</span>
-<span id="cb20-428"><a href="#cb20-428" aria-hidden="true" tabindex="-1"></a>          <span class="at">height =</span> <span class="dv">1080</span>,</span>
-<span id="cb20-429"><a href="#cb20-429" aria-hidden="true" tabindex="-1"></a>          <span class="at">width =</span> <span class="dv">1080</span>,</span>
-<span id="cb20-430"><a href="#cb20-430" aria-hidden="true" tabindex="-1"></a>          <span class="at">units =</span> <span class="st">'px'</span>,</span>
-<span id="cb20-431"><a href="#cb20-431" aria-hidden="true" tabindex="-1"></a>          <span class="at">res =</span> <span class="dv">150</span>)</span>
-<span id="cb20-432"><a href="#cb20-432" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-433"><a href="#cb20-433" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-434"><a href="#cb20-434" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-435"><a href="#cb20-435" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reflexiones finales</span></span>
-<span id="cb20-436"><a href="#cb20-436" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-437"><a href="#cb20-437" aria-hidden="true" tabindex="-1"></a>Cerramos esta entrega comentando los resultados que hemos obtenido. Primero, nuestro gráfico. Es evidente que el uso de pirámides de población es un recurso muy útil para la demografía. Y el paquete ggplot2 y sus extensiones no fallan para componer una pieza visual clara y atractiva. Quienes ya hayan utilizado ggplot2 sabrán que, aunque al inicio pueda parecer complejo, la lógica de capas (o layers) hace mucho sentido y facilita la creación de los gráficos parte por parte. Definir aspectos a priori simples como el color de las barras, o ajustar específicamente las marcas de los ejes, dan cuenta de los detalles que podemos manejar. Son características que marcan la diferencia entre una imagen genérica, sin cariño (te pienso gráfico estándar de Excel) y una pieza de visualización de datos de la que podamos estar orgullosos y presumir.</span>
-<span id="cb20-438"><a href="#cb20-438" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-439"><a href="#cb20-439" aria-hidden="true" tabindex="-1"></a>Junto con ello, pudimos ver la flexiblidad y variedad de opciones que ofrece el paquete. Por un lado, nuestro primer gráfico en formato grilla nos permite ver en una pasada todas las pirámides y comparar claramente las transformaciones demográficas. Con un estilo sobrio y serio, es un gráfico que podríamos incluir sin problemas en una publicación, artículo académico, u otro similar. Por otro, la pirámide de población animada tiene un estilo llamativo y muy ilustrativo, ya que poner en movimiento una imagen ayuda a mostrar cambios. Especialmente cuando se trata del paso del tiempo, mostrar las transiciones con gganimate es muy potente. De esta forma, un gráfico animado es perfecto para publicar en redes sociales, blogs o sitios de internet (como este).</span>
-<span id="cb20-440"><a href="#cb20-440" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-441"><a href="#cb20-441" aria-hidden="true" tabindex="-1"></a>En términos demográficos, la forma de las pirámides de población muestra claramente el cambio en la composición de la población chilena. Pasamos de una "pirámide" con una base muy marcada, con una forma triangular, a una "campana", que se achica en su base y se expande en el medio. En 1970 aproximadamente un tercio de la población tenía 15 años o menos. En 2017 el grupo etario más numeroso fue el de 25-29 años, y en 2024 fue el de 30-34. Es decir, estamos evidenciando un desplazamiento del grueso de la población mayoritaria desde la infancia a la adultez. Junto con ello, observamos como los tramos asociados a adultos mayores (+60 años) han aumentado porcentualmente, producto de una mayor esperanza de vida.</span>
-<span id="cb20-442"><a href="#cb20-442" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-443"><a href="#cb20-443" aria-hidden="true" tabindex="-1"></a>Esto es coherente con lo planteado por la teoría de la transición demográfica. Comparando el esquema con lo observado en la realidad chilena, vemos que nuestro país está en un escenario intermedio entre la fase 3 y 4. El aumento de la población que vimos durante la segunda mitad del siglo XX se está frenando, la natalidad y mortalidad vienen disminuyendo, aunque a un ritmo menor que en otros años.</span>
-<span id="cb20-444"><a href="#cb20-444" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-445"><a href="#cb20-445" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Indicador                                            <span class="pp">|</span> 1970 <span class="pp">|</span> 2022 <span class="pp">|</span></span>
-<span id="cb20-446"><a href="#cb20-446" aria-hidden="true" tabindex="-1"></a><span class="pp">|------------------------------------------------------|:----:|:----:|</span></span>
-<span id="cb20-447"><a href="#cb20-447" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Tasa de natalidad, bruta (por cada 1.000 personas)   <span class="pp">|</span>  29  <span class="pp">|</span>  12  <span class="pp">|</span></span>
-<span id="cb20-448"><a href="#cb20-448" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Tasa de mortalidad, bruta (por cada 1.000 personas)  <span class="pp">|</span>  8   <span class="pp">|</span>  7   <span class="pp">|</span></span>
-<span id="cb20-449"><a href="#cb20-449" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Esperanza de vida al nacer, total (años)             <span class="pp">|</span>  62  <span class="pp">|</span>  80  <span class="pp">|</span></span>
-<span id="cb20-450"><a href="#cb20-450" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-451"><a href="#cb20-451" aria-hidden="true" tabindex="-1"></a>: Indicadores demográficos de Chile. Fuente: <span class="co">[</span><span class="ot">Datos del Banco Mundial</span><span class="co">](https://datos.bancomundial.org)</span></span>
-<span id="cb20-452"><a href="#cb20-452" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-453"><a href="#cb20-453" aria-hidden="true" tabindex="-1"></a>En conclusión, los desafíos de la transición demográfica son múltiples. Chile, al igual que otros países, está en la encrucijada de cómo enfrentar este escenario. No se trata solo de cuántas personas hay sino de cómo esas personas viven, se desarrollan y se relacionan con su entorno y sociedad. Tareas pendientes aparecen en todas las materias de acción pública. Los datos deben estar disponibles para entender de la mejor manera nuestra realidad y entregar pistas de cómo conducir las propuestas y soluciones. </span>
+<span id="cb20-404"><a href="#cb20-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-405"><a href="#cb20-405" aria-hidden="true" tabindex="-1"></a>anim_final</span>
+<span id="cb20-406"><a href="#cb20-406" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-407"><a href="#cb20-407" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-408"><a href="#cb20-408" aria-hidden="true" tabindex="-1"></a>*Y... ¡voilà!*, lista nuestro gráfico animado con las pirámides de población de los últimos censos de Chile. Siempre se puede hacer algo más, pero el resultado es más que aceptable y lo dejaremos hasta aquí. Y para poder compartirlo con el mundo podemos exportarlo en formato .gif como imagen animada, o como video.</span>
+<span id="cb20-409"><a href="#cb20-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-412"><a href="#cb20-412" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-413"><a href="#cb20-413" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb20-414"><a href="#cb20-414" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-415"><a href="#cb20-415" aria-hidden="true" tabindex="-1"></a><span class="co">#Agrego algunos argumentos extra para mejorar la calidad de la salida</span></span>
+<span id="cb20-416"><a href="#cb20-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-417"><a href="#cb20-417" aria-hidden="true" tabindex="-1"></a><span class="co">#GIF: predeterminado</span></span>
+<span id="cb20-418"><a href="#cb20-418" aria-hidden="true" tabindex="-1"></a><span class="fu">anim_save</span>(<span class="at">filename =</span> <span class="st">"piramide_poblacion_chile.gif"</span>,</span>
+<span id="cb20-419"><a href="#cb20-419" aria-hidden="true" tabindex="-1"></a>          <span class="at">animation =</span> anim_final,</span>
+<span id="cb20-420"><a href="#cb20-420" aria-hidden="true" tabindex="-1"></a>          <span class="at">height =</span> <span class="dv">1080</span>, <span class="co">#Extra</span></span>
+<span id="cb20-421"><a href="#cb20-421" aria-hidden="true" tabindex="-1"></a>          <span class="at">width =</span> <span class="dv">1080</span>,</span>
+<span id="cb20-422"><a href="#cb20-422" aria-hidden="true" tabindex="-1"></a>          <span class="at">units =</span> <span class="st">'px'</span>,</span>
+<span id="cb20-423"><a href="#cb20-423" aria-hidden="true" tabindex="-1"></a>          <span class="at">res =</span> <span class="dv">150</span>)</span>
+<span id="cb20-424"><a href="#cb20-424" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-425"><a href="#cb20-425" aria-hidden="true" tabindex="-1"></a><span class="co">#MP4: exportar como video</span></span>
+<span id="cb20-426"><a href="#cb20-426" aria-hidden="true" tabindex="-1"></a><span class="fu">anim_save</span>(<span class="at">filename =</span> <span class="st">"piramide_poblacion_chile.mp4"</span>,</span>
+<span id="cb20-427"><a href="#cb20-427" aria-hidden="true" tabindex="-1"></a>          <span class="at">animation =</span> anim_final,</span>
+<span id="cb20-428"><a href="#cb20-428" aria-hidden="true" tabindex="-1"></a>          <span class="at">renderer =</span> <span class="fu">av_renderer</span>(),</span>
+<span id="cb20-429"><a href="#cb20-429" aria-hidden="true" tabindex="-1"></a>          <span class="at">height =</span> <span class="dv">1080</span>,</span>
+<span id="cb20-430"><a href="#cb20-430" aria-hidden="true" tabindex="-1"></a>          <span class="at">width =</span> <span class="dv">1080</span>,</span>
+<span id="cb20-431"><a href="#cb20-431" aria-hidden="true" tabindex="-1"></a>          <span class="at">units =</span> <span class="st">'px'</span>,</span>
+<span id="cb20-432"><a href="#cb20-432" aria-hidden="true" tabindex="-1"></a>          <span class="at">res =</span> <span class="dv">150</span>)</span>
+<span id="cb20-433"><a href="#cb20-433" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-434"><a href="#cb20-434" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-435"><a href="#cb20-435" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-436"><a href="#cb20-436" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reflexiones finales</span></span>
+<span id="cb20-437"><a href="#cb20-437" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-438"><a href="#cb20-438" aria-hidden="true" tabindex="-1"></a>Cerramos esta entrega comentando los resultados que hemos obtenido. Primero, nuestro gráfico. Es evidente que el uso de pirámides de población es un recurso muy útil para la demografía. Y el paquete ggplot2 y sus extensiones no fallan para componer una pieza visual clara y atractiva. Quienes ya hayan utilizado ggplot2 sabrán que, aunque al inicio pueda parecer complejo, la lógica de capas (o layers) hace mucho sentido y facilita la creación de los gráficos parte por parte. Definir aspectos a priori simples como el color de las barras, o ajustar específicamente las marcas de los ejes, dan cuenta de los detalles que podemos manejar. Son características que marcan la diferencia entre una imagen genérica, sin cariño (te pienso gráfico estándar de Excel) y una pieza de visualización de datos de la que podamos estar orgullosos y presumir.</span>
+<span id="cb20-439"><a href="#cb20-439" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-440"><a href="#cb20-440" aria-hidden="true" tabindex="-1"></a>Junto con ello, pudimos ver la flexiblidad y variedad de opciones que ofrece el paquete. Por un lado, nuestro primer gráfico en formato grilla nos permite ver en una pasada todas las pirámides y comparar claramente las transformaciones demográficas. Con un estilo sobrio y serio, es un gráfico que podríamos incluir sin problemas en una publicación, artículo académico, u otro similar. Por otro, la pirámide de población animada tiene un estilo llamativo y muy ilustrativo, ya que poner en movimiento una imagen ayuda a mostrar cambios. Especialmente cuando se trata del paso del tiempo, mostrar las transiciones con gganimate es muy potente. De esta forma, un gráfico animado es perfecto para publicar en redes sociales, blogs o sitios de internet (como este).</span>
+<span id="cb20-441"><a href="#cb20-441" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-442"><a href="#cb20-442" aria-hidden="true" tabindex="-1"></a>En términos demográficos, la forma de las pirámides de población muestra claramente el cambio en la composición de la población chilena. Pasamos de una "pirámide" con una base muy marcada, con una forma triangular, a una "campana", que se achica en su base y se expande en el medio. En 1970 aproximadamente un tercio de la población tenía 15 años o menos. En 2017 el grupo etario más numeroso fue el de 25-29 años, y en 2024 fue el de 30-34. Es decir, estamos evidenciando un desplazamiento del grueso de la población mayoritaria desde la infancia a la adultez. Junto con ello, observamos como los tramos asociados a adultos mayores (+60 años) han aumentado porcentualmente, producto de una mayor esperanza de vida.</span>
+<span id="cb20-443"><a href="#cb20-443" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-444"><a href="#cb20-444" aria-hidden="true" tabindex="-1"></a>Esto es coherente con lo planteado por la teoría de la transición demográfica. Comparando el esquema con lo observado en la realidad chilena, vemos que nuestro país está en un escenario intermedio entre la fase 3 y 4. El aumento de la población que vimos durante la segunda mitad del siglo XX se está frenando, la natalidad y mortalidad vienen disminuyendo, aunque a un ritmo menor que en otros años.</span>
+<span id="cb20-445"><a href="#cb20-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-446"><a href="#cb20-446" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Indicador                                            <span class="pp">|</span> 1970 <span class="pp">|</span> 2022 <span class="pp">|</span></span>
+<span id="cb20-447"><a href="#cb20-447" aria-hidden="true" tabindex="-1"></a><span class="pp">|------------------------------------------------------|:----:|:----:|</span></span>
+<span id="cb20-448"><a href="#cb20-448" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Tasa de natalidad, bruta (por cada 1.000 personas)   <span class="pp">|</span>  29  <span class="pp">|</span>  12  <span class="pp">|</span></span>
+<span id="cb20-449"><a href="#cb20-449" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Tasa de mortalidad, bruta (por cada 1.000 personas)  <span class="pp">|</span>  8   <span class="pp">|</span>  7   <span class="pp">|</span></span>
+<span id="cb20-450"><a href="#cb20-450" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Esperanza de vida al nacer, total (años)             <span class="pp">|</span>  62  <span class="pp">|</span>  80  <span class="pp">|</span></span>
+<span id="cb20-451"><a href="#cb20-451" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-452"><a href="#cb20-452" aria-hidden="true" tabindex="-1"></a>: Indicadores demográficos de Chile. Fuente: <span class="co">[</span><span class="ot">Datos del Banco Mundial</span><span class="co">](https://datos.bancomundial.org)</span></span>
+<span id="cb20-453"><a href="#cb20-453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-454"><a href="#cb20-454" aria-hidden="true" tabindex="-1"></a>En conclusión, los desafíos de la transición demográfica son múltiples. Chile, al igual que otros países, está en la encrucijada de cómo enfrentar este escenario. No se trata solo de cuántas personas hay sino de cómo esas personas viven, se desarrollan y se relacionan con su entorno y sociedad. Tareas pendientes aparecen en todas las materias de acción pública. Los datos deben estar disponibles para entender de la mejor manera nuestra realidad y entregar pistas de cómo conducir las propuestas y soluciones. </span>
 </code><button title="Copiar al portapapeles" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
