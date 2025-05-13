@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.29">
+<meta name="generator" content="quarto-1.7.30">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -38,9 +38,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-748b535e376f14d4692bf2b2e5fd6380.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2b3e328b71be8d25427581baeb23079b.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-ab14cbdfe222e08d4b74e4ce87900e6a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -236,6 +236,7 @@ ul.task-list li input[type="checkbox"] {
       toggleColorMode(toAlternate);
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
     };
     // Switch to dark mode if need be
     if (hasAlternateSentinel()) {
@@ -352,6 +353,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#ofimática" id="toc-ofimática" class="nav-link" data-scroll-target="#ofimática">Ofimática</a></li>
   <li><a href="#análisis-de-datos-cuantitativos-y-estadística" id="toc-análisis-de-datos-cuantitativos-y-estadística" class="nav-link" data-scroll-target="#análisis-de-datos-cuantitativos-y-estadística">Análisis de datos cuantitativos y estadística</a></li>
   <li><a href="#análisis-de-datos-cualitativos" id="toc-análisis-de-datos-cualitativos" class="nav-link" data-scroll-target="#análisis-de-datos-cualitativos">Análisis de datos cualitativos</a></li>
+  <li><a href="#gestores-bibliográficos" id="toc-gestores-bibliográficos" class="nav-link" data-scroll-target="#gestores-bibliográficos">Gestores bibliográficos</a></li>
   <li><a href="#mis-aplicaciones-diarias" id="toc-mis-aplicaciones-diarias" class="nav-link" data-scroll-target="#mis-aplicaciones-diarias">Mis aplicaciones diarias</a></li>
   <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen">Resumen</a></li>
   </ul>
@@ -430,13 +432,17 @@ Figura&nbsp;1: Sistema operativo libre: Linux
 </section>
 <section id="ofimática" class="level2">
 <h2 class="anchored" data-anchor-id="ofimática">Ofimática</h2>
-<p><strong>Versión privativa</strong>: en este ámiboto nuevamente el reinado lo tiene Microsoft con Office, la famosa suite de ofimática, No mucho que decir más que la gran mayoría de las personas no paga licencia y termina cayendo en activadores que ponen en riesgo la seguridad informática. También tenemos la suite de Google con Docs, Sheets, Slides entre otros.</p>
+<p><strong>Versión privativa</strong>: en este ámboto nuevamente el reinado lo tiene Microsoft con Office, la famosa suite de ofimática, No mucho que decir más que la gran mayoría de las personas no paga licencia y termina cayendo en activadores que ponen en riesgo la seguridad informática. También tenemos la suite de Google con Docs, Sheets, Slides entre otros.</p>
 <p><strong>Alternativa libre</strong>: la suite <strong>Libre Office</strong> es, a mi juicio, la mejor opción en materia de ofimática. Contiene un procesador de texto (Writer), hojas de cálculo (Calc), creador de presentaciones (Impress), entre otros, muy similar a los programas de Office. Su interfaz es muy versátil, pudiendo incluso imitar la distribución de botones y menús de Office. Puede mejorarse con temas, complementos, entre otros. Yo personalmente he usado mucho sus herramientas de creación de expresiones matemáticas para cursos de estadística. Cuenta con sus propios formatos de archivos, pero es totalmente compatible con los usados en Office. Por ejemplo, puedo abrir, editar y guardar cualquier archivo de texto en .docx, a pesar que el formato por defecto en Writer es .odt.</p>
 <p>Comparado con Office, creo que las únicas debilidades son las fuentes y tipografía, y la colaboración en línea. Respecto a lo primero, es una cuestión inherente al uso de Linux, pero si se usa en Windows no debiera haber complicación. La colaboración en línea, una función de Office en empresas y organizaciones, no existe en LibreOffice, pero es entendible en tanto ese tipo de tecnología depende de servidores e infraestructura tecnológica que no puede ofrecer The Document Fundation, la organización detrás de este software.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Libre_office.png.png" class="img-fluid figure-img"></p>
-<figcaption>Libre Office</figcaption>
+<div id="fig-office" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-office-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Libre_office.png.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-office-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Libre Office es la alternativa recomendada a Microsoft Office
+</figcaption>
 </figure>
 </div>
 </section>
@@ -481,20 +487,70 @@ Figura&nbsp;1: Sistema operativo libre: Linux
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-stat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;2: Herramientas para análisis cuantitativo
+Figura&nbsp;3: Herramientas para análisis cuantitativo
 </figcaption>
 </figure>
 </div>
 </section>
 <section id="análisis-de-datos-cualitativos" class="level2">
 <h2 class="anchored" data-anchor-id="análisis-de-datos-cualitativos">Análisis de datos cualitativos</h2>
-<p><strong>Versión privativa</strong>:</p>
+<p><strong>Versión privativa</strong>: en el análisis de datos cualitativos encontramos el punto más débil del software libre, debemos reconocerlo. Los CAQDAS (del inglés <em>Computer Assisted/Aided Qualitative Data Analysis Software</em>) o simplemente <strong>programa/software para el análisis cualitativo asistido por computador</strong> tienen una oferta diversa, sin embargo, las aplicaciones privativas que reinan este campo son Atlas.ti y Nvivo. Ambas con una interfaz de usuario similar, sirven como repositorio de documentos, imágenes, audio y video, donde podemos codificar libremente y organizar nuestra investigación cualitativa con memos, notas, entre otros. Al ser un campo con pocas alternativas, las licencias de estos programas son carísimas y poco accesibles. Por mientras, podemos intentar ampliar nuestro horizonte con las siguientes opciones.</p>
+<p><strong>Alternativas libres</strong>: una de las principales tareas básicas de cualquier CAQDAS es la codificación de material, ya sea texto, imágenes, audiovisual, etc. Junto con ello, vincular la codificación, relacionar los hallazgos es importante, sobre todo en enfoques como el de la teoría fundamentada. Para ello, hay varios programas, aquí te traigo dos.</p>
+<p>El primero es <strong>Taguette</strong>, un software desarrollado bajo una licencia libre para ofrecer una alternativa open source para el análisis cualitativo. Permite crear “tags” sobre texto en diferentes formatos, resaltar las citas asociadas, vincularlas entre documentos. Permite el trabajo colaborativo en su versión online o server, y tiene alternativas para exportar reportes de la codificación. Puede ejecutarse online o en local usando Python y el programa de libros electrónicos Calibre.</p>
+<p>El segundo programa es <strong>Requal</strong>, una interfaz desarrollada con R y Shiny, que permite cargar documentos de texto, crear códigos/nodos/etiquetas y asociarlos a citas, identificarlas con colores. Cuenta con herramientas de análisis para vincular los códigos y un apartado de reportes donde generar consultas sobre nuestro trabajo. La desventaja es que solo trabaja con texto plano (.txt).</p>
+<p>En otro plano más avanzado, la investigación cualitativa contemporánea está integrando cada vez más las herramientas computacionales. En ese sentido, las técnicas de <strong>Procesamiento de Lenguaje Natural</strong> (NLP, por sus siglas en inglés) son un gran complemento para las perspectivas tradicionales. Aquí encontramos nuevas técnicas como el análisis de sentimiento, el análisis temático, el reconocimiento de entidades o de relaciones, las que se han potenciado con la Inteligencia Artificial. Esto da para un artículo entero, pero solo mencionaré que <strong>Python</strong> es la herramienta más apropiada para este tipo de tareas.</p>
+<div id="fig-qual" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-qual-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/taguette.png" class="img-fluid figure-img"></p>
+<figcaption>Taguette</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/requal.png" class="img-fluid figure-img"></p>
+<figcaption>Requal</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qual-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Herramientas para análisis cualitativo
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="gestores-bibliográficos" class="level2">
+<h2 class="anchored" data-anchor-id="gestores-bibliográficos">Gestores bibliográficos</h2>
+<p>Cuando se realiza investigación, ya sea como estudiante de pregrado, como académico o profesional, el uso de referencias blibliográficas es clave. Sin un gestor bibliográfico adecuado, la tarea de ordenar citas, obras y autores, junto con los poco apreciados sistemas de citas como APA, se puede convertir en una pesadilla. Por ello tenemos programas que nos facilitan la vida.</p>
+<p><strong>Versión privativa</strong>: uno de los clásicos gestores bibliográficos propietarios es Mendeley. Combina dos aplicaciones, una versión web que con complementos permite navegar por la web, y su versión desktop donde se puede ordenar y gestionar cualqueir colección de citas, junto con un lector de pdf. Adquirido por el grupo editorial Elsevier, uno de los más grandes en el mundo de la producción científica. Es un excelente ejemplo del “freeware”: es gratis pero todas las decisiones del programa las toma el grupo Elsevier, empresa monopolista en el ámbito editorial.</p>
+<p><strong>Alternatica libre</strong>: dentro de las diferentes opciones libres, creo que <strong>Zotero</strong> destaca por sobre el resto. Nacido como un complemento para el navegador Firefox, este programa hoy tiene su propia versión de escritorio, con lector de pdf, herramientas para reconocer automáticamente la información de artículos desde la web, y la posibilidad de compartir repositorios bibliográficos con colaboradores. Tiene lo mejor de las alternativas de pago pero de forma abierta y libre. Una tremenda opción para investigadores/as de todas las áreas.</p>
+<div id="fig-biblio" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-biblio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/zotero.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-biblio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Zotero es la mejor opción libre para la gestión bibliográfica
+</figcaption>
+</figure>
+</div>
 </section>
 <section id="mis-aplicaciones-diarias" class="level2">
 <h2 class="anchored" data-anchor-id="mis-aplicaciones-diarias">Mis aplicaciones diarias</h2>
+<p>Antes de terminar, les quiero compartir cómo uso mis recursos computacionales en mi día a día. Primero, uso mi computador con un sistema operativo Linux, específicamente Arch Linux con un Gestor de Ventanas de mosaico (tilling windows manager) llamado Hyprland, aunque he usado también Ambientes de Escritorio como KDE. Para ofimática me quedé con Libre Office, soy un fanático de sus programas. Profesionalmente trabajo como analista de datos, y como hobbie también hago análisis de datos, por lo que mi herramienta fundamental es R y Rstudio desde hace unos cuatro años. Lentamente estoy incluyendo los IDEs que mencioné, y trato de mantenerme fresco con mis conocimientos básicos de Python. Navego en internet con Firefox (a pesar de la polémica que atraviesa). Y cuando he investigado, Zotero me ha acompañado siempre.</p>
 </section>
 <section id="resumen" class="level2">
 <h2 class="anchored" data-anchor-id="resumen">Resumen</h2>
+<p>A modo de conclusión, quiero transmitir el mensaje de que es posible utilizar la tecnología de otra forma. La computación es clave desde hace años, la tenemos incorporada en nuestro día a día. Pero también creo que la manera en que la utilizamos no es neutra. La elección de qué programas, qué proyectos apoyamos y cómo nos relacionamos a través de ellos es una decisión grande que también dice mucho de cómo entendemos el mundo. Por eso este post es un llamado explícito a apoyar lo más posible las iniciativas <em>free and open-source</em>. Mientras más usamos estas herramientas ganamos soberanía sobre nuestro recursos y datos, y fortalecemos una mirada colectiva, solidaria y comunitaria en la tecnología.</p>
+<p>Finalmente, una tabla resumen con los programas que revisamos en este artículo. ¿Crees que falta alguno? ¿Hay otro tipo de software que usas y crees que hay opciones fuera del mundo privativo? ¡Conversemos!</p>
 <div class="table-responsive">
 <table class="caption-top table">
 <caption>Resumen del software privativo y sus alternativas libres y open source</caption>
@@ -532,11 +588,6 @@ Figura&nbsp;2: Herramientas para análisis cuantitativo
 <td>Rqual, Taguette, Python</td>
 </tr>
 <tr class="odd">
-<td>Gestor de notas</td>
-<td>OneNote, Notion, Evernote, Obsidian</td>
-<td>Loqseq</td>
-</tr>
-<tr class="even">
 <td>Gestor bibliográfico</td>
 <td>Mendeley</td>
 <td>Zotero</td>
