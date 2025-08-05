@@ -4,7 +4,7 @@
     "href": "tidytuesday.html",
     "title": "Participación en Tidy Tuesday",
     "section": "",
-    "text": "En construcción.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPost 1\n\n\n \n\n\ntidytuesday\n\n\n \n\n\n\n\n\n14 mar 2025\nBenjamín Adasme Jara\n\n\n\n\n\n\n\nNo hay resultados"
+    "text": "En construcción.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPost 1\n\n\n\ntidytuesday\n\n\n\n\n\n\n\n\n\n14 mar 2025\n\n\nBenjamín Adasme Jara\n\n\n\n\n\nNo hay resultados"
   },
   {
     "objectID": "about.html",
@@ -12,6 +12,97 @@
     "title": "Acerca de mí",
     "section": "",
     "text": "Soy sociólogo, egresado en 2019 de la Universidad Católica del Maule. Me dedico al análisis de datos en territorio y educación.\nTrabajo desde hace tres años al lenguaje de programación R, lo que me ha permitido iniciarme en la ciencia de datos de forma autónoma. Actualmente estoy desarrollando proyectos iniciales en Python.\nTengo experiencia en investigación y docencia académica, cargos de gestión profesional, en proyectos de consultoría y organizaciones sin fines de lucro.\nSoy parte de Consultora Nueva Estrategia, empresa maulina dedicada a la asesoría en el análisis de datos cuantitativos, con enfoque en el territorio.\nAficionado y entusiasta de Linux y el software libre/open source."
+  },
+  {
+    "objectID": "posts/foss-software1/index.html",
+    "href": "posts/foss-software1/index.html",
+    "title": "Guía del software libre para las CCSS",
+    "section": "",
+    "text": "Pagar o no pagar, he ahí el dilema. Aunque siendo realistas sería Piratear o no piratear.\nLas computadoras personales se han convertido en la herramienta de trabajo por defecto en la gran mayoría de los ámbitos intelectuales, y las ciencias sociales no son la excepción. Hoy nos cuesta imaginar cómo en el pasado nuestros colegas analizaron encuestas sin computadoras o usando solo el precario equipo disponible en alguna universidad, o cómo las grabaciones de entrevistas y grupos focales se hacían en cassette y se transcribían lentamente a mano. Esto que nos parece tan lejano y complejo es parte del pasado gracias al uso masivo de los computadores personales.\nSin embargo, esta herramienta maravillosa tiene sus límites. Tanto en el hardware como en el software, esto tiene costos. Y aunque una PC hoy es más accesible que hace 20 años atrás, aún tenemos limitaciones. Más aún cuando debemos acceder a software específico para cumplir una tarea, y solo tenemos opciones de pago.\nY aunque esto es cierto, tengo una buena noticia para ti: es posible utilizar software sin pagar, de forma segura, transparente y abierta. Te presento al software libre."
+  },
+  {
+    "objectID": "posts/foss-software1/index.html#qué-es-el-software-libre",
+    "href": "posts/foss-software1/index.html#qué-es-el-software-libre",
+    "title": "Guía del software libre para las CCSS",
+    "section": "¿Qué es el software libre?",
+    "text": "¿Qué es el software libre?\nImagina que un día tu auto se avería. No sabes que sucede. Lo lógico es que con algún conocimiento de mecánica puedas abrir el capot e investigar. Pero cuando lo intentas abrir sucede que necesitas una llave especial, única, que solo tiene el fabricante. Nadie puede abrirlo, ni tu vecino que te ayuda siempre, ni el mecánico de tu ciudad, solo lo pueden arreglar en la misma fábrica de origen. Eso es lo que pasa con el software privativo, no tienes control sobre lo que sucede con tus programas ni tampoco sabes qué hacen detrás.\nAlgo así fue lo que le pasó a Richard Stallman en los años ’80, un informático estadounidense, cuando quiso crear un driver para una impresora. Quiso entender cómo funcionaba, pero para su sorpresa le negaron el acceso a toda información sobre el aparato. Desde esos días que se ha dedicado a fomentar la apertura y transparencia en la informática como un principio fundamental en la tecnología, promoviendo la creación y uso del software libre.\nEl software libre es la traducción del concepto “free software”. La palabra free en inglés puede significar tanto gratis como libre. Acá usamos el sentido “libre” de la palabra, pues hablamos de software que se puede crear, modificar y distribuir sin ninguna limitación. Y esto lo diferencia del software gratuito, ya que todo el software libre es gratis, pero no todo el software gratis es libre. Por ejemplo, una empresa nos ofrece de forma gratuita su programa, en su versión básica, pero no puedes saber cómo opera ese software, qué hace ni tampoco puedes modificarlo o redistribuirlo. En este caso es un programa gratis pero no libre.\nPodríamos profundizar más en esto (quizás en otra entrada) pero el propósito de este post es ofrecer algunas alternativas de software para aquellas necesidades de estudiantes universitarios, académicos o profesionales de las ciencias sociales y disciplinas afines, principalmente para equipos de escritorio.\n\n\n\nRichard Stallman, impulsor del software libre y fundador de la Free Software Foundation"
+  },
+  {
+    "objectID": "posts/foss-software1/index.html#sistemas-operativos",
+    "href": "posts/foss-software1/index.html#sistemas-operativos",
+    "title": "Guía del software libre para las CCSS",
+    "section": "Sistemas operativos",
+    "text": "Sistemas operativos\nPartimos esta guía con la base de cualquier software. No hay programas sin sistema operativo. Y aunque corresponde a una categoría aparte, solo diré que en el sentido actual del concepto el sistema operativo abarca desde el manejo y asignación de recursos del sistema hasta la interfaz gráfica del usuario.\nVersión privativa: En el mundo privativo tenemos como gran dominador a Microsoft Windows, que desde los años ’80 viene monopolizando este mercado. Aun con todas las críticas que tiene (es pesado, ineficiente, te obliga a crear cuentas y roba tu información como usuario, entre otras tantas), sigue siendo el más usado. Detrás tenemos a OSX, el sistema operativo de los computadores Apple, que sin ser masivo logra abarcar un nicho importante de consumidores.\nAlternativa libre: el sistema operativo Linux es la alternativa a los sistemas privativos. Libre, de código abierto, creado por Linus Torvalds en 1991, no es la opción más popular en escritorio, pero sí lo es en servidores y similares. Linux está disponible en diferentes distribuciones, que incorporan el kernel y otras utilidades para hacer un sistema completo. Entre las más populares encontramos Ubuntu, Debian, OpenSuse, Linux Mint, Arch Linux, entre otros. De los mencionados, recomiendo personalmente Linux Mint como la distribución más amigable con nuevos usuarios.\n\n\n\n\n\n\nNota\n\n\n\nSi bien recomiendo el uso de distribuciones Linux, los programas que se incluyen a continuación pueden ejecutarse en otros sistemas operativos, no siendo requisito un cambio de SO para usarlos.\n\n\n\n\n\n\n\n\n\n\nTux, la mascota de Linux\n\n\n\n\n\n\n\nLinux Mint, distribución de Linux amigable para nuevos usuarios\n\n\n\n\n\n\nFigura 1: Sistema operativo libre: Linux"
+  },
+  {
+    "objectID": "posts/foss-software1/index.html#ofimática",
+    "href": "posts/foss-software1/index.html#ofimática",
+    "title": "Guía del software libre para las CCSS",
+    "section": "Ofimática",
+    "text": "Ofimática\nVersión privativa: en este ámboto nuevamente el reinado lo tiene Microsoft con Office, la famosa suite de ofimática, No mucho que decir más que la gran mayoría de las personas no paga licencia y termina cayendo en activadores que ponen en riesgo la seguridad informática. También tenemos la suite de Google con Docs, Sheets, Slides entre otros.\nAlternativa libre: la suite Libre Office es, a mi juicio, la mejor opción en materia de ofimática. Contiene un procesador de texto (Writer), hojas de cálculo (Calc), creador de presentaciones (Impress), entre otros, muy similar a los programas de Office. Su interfaz es muy versátil, pudiendo incluso imitar la distribución de botones y menús de Office. Puede mejorarse con temas, complementos, entre otros. Yo personalmente he usado mucho sus herramientas de creación de expresiones matemáticas para cursos de estadística. Cuenta con sus propios formatos de archivos, pero es totalmente compatible con los usados en Office. Por ejemplo, puedo abrir, editar y guardar cualquier archivo de texto en .docx, a pesar que el formato por defecto en Writer es .odt.\nComparado con Office, creo que las únicas debilidades son las fuentes y tipografía, y la colaboración en línea. Respecto a lo primero, es una cuestión inherente al uso de Linux, pero si se usa en Windows no debiera haber complicación. La colaboración en línea, una función de Office en empresas y organizaciones, no existe en LibreOffice, pero es entendible en tanto ese tipo de tecnología depende de servidores e infraestructura tecnológica que no puede ofrecer The Document Fundation, la organización detrás de este software.\n\n\n\nLibre Office"
+  },
+  {
+    "objectID": "posts/foss-software1/index.html#análisis-de-datos-cuantitativos-y-estadística",
+    "href": "posts/foss-software1/index.html#análisis-de-datos-cuantitativos-y-estadística",
+    "title": "Guía del software libre para las CCSS",
+    "section": "Análisis de datos cuantitativos y estadística",
+    "text": "Análisis de datos cuantitativos y estadística\nVersión privativa: en el ámbito de la estadística, las opciones tradicionales parten con Microsoft Excel, que tiene las herramientas básicas para análisis estadístico. Luego tenemos los dos programas que dominan la estadística computacional: SPSS y Stata. El primero, muy popular en las ciencias sociales, mientras que el segundo es el estándar en economía. Como buen programa de pago, jamás usé alguno de forma legal, salvo en el laboratorio de computación de la universidad (SPSS se cerraba cuando se abría en demasiados computadores). Como bien se mencionó, los riesgos de los programas pirata son altos. Además, tienen sistemas de pago por “planes”: el programa base tiene un costo, pero ciertas funciones vienen en paquetes extra que se pagan aparte. Junto con ello, son programas estáticos, no modificables, lo que los limita.\nAlternativas libres: las alternativas en análisis estadístico son varias y depende de cómo quiereas usar el software. Si te gusta trabajar con una interfaz gráfica al estilo SPSS, jamovi es el programa para ti. Basado en R, tiene una apariencia muy sencilla, donde podemos cargar datos o crearlos en una planilla, manejar nuestras variables, ejecutar análisis estadístico descriptivo o inferencial, crear gráficos básicos, etc. Además se pueden agregar funciones extra con complementos.\nSi quieres llevar tus habilidades analíticas un paso más allá, la respuesta es lenguajes de programación. Es un concepto con el que los científicos sociales normalmente no estamos familiarizados, pero que aprenderlo implica una gran ventaja en términos prácticos, para manejar mejor nuestros datos, pero también en términos mentales, pues programar requiere de mucha lógica y razonamiento, ejercicios muy sanos para nuestros cerebros.\nEn particular, las recomendaciones son dos: R y Python. Por un lado, R es un lenguaje de programación pensado en la estadística. Cuenta con un funciones base para gran parte de las tareas estadísticas. Tiene un repositorio amplio de paquetes para incluir otras funcionalidades. Y sobre todo, cuenta con tidyverse, la suite de ciencia de datos desarrollada por Posit.\nPor otro lado tenemos a Python, la navaja suiza de la programación. A diferencia de R, Python es un lenguaje muy versátil que sirve tanto para la ciencia de datos y machine learning como para crear aplicaciones varios. Para análisis de datos los paquetes clásicos son numpy (funciones matemáticas y estadísticas), pandas (manipulación de datos) y matplotlib (gráficos).\nTanto R como Python son más fáciles de usar en un Entorno Integrado de Desarrollo (IDE, por sus siglas en inglés), programas que nos ayudan a usar los lenguajes de forma más amigable. Aquí tenemos a RStudio para R, y Positron, para R y Python, ambos desarrollados por Posit. Tenemos también a VSCode que, aunque es desarrollado por Microsoft, tiene versiones libres de telemetría y monitoreo del demonio de Bill Gates.\n\n\n\n\n\n\n\n\nPython y R\n\n\n\n\n\n\n\nPositron IDE\n\n\n\n\n\n\n\n\n\nJamovi\n\n\n\n\n\n\nFigura 2: Herramientas para análisis cuantitativo"
+  },
+  {
+    "objectID": "posts/foss-software1/index.html#análisis-de-datos-cualitativos",
+    "href": "posts/foss-software1/index.html#análisis-de-datos-cualitativos",
+    "title": "Guía del software libre para las CCSS",
+    "section": "Análisis de datos cualitativos",
+    "text": "Análisis de datos cualitativos\nVersión privativa: en el análisis de datos cualitativos encontramos el punto más débil del software libre, debemos reconocerlo. Las aplicaciones privativas que reinan este campo son Atlas.ti y Nvivo. Ambas con una interfaz de usuario similar, sirven como repositorio de documentos, imágenes, audio y video, donde podemos codificar libremente y organizar nuestra investigación cualitativa con memos, notas, entre otros. Al ser un campo con pocas alternativas, las licencias de estos programas son carísimas y poco accesibles."
+  },
+  {
+    "objectID": "posts/foss-software1/index.html#gestores-bibliográficos",
+    "href": "posts/foss-software1/index.html#gestores-bibliográficos",
+    "title": "Guía del software libre para las CCSS",
+    "section": "Gestores bibliográficos",
+    "text": "Gestores bibliográficos\nCuando se realiza investigación, ya sea como estudiante de pregrado, como académico o profesional, el uso de referencias blibliográficas es clave. Sin un gestor bibliográfico adecuado, la tarea de ordenar citas, obras y autores, junto con los poco apreciados sistemas de citas como APA, se puede convertir en una pesadilla. Por ello tenemos programas que nos facilitan la vida.\nVersión privativa: uno de los clásicos gestores bibliográficos propietarios es Mendeley. Combina dos aplicaciones, una versión web que con complementos permite navegar por la web, y su versión desktop donde se puede ordenar y gestionar cualqueir colección de citas, junto con un lector de pdf. Adquirido por el grupo editorial Elsevier, uno de los más grandes en el mundo de la producción científica. Es un excelente ejemplo del “freeware”: es gratis pero todas las decisiones del programa las toma el grupo Elsevier, empresa monopolista en el ámbito editorial.\nAlternatica libre: dentro de las diferentes opciones libres, creo que Zotero destaca por sobre el resto. Nacido como un complemento para el navegador Firefox, este programa hoy tiene su propia versión de escritorio, con lector de pdf, herramientas para reconocer automáticamente la información de artículos desde la web, y la posibilidad de compartir repositorios bibliográficos con colaboradores. Tiene lo mejor de las alternativas de pago pero de forma abierta y libre. Una tremenda opción para investigadores/as de todas las áreas.\n\n\n\n\n\n\nFigura 5: Zotero es la mejor opción libre para la gestión bibliográfica"
+  },
+  {
+    "objectID": "posts/foss-software1/index.html#mis-aplicaciones-diarias",
+    "href": "posts/foss-software1/index.html#mis-aplicaciones-diarias",
+    "title": "Guía del software libre para las CCSS",
+    "section": "Mis aplicaciones diarias",
+    "text": "Mis aplicaciones diarias"
+  },
+  {
+    "objectID": "posts/foss-software1/index.html#resumen",
+    "href": "posts/foss-software1/index.html#resumen",
+    "title": "Guía del software libre para las CCSS",
+    "section": "Resumen",
+    "text": "Resumen\n\n\nResumen del software privativo y sus alternativas libres y open source\n\n\n\n\n\n\n\nTipo de software\nOpciones no libres\nOpciones libres\n\n\n\n\nSistema Operativo\nMS Windows, OSX\nLinux y sus distribuciones\n\n\nOfimática\nMS Office, Suite de Google\nLibre Office\n\n\nAnálisis de datos cuantitativos\nExcel, SPSS, Stata\nR y Python (lenguajes de programación), Jamovi\n\n\nAnálisis de datos cualitativos\nAtlas.ti, Nvivo\nRqual, Taguette, Python\n\n\nGestor bibliográfico\nMendeley\nZotero"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Bienvenidos a mi blog",
+    "section": "",
+    "text": "Bienvenidos/as a esta primera entrada de mi blog/portafolio profesional. Antes de comenzar, me presento. Soy Benjamín Adasme Jara, sociólogo de profesión, y actualmente estoy desarrollando mi carrera como analista estadístico y científico de datos. Puedes leer algo más sobre mi en la sección Acerca de mí o ver mi Curriculum Vitae\nEn esta primera entrada quisiera compartir las razones que me llevan a crear este sitio. ¿Por qué hacer un blog en pleno 2025? ¿Por qué este formato? ¿Por qué mostrarse en internet?"
+  },
+  {
+    "objectID": "posts/welcome/index.html#abrirse-al-mundo",
+    "href": "posts/welcome/index.html#abrirse-al-mundo",
+    "title": "Bienvenidos a mi blog",
+    "section": "Abrirse al mundo",
+    "text": "Abrirse al mundo\nEscribir es una forma de exteriorizar aquello que uno piensa y siente, y en este caso, tengo la necesidad de comunicar muchas ideas que he venido desarrollando en los últimos años. Tanto mi carrera profesional como mis intereses personales se han centrado en los siguientes tópicos: estadística, ciencia de datos, informática, software libre, política, territorio, fútbol y sociedad. Quiero un espacio donde poner estos temas, mezclarlos, enredarlos y desenredarlos."
+  },
+  {
+    "objectID": "posts/welcome/index.html#el-formato-un-portafolio-y-blog",
+    "href": "posts/welcome/index.html#el-formato-un-portafolio-y-blog",
+    "title": "Bienvenidos a mi blog",
+    "section": "El formato: un portafolio y blog",
+    "text": "El formato: un portafolio y blog\nComunicar es algo muy amplio, sobre todo en estos tiempos de tantos medios. Pero entre tanta fugacidad, la palabra escrita es necesaria también, aquella que perdura en el tiempo y permite pensar durante más de un minuto. Las redes sociales son herramientas muy valiosas, se crean comunidades, se expresan opiniones y difunden información. Sin embargo, por si solas, no dan el ancho para expresar contenido de mayor complejidad (o simplemente el algoritmo te castiga si no estás bailando 30 segundos).\nEn ese sentido, este sitio tendrá un doble formato. Por un lado, pretende ser un portafolio de proyectos, donde pueda exponer algunos trabajos desarrollados en ámbitos profesionales y personales (estos últimos son la mayoría). Por otro, quiero utilizarlo como un blog, donde ir subiendo contenido de forma más o menos regular, con ideas, reflexiones o mini proyectos de código, etc. El blog permite un formato más laxo y abierto, pero sin perder la seriedad."
+  },
+  {
+    "objectID": "posts/welcome/index.html#qué-esperar-de-este-sitio",
+    "href": "posts/welcome/index.html#qué-esperar-de-este-sitio",
+    "title": "Bienvenidos a mi blog",
+    "section": "¿Qué esperar de este sitio?",
+    "text": "¿Qué esperar de este sitio?\nPor ahora espero actualizar el sitio de proyectos, con algunos de los trabajos públicos en los que he trabajado. Además, subiré algunos posts durante las próximas semanas. Un adelanto: en Chile se está discutiendo sobre el envejecimiento de la población, y algo podemos decir sobre eso.\nGracias por pasar por aquí, nos leemos pronto."
   },
   {
     "objectID": "posts/piramide-r/index.html",
@@ -56,34 +147,6 @@
     "text": "Notas\n\n\nEn 2012 se realizó un censo, sin embargo fue considerado inválido por falencias metodológicas↩︎\nDisponibles en el siguiente enlace↩︎\nSi bien fue realizado manualmente, se pueden implementar otro métodos como el Reconocimiento de Caracteres (OCR) para automatizar el proceso↩︎"
   },
   {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Bienvenidos a mi blog",
-    "section": "",
-    "text": "Bienvenidos/as a esta primera entrada de mi blog/portafolio profesional. Antes de comenzar, me presento. Soy Benjamín Adasme Jara, sociólogo de profesión, y actualmente estoy desarrollando mi carrera como analista estadístico y científico de datos. Puedes leer algo más sobre mi en la sección Acerca de mí o ver mi Curriculum Vitae\nEn esta primera entrada quisiera compartir las razones que me llevan a crear este sitio. ¿Por qué hacer un blog en pleno 2025? ¿Por qué este formato? ¿Por qué mostrarse en internet?"
-  },
-  {
-    "objectID": "posts/welcome/index.html#abrirse-al-mundo",
-    "href": "posts/welcome/index.html#abrirse-al-mundo",
-    "title": "Bienvenidos a mi blog",
-    "section": "Abrirse al mundo",
-    "text": "Abrirse al mundo\nEscribir es una forma de exteriorizar aquello que uno piensa y siente, y en este caso, tengo la necesidad de comunicar muchas ideas que he venido desarrollando en los últimos años. Tanto mi carrera profesional como mis intereses personales se han centrado en los siguientes tópicos: estadística, ciencia de datos, informática, software libre, política, territorio, fútbol y sociedad. Quiero un espacio donde poner estos temas, mezclarlos, enredarlos y desenredarlos."
-  },
-  {
-    "objectID": "posts/welcome/index.html#el-formato-un-portafolio-y-blog",
-    "href": "posts/welcome/index.html#el-formato-un-portafolio-y-blog",
-    "title": "Bienvenidos a mi blog",
-    "section": "El formato: un portafolio y blog",
-    "text": "El formato: un portafolio y blog\nComunicar es algo muy amplio, sobre todo en estos tiempos de tantos medios. Pero entre tanta fugacidad, la palabra escrita es necesaria también, aquella que perdura en el tiempo y permite pensar durante más de un minuto. Las redes sociales son herramientas muy valiosas, se crean comunidades, se expresan opiniones y difunden información. Sin embargo, por si solas, no dan el ancho para expresar contenido de mayor complejidad (o simplemente el algoritmo te castiga si no estás bailando 30 segundos).\nEn ese sentido, este sitio tendrá un doble formato. Por un lado, pretende ser un portafolio de proyectos, donde pueda exponer algunos trabajos desarrollados en ámbitos profesionales y personales (estos últimos son la mayoría). Por otro, quiero utilizarlo como un blog, donde ir subiendo contenido de forma más o menos regular, con ideas, reflexiones o mini proyectos de código, etc. El blog permite un formato más laxo y abierto, pero sin perder la seriedad."
-  },
-  {
-    "objectID": "posts/welcome/index.html#qué-esperar-de-este-sitio",
-    "href": "posts/welcome/index.html#qué-esperar-de-este-sitio",
-    "title": "Bienvenidos a mi blog",
-    "section": "¿Qué esperar de este sitio?",
-    "text": "¿Qué esperar de este sitio?\nPor ahora espero actualizar el sitio de proyectos, con algunos de los trabajos públicos en los que he trabajado. Además, subiré algunos posts durante las próximas semanas. Un adelanto: en Chile se está discutiendo sobre el envejecimiento de la población, y algo podemos decir sobre eso.\nGracias por pasar por aquí, nos leemos pronto."
-  },
-  {
     "objectID": "tidytuesday/post1/index.html",
     "href": "tidytuesday/post1/index.html",
     "title": "Post 1",
@@ -95,7 +158,7 @@
     "href": "index.html",
     "title": "Benjamín Adasme Jara - Blog & Portafolio",
     "section": "",
-    "text": "Pirámides de población con R: el caso de Chile (1970-2024)\n\n\n\ncódigo\n\nanálisis\n\nR\n\ndataviz\n\nggplot2\n\n\n\nDiscutiremos brevemente sobre el envejecimiento de la población y transición demográfica, y cómo las pirámides de población visualizan estos procesos. Comentaremos el caso chileno, y utilizaremos los datos de los últimos 6 Censos para crear un tutorial de cómo graficar las pirámides de población en R, con los paquetes ggplot2 y gganimate.\n\n\n\n\n\n27 mar 2025\n\n\nBenjamín Adasme Jara\n\n\n\n\n\n\n\n\n\n\n\n\nGuía del software libre para las CCSS\n\n\n\nopen source\n\nsoftware\n\n\n\nBreve guía sobre las alternativas de software libre disponibles para reemplazar el software privativo en el campo de las ciencias sociales, enfocado en estudiantes, profesionales y académicos\n\n\n\n\n\n27 mar 2025\n\n\nBenjamín Adasme Jara\n\n\n\n\n\n\n\n\n\n\n\n\nBienvenidos a mi blog\n\n\n\nnoticias\n\n\n\n\n\n\n\n\n\n11 feb 2025\n\n\nBenjamín Adasme Jara\n\n\n\n\n\nNo hay resultados"
+    "text": "Guía del software libre para las CCSS\n\n\n\nopen source\n\nsoftware\n\n\n\nBreve guía sobre las alternativas de software libre disponibles para reemplazar el software privativo en el campo de las ciencias sociales, enfocado en estudiantes, profesionales y académicos\n\n\n\n\n\n13 may 2025\n\n\nBenjamín Adasme Jara\n\n\n\n\n\n\n\n\n\n\n\n\nPirámides de población con R: el caso de Chile (1970-2024)\n\n\n\ncódigo\n\nanálisis\n\nR\n\ndataviz\n\nggplot2\n\n\n\nDiscutiremos brevemente sobre el envejecimiento de la población y transición demográfica, y cómo las pirámides de población visualizan estos procesos. Comentaremos el caso chileno, y utilizaremos los datos de los últimos 6 Censos para crear un tutorial de cómo graficar las pirámides de población en R, con los paquetes ggplot2 y gganimate.\n\n\n\n\n\n27 mar 2025\n\n\nBenjamín Adasme Jara\n\n\n\n\n\n\n\n\n\n\n\n\nBienvenidos a mi blog\n\n\n\nnoticias\n\n\n\n\n\n\n\n\n\n11 feb 2025\n\n\nBenjamín Adasme Jara\n\n\n\n\n\nNo hay resultados"
   },
   {
     "objectID": "projects.html",
@@ -103,89 +166,5 @@
     "title": "Proyectos",
     "section": "",
     "text": "Página en construcción."
-  },
-  {
-    "objectID": "posts/foss-software1/index.html",
-    "href": "posts/foss-software1/index.html",
-    "title": "Guía del software libre para las CCSS",
-    "section": "",
-    "text": "Pagar o no pagar, he ahí el dilema. Aunque siendo realistas sería Piratear o no piratear.\nLas computadoras personales se han convertido en la herramienta de trabajo por defecto en la gran mayoría de los ámbitos intelectuales, y las ciencias sociales no son la excepción. Hoy nos cuesta imaginar cómo en el pasado nuestros colegas analizaron encuestas sin computadoras o usando solo el precario equipo disponible en alguna universidad, o cómo las grabaciones de entrevistas y grupos focales se hacían en cassette y se transcribían lentamente a mano. Esto que nos parece tan lejano y complejo es parte del pasado gracias al uso masivo de los computadores personales.\nSin embargo, esta herramienta maravillosa tiene sus límites. Tanto en el hardware como en el software, esto tiene costos. Y aunque una PC hoy es más accesible que hace 20 años atrás, aún tenemos limitaciones. Más aún cuando debemos acceder a software específico para cumplir una tarea, y solo tenemos opciones de pago.\nY aunque esto es cierto, tengo una buena noticia para ti: es posible utilizar software sin pagar, de forma segura, transparente y abierta. Te presento al software libre."
-  },
-  {
-    "objectID": "posts/foss-software1/index.html#software-libre",
-    "href": "posts/foss-software1/index.html#software-libre",
-    "title": "Guía del software libre para las CCSS",
-    "section": "Software libre",
-    "text": "Software libre\nQué es y por qué usarlo"
-  },
-  {
-    "objectID": "posts/foss-software1/index.html#lista",
-    "href": "posts/foss-software1/index.html#lista",
-    "title": "Guía del software libre para las CCSS",
-    "section": "Lista",
-    "text": "Lista\n\nOS: Linux"
-  },
-  {
-    "objectID": "posts/foss-software1/index.html#qué-es-el-software-libre",
-    "href": "posts/foss-software1/index.html#qué-es-el-software-libre",
-    "title": "Guía del software libre para las CCSS",
-    "section": "¿Qué es el software libre?",
-    "text": "¿Qué es el software libre?\nImagina que un día tu auto se avería. No sabes que sucede. Lo lógico es que con algún conocimiento de mecánica puedas abrir el capot e investigar. Pero cuando lo intentas abrir sucede que necesitas una llave especial, única, que solo tiene el fabricante. Nadie puede abrirlo, ni tu vecino que te ayuda siempre, ni el mecánico de tu ciudad, solo lo pueden arreglar en la misma fábrica de origen. Eso es lo que pasa con el software privativo, no tienes control sobre lo que sucede con tus programas ni tampoco sabes qué hacen detrás.\nAlgo así fue lo que le pasó a Richard Stallman en los años ’80, un informático estadounidense, cuando quiso crear un driver para una impresora. Quiso entender cómo funcionaba, pero para su sorpresa le negaron el acceso a toda información sobre el aparato. Desde esos días que se ha dedicado a fomentar la apertura y transparencia en la informática como un principio fundamental en la tecnología, promoviendo la creación y uso del software libre.\nEl software libre es la traducción del concepto “free software”. La palabra free en inglés puede significar tanto gratis como libre. Acá usamos el sentido “libre” de la palabra, pues hablamos de software que se puede crear, modificar y distribuir sin ninguna limitación. Y esto lo diferencia del software gratuito, ya que todo el software libre es gratis, pero no todo el software gratis es libre. Por ejemplo, una empresa nos ofrece de forma gratuita su programa, en su versión básica, pero no puedes saber cómo opera ese software, qué hace ni tampoco puedes modificarlo o redistribuirlo. En este caso es un programa gratis pero no libre.\nPodríamos profundizar más en esto (quizás en otra entrada) pero el propósito de este post es ofrecer algunas alternativas de software para aquellas necesidades de estudiantes universitarios, académicos o profesionales de las ciencias sociales y disciplinas afines, principalmente para equipos de escritorio.\n\n\n\nRichard Stallman, impulsor del software libre y fundador de la Free Software Foundation"
-  },
-  {
-    "objectID": "posts/foss-software1/index.html#sistemas-operativos",
-    "href": "posts/foss-software1/index.html#sistemas-operativos",
-    "title": "Guía del software libre para las CCSS",
-    "section": "Sistemas operativos",
-    "text": "Sistemas operativos\nPartimos esta guía con la base de cualquier software. No hay programas sin sistema operativo. Y aunque corresponde a una categoría aparte, solo diré que en el sentido actual del concepto el sistema operativo abarca desde el manejo y asignación de recursos del sistema hasta la interfaz gráfica del usuario.\nVersión privativa: En el mundo privativo tenemos como gran dominador a Microsoft Windows, que desde los años ’80 viene monopolizando este mercado. Aun con todas las críticas que tiene (es pesado, ineficiente, te obliga a crear cuentas y roba tu información como usuario, entre otras tantas), sigue siendo el más usado. Detrás tenemos a OSX, el sistema operativo de los computadores Apple, que sin ser masivo logra abarcar un nicho importante de consumidores.\nAlternativa libre: el sistema operativo Linux es la alternativa a los sistemas privativos. Libre, de código abierto, creado por Linus Torvalds en 1991, no es la opción más popular en escritorio, pero sí lo es en servidores y similares. Linux está disponible en diferentes distribuciones, que incorporan el kernel y otras utilidades para hacer un sistema completo. Entre las más populares encontramos Ubuntu, Debian, OpenSuse, Linux Mint, Arch Linux, entre otros. De los mencionados, recomiendo personalmente Linux Mint como la distribución más amigable con nuevos usuarios.\n\n\n\n\n\n\nNota\n\n\n\nSi bien recomiendo el uso de distribuciones Linux, los programas que se incluyen a continuación pueden ejecutarse en otros sistemas operativos, no siendo requisito un cambio de SO para usarlos.\n\n\n\n\n\n\n\n\n\n\nTux, la mascota de Linux\n\n\n\n\n\n\n\nLinux Mint, distribución de Linux amigable para nuevos usuarios\n\n\n\n\n\n\nFigura 1: Sistema operativo libre: Linux"
-  },
-  {
-    "objectID": "posts/foss-software1/index.html#ofimática",
-    "href": "posts/foss-software1/index.html#ofimática",
-    "title": "Guía del software libre para las CCSS",
-    "section": "Ofimática",
-    "text": "Ofimática\nVersión privativa: en este ámboto nuevamente el reinado lo tiene Microsoft con Office, la famosa suite de ofimática, No mucho que decir más que la gran mayoría de las personas no paga licencia y termina cayendo en activadores que ponen en riesgo la seguridad informática. También tenemos la suite de Google con Docs, Sheets, Slides entre otros.\nAlternativa libre: la suite Libre Office es, a mi juicio, la mejor opción en materia de ofimática. Contiene un procesador de texto (Writer), hojas de cálculo (Calc), creador de presentaciones (Impress), entre otros, muy similar a los programas de Office. Su interfaz es muy versátil, pudiendo incluso imitar la distribución de botones y menús de Office. Puede mejorarse con temas, complementos, entre otros. Yo personalmente he usado mucho sus herramientas de creación de expresiones matemáticas para cursos de estadística. Cuenta con sus propios formatos de archivos, pero es totalmente compatible con los usados en Office. Por ejemplo, puedo abrir, editar y guardar cualquier archivo de texto en .docx, a pesar que el formato por defecto en Writer es .odt.\nComparado con Office, creo que las únicas debilidades son las fuentes y tipografía, y la colaboración en línea. Respecto a lo primero, es una cuestión inherente al uso de Linux, pero si se usa en Windows no debiera haber complicación. La colaboración en línea, una función de Office en empresas y organizaciones, no existe en LibreOffice, pero es entendible en tanto ese tipo de tecnología depende de servidores e infraestructura tecnológica que no puede ofrecer The Document Fundation, la organización detrás de este software.\n\n\n\n\n\n\nFigura 2: Libre Office es la alternativa recomendada a Microsoft Office"
-  },
-  {
-    "objectID": "posts/foss-software1/index.html#resumen",
-    "href": "posts/foss-software1/index.html#resumen",
-    "title": "Guía del software libre para las CCSS",
-    "section": "Resumen",
-    "text": "Resumen\nA modo de conclusión, quiero transmitir el mensaje de que es posible utilizar la tecnología de otra forma. La computación es clave desde hace años, la tenemos incorporada en nuestro día a día. Pero también creo que la manera en que la utilizamos no es neutra. La elección de qué programas, qué proyectos apoyamos y cómo nos relacionamos a través de ellos es una decisión grande que también dice mucho de cómo entendemos el mundo. Por eso este post es un llamado explícito a apoyar lo más posible las iniciativas free and open-source. Mientras más usamos estas herramientas ganamos soberanía sobre nuestro recursos y datos, y fortalecemos una mirada colectiva, solidaria y comunitaria en la tecnología.\nFinalmente, una tabla resumen con los programas que revisamos en este artículo. ¿Crees que falta alguno? ¿Hay otro tipo de software que usas y crees que hay opciones fuera del mundo privativo? ¡Conversemos!\n\n\nResumen del software privativo y sus alternativas libres y open source\n\n\n\n\n\n\n\nTipo de software\nOpciones no libres\nOpciones libres\n\n\n\n\nSistema Operativo\nMS Windows, OSX\nLinux y sus distribuciones\n\n\nOfimática\nMS Office, Suite de Google\nLibre Office\n\n\nAnálisis de datos cuantitativos\nExcel, SPSS, Stata\nR y Python (lenguajes de programación), Jamovi\n\n\nAnálisis de datos cualitativos\nAtlas.ti, Nvivo\nRqual, Taguette, Python\n\n\nGestor bibliográfico\nMendeley\nZotero"
-  },
-  {
-    "objectID": "posts/foss-software1/index.html#footnotes",
-    "href": "posts/foss-software1/index.html#footnotes",
-    "title": "Guía del software libre para las CCSS",
-    "section": "Notas",
-    "text": "Notas\n\n\nNota ↩︎"
-  },
-  {
-    "objectID": "posts/foss-software1/index.html#análisis-de-datos-cuantitativos-y-estadística",
-    "href": "posts/foss-software1/index.html#análisis-de-datos-cuantitativos-y-estadística",
-    "title": "Guía del software libre para las CCSS",
-    "section": "Análisis de datos cuantitativos y estadística",
-    "text": "Análisis de datos cuantitativos y estadística\nVersión privativa: en el ámbito de la estadística, las opciones tradicionales parten con Microsoft Excel, que tiene las herramientas básicas para análisis estadístico. Luego tenemos los dos programas que dominan la estadística computacional: SPSS y Stata. El primero, muy popular en las ciencias sociales, mientras que el segundo es el estándar en economía. Como buen programa de pago, jamás usé alguno de forma legal, salvo en el laboratorio de computación de la universidad (SPSS se cerraba cuando se abría en demasiados computadores). Como bien se mencionó, los riesgos de los programas pirata son altos. Además, tienen sistemas de pago por “planes”: el programa base tiene un costo, pero ciertas funciones vienen en paquetes extra que se pagan aparte. Junto con ello, son programas estáticos, no modificables, lo que los limita.\nAlternativas libres: las alternativas en análisis estadístico son varias y depende de cómo quiereas usar el software. Si te gusta trabajar con una interfaz gráfica al estilo SPSS, jamovi es el programa para ti. Basado en R, tiene una apariencia muy sencilla, donde podemos cargar datos o crearlos en una planilla, manejar nuestras variables, ejecutar análisis estadístico descriptivo o inferencial, crear gráficos básicos, etc. Además se pueden agregar funciones extra con complementos.\nSi quieres llevar tus habilidades analíticas un paso más allá, la respuesta es lenguajes de programación. Es un concepto con el que los científicos sociales normalmente no estamos familiarizados, pero que aprenderlo implica una gran ventaja en términos prácticos, para manejar mejor nuestros datos, pero también en términos mentales, pues programar requiere de mucha lógica y razonamiento, ejercicios muy sanos para nuestros cerebros.\nEn particular, las recomendaciones son dos: R y Python. Por un lado, R es un lenguaje de programación pensado en la estadística. Cuenta con un funciones base para gran parte de las tareas estadísticas. Tiene un repositorio amplio de paquetes para incluir otras funcionalidades. Y sobre todo, cuenta con tidyverse, la suite de ciencia de datos desarrollada por Posit.\nPor otro lado tenemos a Python, la navaja suiza de la programación. A diferencia de R, Python es un lenguaje muy versátil que sirve tanto para la ciencia de datos y machine learning como para crear aplicaciones varios. Para análisis de datos los paquetes clásicos son numpy (funciones matemáticas y estadísticas), pandas (manipulación de datos) y matplotlib (gráficos).\nTanto R como Python son más fáciles de usar en un Entorno Integrado de Desarrollo (IDE, por sus siglas en inglés), programas que nos ayudan a usar los lenguajes de forma más amigable. Aquí tenemos a RStudio para R, y Positron, para R y Python, ambos desarrollados por Posit. Tenemos también a VSCode que, aunque es desarrollado por Microsoft, tiene versiones libres de telemetría y monitoreo del demonio de Bill Gates.\n\n\n\n\n\n\n\n\nPython y R\n\n\n\n\n\n\n\nPositron IDE\n\n\n\n\n\n\n\n\n\nJamovi\n\n\n\n\n\n\nFigura 3: Herramientas para análisis cuantitativo"
-  },
-  {
-    "objectID": "posts/foss-software1/index.html#mis-aplicaciones-diarias",
-    "href": "posts/foss-software1/index.html#mis-aplicaciones-diarias",
-    "title": "Guía del software libre para las CCSS",
-    "section": "Mis aplicaciones diarias",
-    "text": "Mis aplicaciones diarias\nAntes de terminar, les quiero compartir cómo uso mis recursos computacionales en mi día a día. Primero, uso mi computador con un sistema operativo Linux, específicamente Arch Linux con un Gestor de Ventanas de mosaico (tilling windows manager) llamado Hyprland, aunque he usado también Ambientes de Escritorio como KDE. Para ofimática me quedé con Libre Office, soy un fanático de sus programas. Profesionalmente trabajo como analista de datos, y como hobbie también hago análisis de datos, por lo que mi herramienta fundamental es R y Rstudio desde hace unos cuatro años. Lentamente estoy incluyendo los IDEs que mencioné, y trato de mantenerme fresco con mis conocimientos básicos de Python. Navego en internet con Firefox (a pesar de la polémica que atraviesa). Y cuando he investigado, Zotero me ha acompañado siempre."
-  },
-  {
-    "objectID": "posts/foss-software1/index.html#análisis-de-datos-cualitativos",
-    "href": "posts/foss-software1/index.html#análisis-de-datos-cualitativos",
-    "title": "Guía del software libre para las CCSS",
-    "section": "Análisis de datos cualitativos",
-    "text": "Análisis de datos cualitativos\nVersión privativa: en el análisis de datos cualitativos encontramos el punto más débil del software libre, debemos reconocerlo. Los CAQDAS (del inglés Computer Assisted/Aided Qualitative Data Analysis Software) o simplemente programa/software para el análisis cualitativo asistido por computador tienen una oferta diversa, sin embargo, las aplicaciones privativas que reinan este campo son Atlas.ti y Nvivo. Ambas con una interfaz de usuario similar, sirven como repositorio de documentos, imágenes, audio y video, donde podemos codificar libremente y organizar nuestra investigación cualitativa con memos, notas, entre otros. Al ser un campo con pocas alternativas, las licencias de estos programas son carísimas y poco accesibles. Por mientras, podemos intentar ampliar nuestro horizonte con las siguientes opciones.\nAlternativas libres: una de las principales tareas básicas de cualquier CAQDAS es la codificación de material, ya sea texto, imágenes, audiovisual, etc. Junto con ello, vincular la codificación, relacionar los hallazgos es importante, sobre todo en enfoques como el de la teoría fundamentada. Para ello, hay varios programas, aquí te traigo dos.\nEl primero es Taguette, un software desarrollado bajo una licencia libre para ofrecer una alternativa open source para el análisis cualitativo. Permite crear “tags” sobre texto en diferentes formatos, resaltar las citas asociadas, vincularlas entre documentos. Permite el trabajo colaborativo en su versión online o server, y tiene alternativas para exportar reportes de la codificación. Puede ejecutarse online o en local usando Python y el programa de libros electrónicos Calibre.\nEl segundo programa es Requal, una interfaz desarrollada con R y Shiny, que permite cargar documentos de texto, crear códigos/nodos/etiquetas y asociarlos a citas, identificarlas con colores. Cuenta con herramientas de análisis para vincular los códigos y un apartado de reportes donde generar consultas sobre nuestro trabajo. La desventaja es que solo trabaja con texto plano (.txt).\nEn otro plano más avanzado, la investigación cualitativa contemporánea está integrando cada vez más las herramientas computacionales. En ese sentido, las técnicas de Procesamiento de Lenguaje Natural (NLP, por sus siglas en inglés) son un gran complemento para las perspectivas tradicionales. Aquí encontramos nuevas técnicas como el análisis de sentimiento, el análisis temático, el reconocimiento de entidades o de relaciones, las que se han potenciado con la Inteligencia Artificial. Esto da para un artículo entero, pero solo mencionaré que Python es la herramienta más apropiada para este tipo de tareas.\n\n\n\n\n\n\n\n\nTaguette\n\n\n\n\n\n\n\nRequal\n\n\n\n\n\n\nFigura 4: Herramientas para análisis cualitativo"
-  },
-  {
-    "objectID": "posts/foss-software1/index.html#gestores-bibliográficos",
-    "href": "posts/foss-software1/index.html#gestores-bibliográficos",
-    "title": "Guía del software libre para las CCSS",
-    "section": "Gestores bibliográficos",
-    "text": "Gestores bibliográficos\nCuando se realiza investigación, ya sea como estudiante de pregrado, como académico o profesional, el uso de referencias blibliográficas es clave. Sin un gestor bibliográfico adecuado, la tarea de ordenar citas, obras y autores, junto con los poco apreciados sistemas de citas como APA, se puede convertir en una pesadilla. Por ello tenemos programas que nos facilitan la vida.\nVersión privativa: uno de los clásicos gestores bibliográficos propietarios es Mendeley. Combina dos aplicaciones, una versión web que con complementos permite navegar por la web, y su versión desktop donde se puede ordenar y gestionar cualqueir colección de citas, junto con un lector de pdf. Adquirido por el grupo editorial Elsevier, uno de los más grandes en el mundo de la producción científica. Es un excelente ejemplo del “freeware”: es gratis pero todas las decisiones del programa las toma el grupo Elsevier, empresa monopolista en el ámbito editorial.\nAlternatica libre: dentro de las diferentes opciones libres, creo que Zotero destaca por sobre el resto. Nacido como un complemento para el navegador Firefox, este programa hoy tiene su propia versión de escritorio, con lector de pdf, herramientas para reconocer automáticamente la información de artículos desde la web, y la posibilidad de compartir repositorios bibliográficos con colaboradores. Tiene lo mejor de las alternativas de pago pero de forma abierta y libre. Una tremenda opción para investigadores/as de todas las áreas.\n\n\n\n\n\n\nFigura 5: Zotero es la mejor opción libre para la gestión bibliográfica"
   }
 ]

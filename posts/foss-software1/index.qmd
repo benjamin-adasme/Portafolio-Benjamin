@@ -1,7 +1,7 @@
 ---
 title: "Guía del software libre para las CCSS"
 author: "Benjamín Adasme Jara"
-date: "2025-03-27"
+date: "2025-05-13"
 lang: es
 categories: [open source, software]
 abstract: "Breve guía sobre las alternativas de software libre disponibles para reemplazar el software privativo en el campo de las ciencias sociales, enfocado en estudiantes, profesionales y académicos"
