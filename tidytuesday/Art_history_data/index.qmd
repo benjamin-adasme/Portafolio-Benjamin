@@ -1,0 +1,98 @@
+---
+title: "TT3 - 2023: Art history data"
+date: "2023-01-17"
+categories: [tidytuesday]
+author: "Benjamín Adasme Jara"
+format: html
+---
+
+En mi primer post publicado de Tidy Tuesday trabajé con los datos del paquete 'arthistory', reunidos y procesados para el desafío del 17 de enero de 2023. Estos datos recogen información sobre la representación de artistas en dos libros clásicos de historia del arte: *History of Art* de Anthony F. Jansons y *Art Through the Ages* de Helen Gardner. El detalle en el sitio de TidyTuesday en este [enlace](https://github.com/rfordatascience/tidytuesday/blob/main/data/2023/2023-01-17/readme.md)
+
+## Dentro de los datos
+
+Al mirar el dataset del Tidy Tuesday sobre la representación de artistas en estos libros de historia del arte, surgió la pregunta ¿de qué forma aparecen los artistas latinoamericanos en estos manuales? Así, seleccionamos las nacionalidades de este rincón del planeta y lo representamos en el siguiente stream chart. 
+
+![](2023-w3-artists1.png)
+
+## Código 
+
+Comenzamos cargando las librerías a usar y los datos. 
+
+```{r}
+
+pacman::p_load(tidyverse,
+               janitor,
+               tidytuesdayR, 
+               lubridate,
+               ggstream,
+               MetBrewer,
+               showtext)
+
+data_3 <- tt_load("2023-01-17")
+
+df1 <- data_3$artists
+
+```
+
+Creamos un nuevo data frame con aquellos artistas de origen étnico hispánico o latinoamericano, y calculamos la frecuencia de casos por nacionalidad y año. 
+
+```{r}
+latino_year <- df1 %>% 
+  filter(artist_ethnicity == "Hispanic or Latino origin") %>% 
+  group_by(artist_nationality, year) %>% 
+  count() %>% 
+  arrange(year)
+```
+
+Agregamos la fuente desde el repositorio de fuentes de Google. 
+
+```{r}
+font_add_google("Inter", "inter")
+showtext_auto()
+```
+
+Llamamos al dataframe con las frecuencias y lo pasamos a `ggplot()` donde definimos todas las especificaciones. 
+
+```{r}
+latino_year %>% 
+  ggplot(aes(year, n, fill = artist_nationality)) + 
+  geom_stream()+
+  scale_x_continuous(breaks = seq(1925, 2025, by = 10)) +
+  scale_fill_manual(values = met.brewer("Juarez", 6), 
+                    name = NULL,
+                    labels = c("Colombiano(a)",
+                               "Cubano(a)",
+                               "Cubano-americano(a)",
+                               "Mexicano(a)",
+                               "Peruano(a)",
+                               "Español(a)")) +
+  labs(title = "Artistas latinos en los libros de historia del arte de Janson y Gardner (1926-2020)",
+       subtitle = "Nacionalidades de 17 artistas latinos(as) (4,11%) incluidos en los libros de historia del arte",
+       caption = "Fuente: Lemus S, Stam H (2022). arthistory: Art History Textbook Data. - Autor: Benjamín Adasme - #TidyTuesday",
+       y = NULL,
+       x = "Año") +
+  theme_minimal(base_family = "inter",
+                base_size = 16) +
+  theme(axis.text.y = element_blank(), 
+        legend.position = "bottom", 
+        panel.grid.minor = element_blank(), 
+        plot.background = element_rect(fill = "seashell2"), 
+        plot.title = element_text(face = "bold"), 
+        plot.caption = element_text(face = "italic"), 
+        legend.key.size = unit(0.5, "cm"))
+```
+
+Guardamos el gráfico para compartir con el hashtag #TidyTuesday
+
+```{r}
+#| eval: false
+ggsave(
+  "2023-w3-artists1.png",
+  plot = last_plot(),
+  dpi = 300,
+  units = "px",
+  height = 1000,
+  width = 1500
+)
+```
+

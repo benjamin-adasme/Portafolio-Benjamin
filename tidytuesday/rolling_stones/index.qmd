@@ -1,0 +1,113 @@
+---
+title: "TT19 - 2024: Rolling Stone Album Rankings"
+date: "2024-05-07"
+categories: [tidytuesday]
+author: "Benjamín Adasme Jara"
+lang: es
+format: html
+---
+
+El desafío Tidy Tuesday del [7 de mayo de 2024](https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-05-07/readme.md) trae los datos del ranking de los 500 mejores discos de todos los tiempos elaborada por la revista Rolling Stones en tres ocasiones diferentes: 2003, 2012 y 2020. Aquí quisimos comparar los 10 que estuvieron en la cima en cada lista. ¿Qué discos fueron considerados los mejores? La respuesta es que en las dos listas iniciales estos no cambiaron, pero en 2020 la percepción de los 10 mejores tuvo cambios radicales. 
+
+## Resultado
+
+![](rolling_stones.png)
+
+## Código
+
+Cargamos librerías y datos
+
+```{r}
+
+pacman::p_load(tidytuesdayR, 
+               tidyverse, 
+               ggbump, 
+               paletteer, 
+               ggtext,
+               showtext)
+
+l1 <- tt_load("2024-05-07")
+
+rolling_stone <- l1[["rolling_stone"]]
+
+head(rolling_stone)
+
+```
+
+Definimos una paleta de colores con el paquete paletteer y la modificamos a nuestro gusto. 
+
+```{r}
+my_colors <- paletteer_d("ggthemes::Tableau_20")
+
+my_colors[13] <- "#7375B5"
+my_colors[14] <- "#9C9EDE"
+```
+
+Cargamos las fuentes que usaremos en el gráfico. 
+
+```{r}
+font_add_google("Open Sans", "opensans")
+font_add_google("Raleway", "raleway")
+font_add_google("Inter", "inter")
+
+showtext_auto()
+```
+
+Modificamos los datos, primero seleccionando solo aquellos que han estado en el top 10 en alguno de los años, y luego creado una etiqueta personalizada con la información disponible en el dataset.
+
+```{r}
+top10 <- rolling_stone %>% 
+  filter(rank_2003 %in% 1:10 | rank_2020 %in% 1:10) %>% 
+  mutate(artist_album = str_wrap(str_glue("{clean_name}-{album}"), 30)) %>% 
+  mutate(label = str_glue("{artist_album}\nPos. 2003: {rank_2003}\nPos. 2020: {rank_2020}")) %>% 
+  pivot_longer(cols = 4:6, names_to = "año", values_to = "rank") %>% 
+  mutate(año = as.numeric(str_remove_all(año, "rank_")),
+         label_2 = if_else(año == 2003, label, NA),
+         label = if_else(año == 2020, label, NA))
+
+head(top10)
+```
+
+Pasamos la data a ggplot2 para hacer la magia. Aquí decidimos usar un "[bump chart](https://datavizproject.com/data-type/bump-chart-2/)" que es muy útil para expresar cambios en orden o ranking a través del tiempo. 
+
+```{r}
+top10 %>% 
+  ggplot(aes(x = año, y = rank, color = album)) +
+  geom_bump(size = 1) +
+  geom_point(size = 3) +
+  geom_text(aes(label = label, x = año + 2), size = 3.5) +
+  geom_text(aes(label = label_2, x = año - 1.5), size = 3.5) +
+  scale_x_continuous(breaks = c(2003, 2012, 2020)) +
+  scale_y_reverse(breaks = 10:1) +
+  scale_color_manual(values = my_colors) +
+  coord_cartesian(ylim = c(10,1), xlim = c(2000,2023),
+                  clip = "off") +
+  labs(title = "El nuevo top 10 en el ranking de los 500 mejores álbumes de Rolling Stone",
+       subtitle = "Del top 10 de 2003 solo dos discos se mantuvieron en el grupo en 2020",
+       x = NULL,
+       y = NULL,
+       caption = "Benjamín Adasme Jara - Data de TidyTuesday 07/05/2024. X: @AdasmeBenja") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        plot.background = element_rect(fill = "gray10"), 
+        panel.grid = element_blank(),
+        axis.text = element_text(color = "white", size = 12),
+        plot.title = element_text(colour = "white", family = "opensans", face = "bold", size = 16),
+        plot.subtitle = element_text(colour = "white", family = "raleway", size = 12),
+        plot.caption = element_text(color = "white", hjust = 0)) 
+
+```
+
+Guardamos el gráfico para exportar y compartir.
+
+```{r}
+#| eval: false
+ggsave(
+  "2024-w19-rolling1.jpg",
+  last_plot(),
+  units = "px",
+  width = 1400,
+  height = 800
+)
+```
+

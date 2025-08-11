@@ -1,6 +1,6 @@
 ---
 title: "Participación en Tidy Tuesday"
-abstract: "El proyecto Tidy Tuesday es una iniciativa de la comunidad de aprendizaje del libro R para Ciencia de Datos. Todos los martes se publica un dataset, invitando a diseñar gráficos novedosos y creativos. Aquí se encuentran mis aportes a este proyecto."
+abstract: "El proyecto Tidy Tuesday es una iniciativa de la comunidad de aprendizaje del libro R para Ciencia de Datos. Todos los martes se publica un dataset [en su sitio](https://github.com/rfordatascience/tidytuesday/), invitando a diseñar gráficos novedosos y creativos. Aquí se encuentran mis aportes a este proyecto."
 lang: es
 listing:
   contents: tidytuesday
@@ -14,4 +14,3 @@ title-block-banner: true
 format: html
 ---
 
-En construcción. 

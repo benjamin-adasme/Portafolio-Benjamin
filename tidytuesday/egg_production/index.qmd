@@ -1,0 +1,107 @@
+---
+title: "TT15 - 2023: US Egg Production"
+date: "2023-04-11"
+categories: [tidytuesday]
+author: "Benjamín Adasme Jara"
+lang: es
+format: html
+---
+
+El martes 11 de abril de 2023 Tidy Tuesday publicó los datos sobre producción de huevos en Estados Unidos [(enlace)](https://github.com/rfordatascience/tidytuesday/blob/main/data/2023/2023-04-11/readme.md). Con estos datos exploramos la producción de huevos de "gallinas libres", aquellas que se crían fuera de jaulas, siguiendo los métodos tradicionales pre-industrialización. 
+
+## Resultado
+
+![](2023-w15-egg1.jpg)
+
+## Código
+
+Cargamos las librerías y los datos
+
+```{r}
+pacman::p_load(tidyverse,
+               tidytuesdayR,
+               lubridate, 
+               showtext)
+
+data_15 <- tt_load("2023-04-11")
+
+#tidytuesdayR::readme(data_15)
+
+egg_prod <- data_15$`egg-production`
+egg_free <- data_15$`cage-free-percentages`
+
+head(egg_prod)
+```
+
+Cargamos las fuentes desde Google
+
+```{r}
+font_add_google("Montserrat", "mont")
+showtext_auto()
+
+```
+
+Cambiamos los datos al formato "long" y calculamos la cantidad de huevos de criaderos regulares restado al total aquellos que provienen de gallinas libres.
+
+```{r}
+
+data_mod <- egg_prod %>%
+  filter(prod_type == "table eggs") %>%
+  pivot_wider(id_cols = observed_month,
+              names_from = prod_process,
+              values_from = n_eggs) %>%
+  rowwise() %>%
+  mutate(regular_egg = all - (`cage-free (non-organic)` + `cage-free (organic)`)) %>%
+  select(-all) %>%
+  pivot_longer(cols = 2:4,
+               names_to = "prod_process",
+               values_to = "n_eggs")
+
+head(data_mod)
+```
+
+Con los datos preparados, creamos el gráfico que compara la producción en jaula y sin jaula (orgánicos y no orgánicos)
+
+```{r}
+data_mod %>% 
+  ggplot(aes(observed_month, n_eggs, group = prod_process, color = prod_process)) +
+  geom_line() +
+  geom_point() +
+  #  geom_smooth(show.legend = F)
+  scale_color_manual(values = c("coral", "lightblue3", "lightgreen"),
+                     labels = c("Sin jaula (no orgánico)", "Sin jaula (orgánico)", "En jaula (no orgánico)"),
+                     name = "Tipo de producción") +
+  scale_y_continuous(labels = scales::label_number(scale = 0.000001, 
+                                                   suffix = " M")) +
+  labs(title = "Los huevos de gallinas libres, al alza",
+       subtitle = "Producción de huevos para consumo en EE.UU. según forma de producción",
+       x = "Año",
+       y = "Huevos producidos (en millones)",
+       caption = "Twitter: @AdasmeBenja // 'The Humane League's US Egg Production dataset' por Samara Mendez - #TidyTuesday 11/04/2023") +
+  coord_cartesian(expand = F, clip = "off") +
+  theme_minimal(base_size = 16, base_family = "mont") +
+  theme(text = element_text(color = "white"), 
+        axis.text =  element_text(color = "gray80"),
+        plot.background = element_rect(fill = "gray25"), 
+        panel.grid = element_line(colour = "gray60"),
+        plot.title = element_text(face = "bold", size = 20)
+        # ,
+        # legend.position = "bottom", 
+        # legend.direction = "horizontal"
+        )
+
+```
+
+Guardamos el gráfico para compartir como imagen
+
+```{r}
+#| eval: false
+ggsave(
+  "2023-w15-egg1.jpg",
+  plot = last_plot(),
+  width = 7,
+  height = 3.5
+)
+
+```
+
