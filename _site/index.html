@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -35,18 +35,19 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ab14cbdfe222e08d4b74e4ce87900e6a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-e9a41a75a8446b85ec034e41bf81c82a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-ab14cbdfe222e08d4b74e4ce87900e6a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-8083e499b73a4a75aafb594821ae0f42.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-4e735571b332398d8eef6e8594f3efa0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-8083e499b73a4a75aafb594821ae0f42.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -61,7 +62,7 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
+    "search-no-results-text": "No se han encontrado resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -118,7 +119,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -379,7 +380,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categorías</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">Todas <span class="quarto-category-count">(3)</span></div><div class="category" data-category="YW4lQzMlQTFsaXNpcw==">análisis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YyVDMyVCM2RpZ28=">código <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YXZpeg==">dataviz <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2dwbG90Mg==">ggplot2 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bm90aWNpYXM=">noticias <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b3BlbiUyMHNvdXJjZQ==">open source <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c29mdHdhcmU=">software <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categorías</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">Todas <span class="quarto-category-count">(4)</span></div><div class="category" data-category="YW4lQzMlQTFsaXNpcw==">análisis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YyVDMyVCM2RpZ28=">código <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Y3Vyc28=">curso <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YXZpeg==">dataviz <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2dwbG90Mg==">ggplot2 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bm90aWNpYXM=">noticias <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b3BlbiUyMHNvdXJjZQ==">open source <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(2)</span></div><div class="category" data-category="c29mdHdhcmU=">software <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
@@ -394,7 +395,41 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="b3BlbiUyMHNvdXJjZSUyQ3NvZnR3YXJl" data-listing-date-sort="1747108800000" data-listing-file-modified-sort="1747321607749" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2536">
+<div class="quarto-post image-right" data-index="0" data-categories="YyVDMyVCM2RpZ28lMkNSJTJDY3Vyc28=" data-listing-date-sort="1772233200000" data-listing-file-modified-sort="1772232682400" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="183">
+<div class="thumbnail"><a href="./posts/curso-r/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/curso-r/index.html" class="no-external">Curso ‘Introducción a R, para todxs’</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('YyVDMyVCM2RpZ28='); return false;">código</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y3Vyc28='); return false;">curso</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/curso-r/index.html" class="no-external">
+<p>Presentaciones del curso introductorio a R realizado en marzo de 2024</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/curso-r/index.html" class="no-external">
+<div class="listing-date">
+28 feb 2026
+</div>
+<div class="listing-author">
+Benjamín Adasme Jara
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="b3BlbiUyMHNvdXJjZSUyQ3NvZnR3YXJl" data-listing-date-sort="1747087200000" data-listing-file-modified-sort="1747321607749" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2536">
 <div class="thumbnail"><a href="./posts/foss-software1/index.html" class="no-external">
 
 <p class="card-img-top"><img src="posts/foss-software1/images/Richard_Stallman_by_Anders_Brenna_01.jpg"  class="thumbnail-image card-img"/></p>
@@ -426,7 +461,7 @@ Benjamín Adasme Jara
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="YyVDMyVCM2RpZ28lMkNhbiVDMyVBMWxpc2lzJTJDUiUyQ2RhdGF2aXolMkNnZ3Bsb3Qy" data-listing-date-sort="1743044400000" data-listing-file-modified-sort="1743164448323" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="22" data-listing-word-count-sort="4222">
+<div class="quarto-post image-right" data-index="2" data-categories="YyVDMyVCM2RpZ28lMkNhbiVDMyVBMWxpc2lzJTJDUiUyQ2RhdGF2aXolMkNnZ3Bsb3Qy" data-listing-date-sort="1743030000000" data-listing-file-modified-sort="1743164448323" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="22" data-listing-word-count-sort="4222">
 <div class="thumbnail"><a href="./posts/piramide-r/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/piramide-r/thumbnail_2.png" class="thumbnail-image">
@@ -464,7 +499,7 @@ Benjamín Adasme Jara
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="bm90aWNpYXM=" data-listing-date-sort="1739242800000" data-listing-file-modified-sort="1739546784557" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="365">
+<div class="quarto-post image-right" data-index="3" data-categories="bm90aWNpYXM=" data-listing-date-sort="1739228400000" data-listing-file-modified-sort="1739546784557" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="365">
 <div class="thumbnail"><a href="./posts/welcome/index.html" class="no-external">
 
 <p class="card-img-top"><img src="posts/welcome/thumbnail.jpg"  class="thumbnail-image card-img"/></p>
@@ -561,13 +596,14 @@ Benjamín Adasme Jara
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -582,7 +618,7 @@ Benjamín Adasme Jara
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/benjaminadasme\.quarto\.pub\/benjamin-adasme");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

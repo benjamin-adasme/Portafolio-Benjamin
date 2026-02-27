@@ -1,5 +1,13 @@
 ---
 title: "Proyectos"
+abstract: "Sección con algunos de los proyectos en los que he trabajado, colaborando con equipos multidisciplinarios en áreas como ciencia de datos, educación, política, entre otras"
+listing:
+  contents: projects
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
 format: html
 ---
 

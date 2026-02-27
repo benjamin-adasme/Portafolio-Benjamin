@@ -11,9 +11,14 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/curso-r/index.html",
       "/posts/foss-software1/index.html",
       "/posts/piramide-r/index.html",
       "/posts/welcome/index.html"
     ]
+  },
+  {
+    "listing": "/projects.html",
+    "items": []
   }
 ]

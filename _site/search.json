@@ -235,13 +235,48 @@
     "href": "index.html",
     "title": "Benjamín Adasme Jara - Blog & Portafolio",
     "section": "",
-    "text": "Guía del software libre para las CCSS\n\n\n\nopen source\n\nsoftware\n\n\n\nBreve guía sobre las alternativas de software libre disponibles para reemplazar el software privativo en el campo de las ciencias sociales, enfocado en estudiantes, profesionales y académicos\n\n\n\n\n\n13 may 2025\n\n\nBenjamín Adasme Jara\n\n\n\n\n\n\n\n\n\n\n\n\nPirámides de población con R: el caso de Chile (1970-2024)\n\n\n\ncódigo\n\nanálisis\n\nR\n\ndataviz\n\nggplot2\n\n\n\nDiscutiremos brevemente sobre el envejecimiento de la población y transición demográfica, y cómo las pirámides de población visualizan estos procesos. Comentaremos el caso chileno, y utilizaremos los datos de los últimos 6 Censos para crear un tutorial de cómo graficar las pirámides de población en R, con los paquetes ggplot2 y gganimate.\n\n\n\n\n\n27 mar 2025\n\n\nBenjamín Adasme Jara\n\n\n\n\n\n\n\n\n\n\n\n\nBienvenidos a mi blog\n\n\n\nnoticias\n\n\n\n\n\n\n\n\n\n11 feb 2025\n\n\nBenjamín Adasme Jara\n\n\n\n\n\nNo hay resultados"
+    "text": "Curso ‘Introducción a R, para todxs’\n\n\n\ncódigo\n\nR\n\ncurso\n\n\n\nPresentaciones del curso introductorio a R realizado en marzo de 2024\n\n\n\n\n\n28 feb 2026\n\n\nBenjamín Adasme Jara\n\n\n\n\n\n\n\n\n\n\n\n\nGuía del software libre para las CCSS\n\n\n\nopen source\n\nsoftware\n\n\n\nBreve guía sobre las alternativas de software libre disponibles para reemplazar el software privativo en el campo de las ciencias sociales, enfocado en estudiantes, profesionales y académicos\n\n\n\n\n\n13 may 2025\n\n\nBenjamín Adasme Jara\n\n\n\n\n\n\n\n\n\n\n\n\nPirámides de población con R: el caso de Chile (1970-2024)\n\n\n\ncódigo\n\nanálisis\n\nR\n\ndataviz\n\nggplot2\n\n\n\nDiscutiremos brevemente sobre el envejecimiento de la población y transición demográfica, y cómo las pirámides de población visualizan estos procesos. Comentaremos el caso chileno, y utilizaremos los datos de los últimos 6 Censos para crear un tutorial de cómo graficar las pirámides de población en R, con los paquetes ggplot2 y gganimate.\n\n\n\n\n\n27 mar 2025\n\n\nBenjamín Adasme Jara\n\n\n\n\n\n\n\n\n\n\n\n\nBienvenidos a mi blog\n\n\n\nnoticias\n\n\n\n\n\n\n\n\n\n11 feb 2025\n\n\nBenjamín Adasme Jara\n\n\n\n\n\nNo hay resultados"
   },
   {
     "objectID": "projects.html",
     "href": "projects.html",
     "title": "Proyectos",
     "section": "",
-    "text": "Página en construcción."
+    "text": "Página en construcción.\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/curso-r/index.html#sesión-2",
+    "href": "posts/curso-r/index.html#sesión-2",
+    "title": "Curso ‘Introducción a R, para todxs’",
+    "section": "Sesión 2",
+    "text": "Sesión 2\nContenidos:\n\nIntroducción al tidyverse\nCarga de datos\nManipulación de datos con herramientas de dplyr"
+  },
+  {
+    "objectID": "posts/curso-r/index.html#sesión-3",
+    "href": "posts/curso-r/index.html#sesión-3",
+    "title": "Curso ‘Introducción a R, para todxs’",
+    "section": "Sesión 3",
+    "text": "Sesión 3\nContenidos:\n\nGuías y orientación en la visualización de datos\nGráficos en R base\nGgplot2"
+  },
+  {
+    "objectID": "posts/curso-r/index.html#sesión-4",
+    "href": "posts/curso-r/index.html#sesión-4",
+    "title": "Curso ‘Introducción a R, para todxs’",
+    "section": "Sesión 4",
+    "text": "Sesión 4\nContenidos:\n\nCreación de reportes con Rmarkdown y Quarto\nPaquete gt para tablas"
+  },
+  {
+    "objectID": "posts/curso-r/index.html",
+    "href": "posts/curso-r/index.html",
+    "title": "Curso ‘Introducción a R, para todxs’",
+    "section": "",
+    "text": "Hace aproximadamente dos años cree de forma íntegra un curso muy simple y básico de introducción al lenguaje de programación R, ampliamente usado en la estadística y análisis de datos. El motivo fue simple: querer compartir el conocimiento acumulado en los últimos años, gran parte adquirido gracias a la enorme comunidad que entrega sus saberes al mundo. Hoy devuelvo la mano, otra vez, dejando disponibles aquí las presentaciones de las 4 sesiones del taller. Los contenidos abordados fueron: primeros pasos de programacion en R, manipulación de data frames, visualización de datos y comunicación de resultados.\nTodo el material, incluyendo presentaciones, código y otros recursos está disponible en el repositorio de Github del proyecto."
+  },
+  {
+    "objectID": "posts/curso-r/index.html#sesión-1",
+    "href": "posts/curso-r/index.html#sesión-1",
+    "title": "Curso ‘Introducción a R, para todxs’",
+    "section": "Sesión 1",
+    "text": "Sesión 1\nContenidos:\n\nPresentación e historia de R\nSintáxis\nTipos y estructuras de datos\nFunciones básicas"
   }
 ]

@@ -1,0 +1,67 @@
+---
+title: "Curso 'Introducción a R, para todxs' "
+author: "Benjamín Adasme Jara"
+date: "2026-02-28"
+lang: es
+categories: [código, R, curso]
+abstract: "Presentaciones del curso introductorio a R realizado en marzo de 2024"
+format: 
+  html: 
+    toc: true
+    code-fold: false
+    code-tools: true
+open-graph: true
+editor: source
+---
+
+Hace aproximadamente dos años cree de forma íntegra un curso muy simple y básico de introducción al lenguaje de programación R, ampliamente usado en la estadística y análisis de datos. El motivo fue simple: querer compartir el conocimiento acumulado en los últimos años, gran parte adquirido gracias a la enorme comunidad que entrega sus saberes al mundo. Hoy devuelvo la mano, otra vez, dejando disponibles aquí las presentaciones de las 4 sesiones del taller. Los contenidos abordados fueron: primeros pasos de programacion en R, manipulación de data frames, visualización de datos y comunicación de resultados. 
+
+Todo el material, incluyendo presentaciones, código y otros recursos está disponible en el [repositorio de Github del proyecto](https://github.com/benjamin-adasme/Taller-R-marzo-24). 
+
+## Sesión 1
+
+Contenidos:
+
+- Presentación e historia de R
+- Sintáxis
+- Tipos y estructuras de datos
+- Funciones básicas
+
+<iframe width="800" height="600" src="sesion01.html">
+
+</iframe>
+
+## Sesión 2
+
+Contenidos:
+
+- Introducción al tidyverse
+- Carga de datos
+- Manipulación de datos con herramientas de dplyr
+
+<iframe width="800" height="600" src="sesion02.html">
+
+</iframe>
+
+## Sesión 3
+
+Contenidos:
+
+- Guías y orientación en la visualización de datos
+- Gráficos en R base
+- Ggplot2
+
+<iframe width="800" height="600" src="sesion03.html">
+
+</iframe>
+
+## Sesión 4
+
+Contenidos: 
+
+- Creación de reportes con Rmarkdown y Quarto
+- Paquete gt para tablas
+
+<iframe width="800" height="600" src="sesion04.html">
+
+</iframe>
